@@ -1,0 +1,42 @@
+<div class="header">
+  <h2 class="header__title">Create new account</h2>
+  <p class="header__subtitle">Welcome back! Please enter your details</p>
+</div>
+<form [formGroup]="signUpForm" class="form">
+  <div class="form__content">
+    <app-input
+      label="Full Name"
+      placeholder="Enter Full Name"
+      [control]="signUpForm.get('fullName')"
+    />
+
+    <app-input
+      label="Email"
+      placeholder="example@gmail.com"
+      [control]="signUpForm.get('email')"
+    />
+
+    <app-password-input
+      label="Password"
+      placeholder="••••••••"
+      [control]="signUpForm.get('password')"
+    />
+  </div>
+  <div class="form__actions">
+    <app-button [severity]="ButtonSeverity.Primary" [size]="ButtonSize.Wide">
+      Create Account
+    </app-button>
+    <app-button
+      [icon]="'icon-google'"
+      [outlined]="true"
+      [severity]="ButtonSeverity.Secondary"
+      [size]="ButtonSize.Wide"
+    >
+      Sign up with google
+    </app-button>
+  </div>
+</form>
+<div class="footer">
+  <span class="footer__question">Already have an account?</span>
+  <a class="footer__link" routerLink="/authorization/sign-in"> Sign In </a>
+</div>

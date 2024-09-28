@@ -1,0 +1,47 @@
+:host ::ng-deep .button {
+  display: block;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2em;
+
+    &_icon {
+      font-size: 20px;
+    }
+  }
+
+  .p-button {
+    justify-content: center;
+    column-gap: 10px;
+  }
+
+  /** Sizes */
+  &[data-size='small'] .p-button {
+    padding: 11px 20px;
+  }
+
+  &[data-size='medium'] .p-button {
+    padding: 14px 27px;
+  }
+
+  &[data-size='large'] .p-button {
+    font-family: 'Epilogue', sans-serif;
+    font-size: 16px;
+
+    padding: 14px 65px;
+  }
+
+  &[data-size='wide'] .p-button {
+    font-size: 16px;
+
+    width: 100%;
+    padding: 14px 20px;
+  }
+}

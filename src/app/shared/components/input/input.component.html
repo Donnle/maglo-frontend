@@ -1,0 +1,23 @@
+<label class="label">
+  @if (label) {
+    <span class="label__name">{{ label }}</span>
+  }
+
+  <span
+    class="label__input"
+    [ngClass]="[icon ? 'p-input-icon-' + iconPosition : '']"
+  >
+    @if (icon) {
+      <i class="icon" [ngClass]="[icon]"></i>
+    }
+
+    <input
+      class="label__input_control"
+      type="text"
+      pInputText
+      [disabled]="disabled"
+      [formControl]="control"
+      [placeholder]="placeholder"
+    />
+  </span>
+</label>

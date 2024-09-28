@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+/** Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Gorditas:wght@400;700&family=Kumbh+Sans:wght@100..900&display=swap');
+
+/** Reset */
+@import 'reset';
+
+/* Variables */
+@import 'variables';
+
+/* Mixins */
+@import 'mixin';
+
+/** Icons */
+@import './assets/icomoon/style.css';
+
+/** PrimeNG */
+@import 'primeng/resources/themes/saga-green/theme.css';
+@import 'primeng/resources/primeng.css';
+@import 'custom-primeng';
+
+@layer primeng-custom, primeng;

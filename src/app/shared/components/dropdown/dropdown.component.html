@@ -1,0 +1,14 @@
+<label class="label">
+  @if (label) {
+    <span class="label__name">{{ label }}</span>
+  }
+
+  <p-dropdown
+    class="label__dropdown"
+    [formControl]="control"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [loading]="loading"
+    [options]="options"
+  />
+</label>

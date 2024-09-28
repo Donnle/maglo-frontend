@@ -1,0 +1,21 @@
+<p-button
+  class="button"
+  [attr.data-size]="size"
+  [loading]="loading"
+  [severity]="severity"
+  [disabled]="disabled"
+  [outlined]="outlined"
+  [pTooltip]="tooltip"
+>
+  <span class="button__content">
+    @if (icon) {
+      <span class="button__content_icon icon" [ngClass]="[icon]">
+        <span class="path1"></span>
+        <span class="path2"></span>
+        <span class="path3"></span>
+        <span class="path4"></span>
+      </span>
+    }
+    <ng-content></ng-content>
+  </span>
+</p-button>

@@ -1,0 +1,97 @@
+:root {
+  --primary: #c8ee44;
+  --secondary: #29a073;
+  --success: #19d076;
+  --error: #e5363d;
+  --icon: #929eae;
+
+  // Backgrounds
+  --main-bg: #ffffff;
+  --sidebar-bg: #fafafa;
+  --search-bg: #f8f8f8;
+
+  --card-bg: #f8f8f8;
+  --active-card-bg: #363a3f;
+
+  // Text
+  --search-text: var(--text-1);
+  --search-placeholder-text: #929eae;
+  --sidebar-text: #929eae;
+  --sidebar-active-text: #1b212d;
+
+  --text-1: #1b212d;
+  --text-2: #78778b;
+  --text-3: #ffffff;
+
+  // Buttons
+  --success-button-bg: #eefef2;
+  --success-button-text: #29a073;
+  --success-button-hover: #c2f0d0;
+
+  --primary-button-bg: var(--primary);
+  --primary-button-text: var(--text-1);
+  --primary-button-hover: #c2e343;
+
+  --input-border: 1px solid #f2f2f2;
+  --secondary-button-text: var(--text-2);
+
+  // Tags
+  --success-tag-bg: #d9ffe9;
+  --success-tag-text: #27ae60;
+
+  --warning-tag-bg: #fff1e5;
+  --warning-tag-text: #f2994a;
+
+  --danger-tag-bg: #ffefef;
+  --danger-tag-text: #eb5757;
+}
+
+:root[data-theme='dark'] {
+  --primary: #c8ee44;
+  --secondary: #29a073;
+  --success: #19d076;
+  --error: #e5363d;
+  --icon: #929eae;
+
+  // Backgrounds
+  --main-bg: #1c1a2e;
+  --sidebar-bg: #1e1c30;
+  --search-bg: #282541;
+
+  --card-bg: #201e34;
+  --active-card-bg: #282541;
+
+  // Text
+  --search-text: var(--text-1);
+  --search-placeholder-text: #929eae;
+  --sidebar-text: #929eae;
+  --sidebar-active-text: #1b212d;
+
+  --text-1: #ffffff;
+  --text-2: #78778b;
+  --text-3: #ffffff;
+
+  // Buttons
+  --success-button-bg: #1a3131;
+  --success-button-text: #29a073;
+  --success-button-hover: #254544;
+
+  --primary-button-bg: var(--primary);
+  --primary-button-text: #1b212d;
+  --primary-button-hover: #c2e343;
+
+  --input-border: 1px solid #282541;
+  --secondary-button-border: 1px solid #282541;
+
+  --secondary-button-text: var(--text-2);
+
+  // Tags
+  --success-tag-bg: #1a3131;
+  --success-tag-text: #27ae60;
+
+  --warning-tag-bg: #30292f;
+  --warning-tag-text: #f2994a;
+
+  --danger-tag-bg: #442121;
+  --danger-tag-text: #eb5757;
+}
