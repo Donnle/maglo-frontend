@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { SpinnerComponent } from '../spinner/spinner.component';
 import { NgClass } from '@angular/common';
 import { Button } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
@@ -20,7 +19,7 @@ export enum ButtonSize {
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [SpinnerComponent, NgClass, Button, TooltipModule],
+  imports: [NgClass, Button, TooltipModule],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss'
 })
@@ -29,6 +28,7 @@ export class ButtonComponent {
   @Input() severity: ButtonSeverity = ButtonSeverity.Primary;
   @Input() size: ButtonSize = ButtonSize.Medium;
   @Input() outlined: boolean = false;
+  @Input() isBordered: boolean = true;
 
   // States
   @Input() disabled: boolean = false;

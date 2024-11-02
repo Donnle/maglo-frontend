@@ -1,3 +1,8 @@
+:host,
+button {
+  display: inline-flex;
+}
+
 :host ::ng-deep .button {
   display: block;
 
@@ -20,6 +25,10 @@
   .p-button {
     justify-content: center;
     column-gap: 10px;
+  }
+
+  &[data-bordered='false'] .p-button {
+    border: none;
   }
 
   /** Sizes */

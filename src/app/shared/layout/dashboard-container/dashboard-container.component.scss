@@ -1,0 +1,109 @@
+:host ::ng-deep {
+  .p-menu {
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+
+  .p-menuitem {
+    background: transparent;
+
+    &-content {
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    &-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      font-family: 'Kumbh Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+
+      padding: 15px;
+      background: transparent;
+
+      span {
+        color: var(--sidebar-text);
+      }
+
+      &-active {
+        background: var(--primary);
+
+        span {
+          color: var(--sidebar-active-text);
+        }
+      }
+    }
+  }
+}
+
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+
+  padding: 30px 25px 100px;
+  width: fit-content;
+  background: var(--sidebar-bg);
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    text-decoration: none;
+    color: var(--text-1);
+    padding-bottom: 40px;
+
+    &_icon {
+      font-size: 30px;
+    }
+
+    &_name {
+      font-family: 'Gordita', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+}
+
+.menus {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: fit-content;
+
+  .menu--top {
+    flex: 1;
+  }
+}
+
+.content {
+  margin-left: 250px;
+  padding: 30px 40px;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+
+  padding-bottom: 30px;
+
+  &__profile {
+    width: fit-content;
+  }
+}

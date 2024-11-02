@@ -1,5 +1,9 @@
 @layer primeng-custom {
   p-button .p-button {
+    &-secondary {
+      background: transparent;
+    }
+
     &-primary {
       color: var(--primary-button-text);
       background: var(--primary-button-bg);
@@ -63,5 +67,24 @@
 
   .p-inputtext {
     padding: 15px 20px;
+  }
+
+  p-card .p-card {
+    box-shadow: none;
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
+    background-color: var(--main-bg);
+
+    &-content {
+      padding: 0;
+    }
+  }
+
+  p-dropdown .p-dropdown {
+    background-color: var(--card-bg);
+
+    &-panel {
+      background-color: var(--card-bg);
+    }
   }
 }

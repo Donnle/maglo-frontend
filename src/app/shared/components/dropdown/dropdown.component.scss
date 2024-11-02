@@ -4,7 +4,7 @@
 
 :host ::ng-deep .label__dropdown .p-dropdown {
   min-width: 221px;
-  background-color: transparent;
+  background-color: var(--card-bg);
   border: var(--input-border);
 }
 

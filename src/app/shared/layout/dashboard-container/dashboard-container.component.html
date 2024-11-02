@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="sidebar">
+    <a class="sidebar__logo" routerLink="dashboard">
+      <i class="sidebar__logo_icon icon icon-logo"></i>
+      <span class="sidebar__logo_name">Maglo.</span>
+    </a>
+    <div class="menus">
+      <div class="menu menu--top">
+        <p-menu [model]="TOP_SIDEBAR" />
+      </div>
+      <div class="menu menu--bottom">
+        <p-menu [model]="BOTTOM_SIDEBAR" />
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <header class="content__header header">
+      <div class="header__notifications">
+        <app-button
+          icon="icon icon-notification-bing"
+          [outlined]="true"
+          [isBordered]="false"
+          [size]="ButtonSize.Small"
+          [severity]="ButtonSeverity.Secondary"
+        />
+      </div>
+      <div class="header__profile">
+        <app-profile />
+      </div>
+    </header>
+
+    <main class="content__main">
+      <router-outlet />
+    </main>
+  </div>
+</div>
