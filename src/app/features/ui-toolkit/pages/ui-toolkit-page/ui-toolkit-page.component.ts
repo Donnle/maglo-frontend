@@ -4,7 +4,7 @@ import {
   ButtonSize
 } from '../../../../shared/components/button/button.component';
 import { FormControl } from '@angular/forms';
-import { InputIconPosition } from '../../../../shared/components/input/input.component';
+import { InputIconPosition } from '../../../../shared/components/controllers/input/input.component';
 import { TagSeverity } from '../../../../shared/components/tag/tag.component';
 
 @Component({
@@ -14,6 +14,7 @@ import { TagSeverity } from '../../../../shared/components/tag/tag.component';
 })
 export class UiToolkitPageComponent {
   control = new FormControl();
+
   protected readonly ButtonSize = ButtonSize;
   protected readonly ButtonSeverity = ButtonSeverity;
   protected readonly InputIconPosition = InputIconPosition;

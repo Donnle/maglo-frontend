@@ -5,10 +5,11 @@ import { UiToolkitRoutingModule } from './ui-toolkit-routing.module';
 import { UiToolkitPageComponent } from './pages/ui-toolkit-page/ui-toolkit-page.component';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { SpinnerComponent } from '../../shared/components/spinner/spinner.component';
-import { InputComponent } from '../../shared/components/input/input.component';
-import { DropdownComponent } from '../../shared/components/dropdown/dropdown.component';
+import { InputComponent } from '../../shared/components/controllers/input/input.component';
+import { DropdownComponent } from '../../shared/components/controllers/dropdown/dropdown.component';
 import { TagComponent } from '../../shared/components/tag/tag.component';
-import { DropdownModule } from 'primeng/dropdown';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CheckboxComponent } from '../../shared/components/controllers/checkbox/checkbox.component';
 
 @NgModule({
   declarations: [UiToolkitPageComponent],
@@ -20,7 +21,8 @@ import { DropdownModule } from 'primeng/dropdown';
     InputComponent,
     DropdownComponent,
     TagComponent,
-    DropdownModule
+    ReactiveFormsModule,
+    CheckboxComponent
   ]
 })
 export class UiToolkitModule {}

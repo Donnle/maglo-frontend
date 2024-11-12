@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
   ButtonSeverity,
-  ButtonSize
+  ButtonSize,
+  ButtonType
 } from '../../../../shared/components/button/button.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -15,11 +16,16 @@ export class SignInPageComponent implements OnInit {
 
   protected readonly ButtonSize = ButtonSize;
   protected readonly ButtonSeverity = ButtonSeverity;
+  protected readonly ButtonType = ButtonType;
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.initSignInForm();
+  }
+
+  onSubmit() {
+    console.log('Submit');
   }
 
   private initSignInForm() {

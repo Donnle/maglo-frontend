@@ -2,26 +2,26 @@
   <h2 class="header__title">Welcome back</h2>
   <p class="header__subtitle">Welcome back! Please enter your details</p>
 </div>
-<form [formGroup]="signInForm" class="form">
+<form [formGroup]="signInForm" (ngSubmit)="onSubmit()" class="form">
   <div class="form__content">
     <app-input
       label="Email"
       placeholder="example@gmail.com"
-      [control]="signInForm.get('email')"
+      formControlName="email"
     />
 
-    <app-password-input
+    <app-input-password
       label="Password"
       placeholder="••••••••"
-      [control]="signInForm.get('password')"
+      formControlName="password"
     />
   </div>
 
   <div class="form__options">
     <div class="form__options_remember">
       <app-checkbox
-        [label]="'Remember for 30 Days'"
-        [control]="signInForm.get('short_remember')"
+        label="Remember for 30 Days"
+        formControlName="short_remember"
       />
     </div>
     <a routerLink="/authorization/forgot-password" class="form__options_link">
@@ -30,16 +30,21 @@
   </div>
 
   <div class="form__actions">
-    <app-button [severity]="ButtonSeverity.Primary" [size]="ButtonSize.Wide">
+    <app-button
+      [disabled]="signInForm.invalid"
+      [severity]="ButtonSeverity.Primary"
+      [size]="ButtonSize.Wide"
+    >
       Sign in
     </app-button>
     <app-button
+      [type]="ButtonType.Button"
       [icon]="'icon-google'"
       [outlined]="true"
       [severity]="ButtonSeverity.Secondary"
       [size]="ButtonSize.Wide"
     >
-      Sign In with google
+      Sign In with Google
     </app-button>
   </div>
 </form>

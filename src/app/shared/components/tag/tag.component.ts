@@ -1,21 +1,19 @@
-import { Component, Input } from '@angular/core';
-import { TagModule } from 'primeng/tag';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { NgClass } from '@angular/common';
 
 export enum TagSeverity {
   Success = 'success',
-  Secondary = 'secondary',
-  Info = 'info',
   Warning = 'warning',
-  Danger = 'danger',
-  Contrast = 'contrast'
+  Error = 'error'
 }
 
 @Component({
   selector: 'app-tag',
   standalone: true,
-  imports: [TagModule],
+  imports: [NgClass],
   templateUrl: './tag.component.html',
-  styleUrl: './tag.component.scss'
+  styleUrl: './tag.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagComponent {
   @Input() severity: TagSeverity = TagSeverity.Success;

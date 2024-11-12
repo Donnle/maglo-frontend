@@ -22,6 +22,10 @@ export class SignUpPageComponent implements OnInit {
     this.initSignUpForm();
   }
 
+  onSubmit() {
+    console.log('Submit');
+  }
+
   private initSignUpForm() {
     this.signUpForm = this.formBuilder.group({
       fullName: ['', [Validators.required]],

@@ -1,27 +1,24 @@
 import { NgModule } from '@angular/core';
-
-import { DashboardRoutingModule } from './dashboard-routing.module';
-import { PanelMenuModule } from 'primeng/panelmenu';
-import { MenuModule } from 'primeng/menu';
-import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
-import { ButtonComponent } from '../../shared/components/button/button.component';
-import { StatisticCardComponent } from './components/statistic-card/statistic-card.component';
 import { NgClass } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgxEchartsDirective } from 'ngx-echarts';
-import { DropdownComponent } from '../../shared/components/dropdown/dropdown.component';
-import { CardModule } from 'primeng/card';
+
+import { ButtonComponent } from '../../shared/components/button/button.component';
+import { DropdownComponent } from '../../shared/components/controllers/dropdown/dropdown.component';
+
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { StatisticCardComponent } from './components/statistic-card/statistic-card.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 @NgModule({
   declarations: [DashboardPageComponent, StatisticCardComponent],
   imports: [
     DashboardRoutingModule,
-    PanelMenuModule,
-    MenuModule,
     ButtonComponent,
     NgClass,
     NgxEchartsDirective,
     DropdownComponent,
-    CardModule
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule {}

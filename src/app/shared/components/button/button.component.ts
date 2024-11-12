@@ -1,7 +1,12 @@
-import { Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 import { NgClass } from '@angular/common';
-import { Button } from 'primeng/button';
-import { TooltipModule } from 'primeng/tooltip';
+import { SpinnerComponent, SpinnerSize } from '../spinner/spinner.component';
 
 export enum ButtonSeverity {
   Primary = 'primary',
@@ -16,27 +21,49 @@ export enum ButtonSize {
   Wide = 'wide'
 }
 
+export enum ButtonStyle {
+  Default = 'default',
+  Icon = 'icon'
+}
+
+export enum ButtonType {
+  Button = 'button',
+  Reset = 'reset',
+  Submit = 'submit'
+}
+
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [NgClass, Button, TooltipModule],
+  imports: [NgClass, SpinnerComponent],
   templateUrl: './button.component.html',
-  styleUrl: './button.component.scss'
+  styleUrl: './button.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent {
   // Styles
   @Input() severity: ButtonSeverity = ButtonSeverity.Primary;
+  @Input() style: ButtonStyle = ButtonStyle.Default;
   @Input() size: ButtonSize = ButtonSize.Medium;
+  @Input() type: ButtonType = ButtonType.Submit;
   @Input() outlined: boolean = false;
-  @Input() isBordered: boolean = true;
 
   // States
   @Input() disabled: boolean = false;
   @Input() loading: boolean = false;
 
   // Icon
-  @Input() icon?: string;
+  @Input() icon?: string | string[];
 
   // Tooltip
   @Input() tooltip?: string;
+
+  @Output() click: EventEmitter<Event> = new EventEmitter<Event>();
+
+  protected readonly SpinnerSize = SpinnerSize;
+  protected readonly ButtonStyle = ButtonStyle;
+
+  onClick(event: Event) {
+    this.click.emit(event);
+  }
 }

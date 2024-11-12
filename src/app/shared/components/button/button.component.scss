@@ -1,55 +1,104 @@
-:host,
-button {
+:host {
   display: inline-flex;
 }
 
-:host ::ng-deep .button {
-  display: block;
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+  cursor: pointer;
+
+  border-radius: 8px;
+  transition: background-color 0.25s ease;
+
+  &:disabled {
+    pointer-events: none;
+    cursor: initial;
+    opacity: 0.6;
+  }
 
   &__content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 10px;
-
     font-family: 'Kumbh Sans', sans-serif;
     font-size: 14px;
     font-weight: 600;
     line-height: 1.2em;
-
-    &_icon {
-      font-size: 20px;
-    }
   }
 
-  .p-button {
-    justify-content: center;
-    column-gap: 10px;
+  &__icon {
+    font-size: 20px;
   }
 
-  &[data-bordered='false'] .p-button {
+  &[data-bordered='false'] {
     border: none;
   }
 
+  /** Type */
+  &[data-style='icon'] {
+    border: none !important;
+    outline: none !important;
+    padding: 8px !important;
+  }
+
+  /** Styles */
+  &[data-severity='secondary'] {
+    color: var(--button-secondary-text);
+    background-color: var(--button-secondary-bg);
+    border: var(--button-secondary-border);
+
+    &:not(:disabled):hover {
+      background-color: var(--button-secondary-hover);
+    }
+  }
+
+  &[data-severity='primary'] {
+    color: var(--button-primary-text);
+    background-color: var(--button-primary-bg);
+    border: var(--button-primary-border);
+
+    &:not(:disabled):hover {
+      background-color: var(--button-primary-hover);
+    }
+  }
+
+  &[data-severity='success'] {
+    color: var(--button-success-text);
+    background-color: var(--button-success-bg);
+    border: var(--button-success-border);
+
+    &:not(:disabled):hover {
+      background-color: var(--button-success-hover);
+    }
+  }
+
   /** Sizes */
-  &[data-size='small'] .p-button {
+  &[data-size='small'],
+  &[data-size='medium'] {
+    font-size: 14px;
+    line-height: 1.2em;
+    font-weight: 400;
+  }
+
+  &[data-size='large'],
+  &[data-size='wide'] {
+    font-size: 16px;
+    line-height: 1.2em;
+    font-weight: 400;
+  }
+
+  &[data-size='small'] {
     padding: 11px 20px;
   }
 
-  &[data-size='medium'] .p-button {
+  &[data-size='medium'] {
     padding: 14px 27px;
   }
 
-  &[data-size='large'] .p-button {
-    font-family: 'Epilogue', sans-serif;
-    font-size: 16px;
-
+  &[data-size='large'] {
     padding: 14px 65px;
   }
 
-  &[data-size='wide'] .p-button {
-    font-size: 16px;
-
+  &[data-size='wide'] {
     width: 100%;
     padding: 14px 20px;
   }

@@ -6,10 +6,10 @@
     </a>
     <div class="menus">
       <div class="menu menu--top">
-        <p-menu [model]="TOP_SIDEBAR" />
+        <app-vertical-tabs [tabs]="TOP_SIDEBAR" />
       </div>
       <div class="menu menu--bottom">
-        <p-menu [model]="BOTTOM_SIDEBAR" />
+        <app-vertical-tabs [tabs]="BOTTOM_SIDEBAR" />
       </div>
     </div>
   </div>
@@ -19,7 +19,7 @@
         <app-button
           icon="icon icon-notification-bing"
           [outlined]="true"
-          [isBordered]="false"
+          [style]="ButtonStyle.Icon"
           [size]="ButtonSize.Small"
           [severity]="ButtonSeverity.Secondary"
         />

@@ -13,14 +13,14 @@ import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component
 import { AuthorizationContainerComponent } from '../../shared/layout/authorization-container/authorization-container.component';
 
 // Shared
-import { InputComponent } from '../../shared/components/input/input.component';
+import { InputComponent } from '../../shared/components/controllers/input/input.component';
 import { ButtonComponent } from '../../shared/components/button/button.component';
-import { CheckboxComponent } from '../../shared/components/checkbox/checkbox.component';
-import { PasswordInputComponent } from '../../shared/components/password-input/password-input.component';
+import { CheckboxComponent } from '../../shared/components/controllers/checkbox/checkbox.component';
+import { InputPasswordComponent } from '../../shared/components/controllers/input-password/input-password.component';
 
 const components = [
   InputComponent,
-  PasswordInputComponent,
+  InputPasswordComponent,
   ButtonComponent,
   CheckboxComponent,
   AuthorizationContainerComponent
