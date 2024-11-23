@@ -29,7 +29,7 @@ export class DropdownComponent<T extends DropdownItem>
 {
   @Input({ required: true }) options: T[] = [];
   @Input() optionValueName?: string = 'id'; // Empty if Need Object As Value
-  @Input() optionLabelName: string = 'name';
+  @Input() optionLabelName: string = 'label';
   @Input() loading: boolean = false;
 
   @Input() empty: string = 'No Options';
@@ -86,7 +86,7 @@ export class DropdownComponent<T extends DropdownItem>
     if (typeof outsideValue == 'object') {
       const stringifiedOutsideValue: string = JSON.stringify(outsideValue);
 
-      return this.options.findIndex((option: T) => {
+      return this.options.findIndex((option: T): boolean => {
         return JSON.stringify(option) === stringifiedOutsideValue;
       });
     } else {
@@ -95,7 +95,7 @@ export class DropdownComponent<T extends DropdownItem>
         return -1;
       }
 
-      return this.options.findIndex((option: T) => {
+      return this.options.findIndex((option: T): boolean => {
         return option[optionValueName] === outsideValue;
       });
     }

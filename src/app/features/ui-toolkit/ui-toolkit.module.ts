@@ -10,6 +10,7 @@ import { DropdownComponent } from '../../shared/components/controllers/dropdown/
 import { TagComponent } from '../../shared/components/tag/tag.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CheckboxComponent } from '../../shared/components/controllers/checkbox/checkbox.component';
+import { MultiDropdownComponent } from '../../shared/components/controllers/multi-dropdown/multi-dropdown.component';
 
 @NgModule({
   declarations: [UiToolkitPageComponent],
@@ -22,7 +23,8 @@ import { CheckboxComponent } from '../../shared/components/controllers/checkbox/
     DropdownComponent,
     TagComponent,
     ReactiveFormsModule,
-    CheckboxComponent
+    CheckboxComponent,
+    MultiDropdownComponent
   ]
 })
 export class UiToolkitModule {}

@@ -65,6 +65,10 @@
 
   --tag-error-bg: #ffefef;
   --tag-error-text: #eb5757;
+
+  // Tables
+  --table-header-text: #929eae;
+  --table-body-line: #f5f5f5;
 }
 
 :root[data-theme='dark'] {
@@ -135,4 +139,8 @@
 
   --tag-error-bg: #442121;
   --tag-error-text: #eb5757;
+
+  // Tables
+  --table-header-text: #78778b;
+  --table-body-line: #282541;
 }

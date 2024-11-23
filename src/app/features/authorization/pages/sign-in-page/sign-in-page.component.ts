@@ -14,9 +14,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SignInPageComponent implements OnInit {
   signInForm!: FormGroup;
 
-  protected readonly ButtonSize = ButtonSize;
-  protected readonly ButtonSeverity = ButtonSeverity;
-  protected readonly ButtonType = ButtonType;
+  protected readonly ButtonSize: typeof ButtonSize = ButtonSize;
+  protected readonly ButtonSeverity: typeof ButtonSeverity = ButtonSeverity;
+  protected readonly ButtonType: typeof ButtonType = ButtonType;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -28,7 +28,7 @@ export class SignInPageComponent implements OnInit {
     console.log('Submit');
   }
 
-  private initSignInForm() {
+  private initSignInForm(): void {
     this.signInForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],

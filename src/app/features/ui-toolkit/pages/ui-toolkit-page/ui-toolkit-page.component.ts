@@ -15,8 +15,9 @@ import { TagSeverity } from '../../../../shared/components/tag/tag.component';
 export class UiToolkitPageComponent {
   control = new FormControl();
 
-  protected readonly ButtonSize = ButtonSize;
-  protected readonly ButtonSeverity = ButtonSeverity;
-  protected readonly InputIconPosition = InputIconPosition;
-  protected readonly TagSeverity = TagSeverity;
+  protected readonly ButtonSize: typeof ButtonSize = ButtonSize;
+  protected readonly ButtonSeverity: typeof ButtonSeverity = ButtonSeverity;
+  protected readonly InputIconPosition: typeof InputIconPosition =
+    InputIconPosition;
+  protected readonly TagSeverity: typeof TagSeverity = TagSeverity;
 }

@@ -1,7 +1,13 @@
+@import 'mixin';
+
 .dashboard__working-capital {
 }
 
 .dashboard__working-capital {
+}
+
+.dashboard__table {
+  @include table;
 }
 
 .working-capital {

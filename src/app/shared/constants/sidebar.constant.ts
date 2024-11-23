@@ -1,4 +1,6 @@
-export const TOP_SIDEBAR = [
+import { VerticalTab } from '../components/vertical-tabs/vertical-tabs.component';
+
+export const TOP_SIDEBAR: VerticalTab[] = [
   {
     label: 'Dashboard',
     icon: 'icon icon-home',
@@ -26,7 +28,7 @@ export const TOP_SIDEBAR = [
   }
 ];
 
-export const BOTTOM_SIDEBAR = [
+export const BOTTOM_SIDEBAR: VerticalTab[] = [
   {
     label: 'Help',
     icon: 'icon icon-help',

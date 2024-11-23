@@ -35,7 +35,7 @@ export class CheckboxComponent implements ControlValueAccessor {
 
   protected isDisabled: boolean = false;
 
-  onCheckboxClick(isChecked: boolean) {
+  onCheckboxClick(isChecked: boolean): void {
     this.isChecked = isChecked;
 
     if (this.isChecked) {
@@ -51,11 +51,11 @@ export class CheckboxComponent implements ControlValueAccessor {
   private onChange!: (value: unknown) => void;
   private onTouch!: () => void;
 
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: (value: unknown) => void): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this.onTouch = fn;
   }
 

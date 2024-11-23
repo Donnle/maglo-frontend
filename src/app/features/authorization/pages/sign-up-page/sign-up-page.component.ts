@@ -13,8 +13,8 @@ import {
 export class SignUpPageComponent implements OnInit {
   signUpForm!: FormGroup;
 
-  protected readonly ButtonSeverity = ButtonSeverity;
-  protected readonly ButtonSize = ButtonSize;
+  protected readonly ButtonSeverity: typeof ButtonSeverity = ButtonSeverity;
+  protected readonly ButtonSize: typeof ButtonSize = ButtonSize;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -26,7 +26,7 @@ export class SignUpPageComponent implements OnInit {
     console.log('Submit');
   }
 
-  private initSignUpForm() {
+  private initSignUpForm(): void {
     this.signUpForm = this.formBuilder.group({
       fullName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],

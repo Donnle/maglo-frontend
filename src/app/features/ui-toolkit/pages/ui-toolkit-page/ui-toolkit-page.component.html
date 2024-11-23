@@ -1,41 +1,52 @@
 <div class="container">
-  <!--  <h2>Buttons</h2>-->
-  <!--  <app-button [tooltip]="'Tooltip'">Button</app-button>-->
-  <!--  <app-button [loading]="true">Button Loading</app-button>-->
-  <!--  <app-button [size]="ButtonSize.Small">Button Small</app-button>-->
-  <!--  <app-button [size]="ButtonSize.Medium">Button Medium</app-button>-->
-  <!--  <app-button [size]="ButtonSize.Large">Button Large</app-button>-->
-  <!--  <app-button [size]="ButtonSize.Wide">Button Wide</app-button>-->
+  <app-multi-dropdown
+    optionValueName="id"
+    optionLabelName="name"
+    [options]="[
+      { name: 'asd', id: 'test' },
+      { name: 'asd2', id: 'test3' },
+      { name: 'asd3', id: 'test5' },
+      { name: 'asd4', id: 'test6' }
+    ]"
+  />
 
-  <!--  <app-button [severity]="ButtonSeverity.Primary">Button Primary</app-button>-->
-  <!--  <app-button [severity]="ButtonSeverity.Secondary">-->
-  <!--    Button Secondary-->
-  <!--  </app-button>-->
+  <h2>Buttons</h2>
+  <app-button [tooltip]="'Tooltip'">Button</app-button>
+  <app-button [loading]="true">Button Loading</app-button>
+  <app-button [size]="ButtonSize.Small">Button Small</app-button>
+  <app-button [size]="ButtonSize.Medium">Button Medium</app-button>
+  <app-button [size]="ButtonSize.Large">Button Large</app-button>
+  <app-button [size]="ButtonSize.Wide">Button Wide</app-button>
 
-  <!--  <app-button [severity]="ButtonSeverity.Success">Button Success</app-button>-->
+  <app-button [severity]="ButtonSeverity.Primary">Button Primary</app-button>
+  <app-button [severity]="ButtonSeverity.Secondary">
+    Button Secondary
+  </app-button>
 
-  <!--  <app-button-->
-  <!--    [icon]="'icon-search'"-->
-  <!--    [outlined]="true"-->
-  <!--    [severity]="ButtonSeverity.Secondary"-->
-  <!--  >-->
-  <!--    Button Secondary outlined-->
-  <!--  </app-button>-->
+  <app-button [severity]="ButtonSeverity.Success">Button Success</app-button>
 
-  <!--  <br />-->
+  <app-button
+    [icon]="'icon-search'"
+    [outlined]="true"
+    [severity]="ButtonSeverity.Secondary"
+  >
+    Button Secondary outlined
+  </app-button>
 
-  <!--  <h2>Tags</h2>-->
+  <br />
 
-  <!--  <app-tag [severity]="TagSeverity.Warning">Pending</app-tag>-->
-  <!--  <app-tag [severity]="TagSeverity.Success">Paid</app-tag>-->
-  <!--  <app-tag [severity]="TagSeverity.Error">Unpaid</app-tag>-->
+  <h2>Tags</h2>
 
-  <!--  <br />-->
+  <app-tag [severity]="TagSeverity.Warning">Pending</app-tag>
+  <app-tag [severity]="TagSeverity.Success">Paid</app-tag>
+  <app-tag [severity]="TagSeverity.Error">Unpaid</app-tag>
 
-  <!--  <h2>Spinner</h2>-->
-  <!--  <app-spinner />-->
+  <br />
 
-  <!--  <br />-->
+  <h2>Spinner</h2>
+  <app-spinner />
+
+  <br />
 
   <h2>CheckBox</h2>
   <app-checkbox [label]="'Test'" [formControl]="control" />

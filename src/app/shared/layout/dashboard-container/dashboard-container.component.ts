@@ -7,7 +7,10 @@ import {
   ButtonStyle
 } from '../../components/button/button.component';
 import { ProfileComponent } from '../../components/profile/profile.component';
-import { VerticalTabsComponent } from '../../components/vertical-tabs/vertical-tabs.component';
+import {
+  VerticalTab,
+  VerticalTabsComponent
+} from '../../components/vertical-tabs/vertical-tabs.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -23,9 +26,9 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './dashboard-container.component.scss'
 })
 export class DashboardContainerComponent {
-  protected readonly TOP_SIDEBAR = TOP_SIDEBAR;
-  protected readonly BOTTOM_SIDEBAR = BOTTOM_SIDEBAR;
-  protected readonly ButtonSeverity = ButtonSeverity;
-  protected readonly ButtonSize = ButtonSize;
-  protected readonly ButtonStyle = ButtonStyle;
+  protected readonly TOP_SIDEBAR: VerticalTab[] = TOP_SIDEBAR;
+  protected readonly BOTTOM_SIDEBAR: VerticalTab[] = BOTTOM_SIDEBAR;
+  protected readonly ButtonSeverity: typeof ButtonSeverity = ButtonSeverity;
+  protected readonly ButtonSize: typeof ButtonSize = ButtonSize;
+  protected readonly ButtonStyle: typeof ButtonStyle = ButtonStyle;
 }

@@ -60,8 +60,8 @@ export class ButtonComponent {
 
   @Output() click: EventEmitter<Event> = new EventEmitter<Event>();
 
-  protected readonly SpinnerSize = SpinnerSize;
-  protected readonly ButtonStyle = ButtonStyle;
+  protected readonly SpinnerSize: typeof SpinnerSize = SpinnerSize;
+  protected readonly ButtonStyle: typeof ButtonStyle = ButtonStyle;
 
   onClick(event: Event) {
     this.click.emit(event);
