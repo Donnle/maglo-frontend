@@ -49,12 +49,23 @@
   <br />
 
   <h2>CheckBox</h2>
-  <app-checkbox [label]="'Test'" [formControl]="control" />
+  <app-checkbox
+    queryControl
+    query="checkbox"
+    [trueValue]="'testTrue'"
+    [falseValue]="'testFalse'"
+    [label]="'Test'"
+    [formControl]="control3"
+  />
 
   <h2>Dropdown</h2>
   <app-dropdown [loading]="true" [formControl]="control" [options]="[]" />
 
   <app-dropdown
+    queryControl
+    query="test"
+    [optionValueName]="null"
+    [optionLabelName]="'name'"
     [formControl]="control"
     [options]="[
       { name: 'asd', id: 'test' },
@@ -65,6 +76,13 @@
   <br />
 
   <h2>Inputs</h2>
+  <app-input
+    queryControl
+    query="query"
+    label="Query Test"
+    [formControl]="control2"
+  />
+
   <app-input [formControl]="control" />
 
   <app-input [formControl]="control" label="Test" />

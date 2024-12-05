@@ -6,8 +6,7 @@ import {
   ReactiveFormsModule
 } from '@angular/forms';
 import { PrimitiveTypes } from '@angular/cli/src/analytics/analytics-parameters';
-
-type DropdownItem = Record<string, unknown>;
+import { DropdownItem } from '../../../interfaces/dropdown.interface';
 
 @Component({
   selector: 'app-multi-dropdown',

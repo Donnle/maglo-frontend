@@ -1,1 +1,55 @@
-<p>transactions-page works!</p>
+<div class="container">
+  <div class="header">
+    <div class="header__search">
+      <app-input placeholder="Search Transactions" icon="icon icon-search" />
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content__table">
+      <table>
+        <thead>
+          <tr>
+            <th>Name/Business</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Invoice Id</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (transaction of transactions; track transaction.id) {
+            <tr>
+              <td>
+                <app-transaction-product
+                  [name]="transaction.product.name"
+                  [category]="transaction.product.category"
+                  [imageSrc]="transaction.product.image"
+                />
+              </td>
+              <td>
+                <span class="content__table_type table-grey"> Mobile </span>
+              </td>
+              <td>
+                {{
+                  transaction.countProducts * transaction.product.price
+                    | currency
+                }}
+              </td>
+              <td>
+                <app-transaction-date />
+              </td>
+              <td>
+                <span class="content__table_invoice table-grey">
+                  ICD28934
+                </span>
+              </td>
+              <td>ACTION</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

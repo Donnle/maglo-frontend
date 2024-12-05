@@ -11,6 +11,7 @@ import { TagComponent } from '../../shared/components/tag/tag.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CheckboxComponent } from '../../shared/components/controllers/checkbox/checkbox.component';
 import { MultiDropdownComponent } from '../../shared/components/controllers/multi-dropdown/multi-dropdown.component';
+import { QueryControlDirective } from '../../shared/directives/query-control.directive';
 
 @NgModule({
   declarations: [UiToolkitPageComponent],
@@ -24,7 +25,8 @@ import { MultiDropdownComponent } from '../../shared/components/controllers/mult
     TagComponent,
     ReactiveFormsModule,
     CheckboxComponent,
-    MultiDropdownComponent
+    MultiDropdownComponent,
+    QueryControlDirective
   ]
 })
 export class UiToolkitModule {}

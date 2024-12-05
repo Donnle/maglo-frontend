@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
 import { BOTTOM_SIDEBAR, TOP_SIDEBAR } from '../../constants/sidebar.constant';
+import { ButtonComponent } from '../../components/button/button.component';
+import { ProfileComponent } from '../../components/profile/profile.component';
+import { VerticalTabsComponent } from '../../components/vertical-tabs/vertical-tabs.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { VerticalTab } from '../../interfaces/vertical-tab.interface';
 import {
-  ButtonComponent,
   ButtonSeverity,
   ButtonSize,
   ButtonStyle
-} from '../../components/button/button.component';
-import { ProfileComponent } from '../../components/profile/profile.component';
-import {
-  VerticalTab,
-  VerticalTabsComponent
-} from '../../components/vertical-tabs/vertical-tabs.component';
-import { RouterLink, RouterOutlet } from '@angular/router';
+} from '../../enums/button.enum';
 
 @Component({
   standalone: true,

@@ -1,11 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NgClass } from '@angular/common';
-
-export enum TagSeverity {
-  Success = 'success',
-  Warning = 'warning',
-  Error = 'error'
-}
+import { TagSeverity } from '../../enums/tag.enum';
 
 @Component({
   selector: 'app-tag',

@@ -12,11 +12,7 @@ import {
 } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { ButtonComponent } from '../../button/button.component';
-
-export enum InputIconPosition {
-  Left = 'left',
-  Right = 'right'
-}
+import { InputIconPosition } from '../../../enums/input.enum';
 
 @Component({
   selector: 'app-input',
@@ -34,8 +30,8 @@ export enum InputIconPosition {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputComponent implements ControlValueAccessor {
-  @Input() icon?: string;
   @Input() iconPosition: InputIconPosition = InputIconPosition.Left;
+  @Input() icon?: string;
 
   @Input() label: string = '';
   @Input() placeholder: string = '';

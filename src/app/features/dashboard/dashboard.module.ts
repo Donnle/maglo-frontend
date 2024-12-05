@@ -9,6 +9,7 @@ import { DropdownComponent } from '../../shared/components/controllers/dropdown/
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { StatisticCardComponent } from './components/statistic-card/statistic-card.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { TableLoadingDirective } from '../../shared/directives/table-loading.directive';
 
 @NgModule({
   declarations: [DashboardPageComponent, StatisticCardComponent],
@@ -18,7 +19,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     NgClass,
     NgxEchartsDirective,
     DropdownComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TableLoadingDirective
   ]
 })
 export class DashboardModule {}

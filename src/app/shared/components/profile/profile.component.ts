@@ -10,12 +10,12 @@ import { ButtonComponent } from '../button/button.component';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
-  _avatar: string = '';
-
   @Input() fullName?: string = 'Mahfuzul Nabil';
   @Input() set avatar(avatar: string) {
     this._avatar = avatar;
   }
+
+  _avatar: string = '';
 
   protected readonly PLACEHOLDER_AVATAR_PATH: string =
     './assets/icons/profile/avatar-placeholder.png';

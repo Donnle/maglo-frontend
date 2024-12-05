@@ -10,12 +10,12 @@ import {
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule
 } from '@angular/forms';
+import { ButtonComponent } from '../../button/button.component';
 import {
-  ButtonComponent,
   ButtonSeverity,
   ButtonStyle,
   ButtonType
-} from '../../button/button.component';
+} from '../../../enums/button.enum';
 
 @Component({
   selector: 'app-input-password',

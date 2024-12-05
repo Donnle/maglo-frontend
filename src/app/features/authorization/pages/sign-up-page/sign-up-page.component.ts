@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   ButtonSeverity,
   ButtonSize
-} from '../../../../shared/components/button/button.component';
+} from '../../../../shared/enums/button.enum';
 
 @Component({
   selector: 'app-sign-up-page',

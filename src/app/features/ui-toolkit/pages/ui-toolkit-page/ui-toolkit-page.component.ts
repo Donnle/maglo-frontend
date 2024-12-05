@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import {
   ButtonSeverity,
   ButtonSize
-} from '../../../../shared/components/button/button.component';
-import { FormControl } from '@angular/forms';
-import { InputIconPosition } from '../../../../shared/components/controllers/input/input.component';
-import { TagSeverity } from '../../../../shared/components/tag/tag.component';
+} from '../../../../shared/enums/button.enum';
+import { InputIconPosition } from '../../../../shared/enums/input.enum';
+import { TagSeverity } from '../../../../shared/enums/tag.enum';
 
 @Component({
   selector: 'app-ui-toolkit-page',
@@ -13,6 +13,8 @@ import { TagSeverity } from '../../../../shared/components/tag/tag.component';
   styleUrl: './ui-toolkit-page.component.scss'
 })
 export class UiToolkitPageComponent {
+  control3 = new FormControl();
+  control2 = new FormControl();
   control = new FormControl();
 
   protected readonly ButtonSize: typeof ButtonSize = ButtonSize;

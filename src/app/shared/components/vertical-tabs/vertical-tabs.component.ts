@@ -1,11 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
-export interface VerticalTab {
-  label: string;
-  routerLink: string | string[];
-  icon?: string;
-}
+import { VerticalTab } from '../../interfaces/vertical-tab.interface';
 
 @Component({
   selector: 'app-vertical-tabs',

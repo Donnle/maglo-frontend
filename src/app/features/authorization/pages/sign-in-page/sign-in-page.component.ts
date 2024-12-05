@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   ButtonSeverity,
   ButtonSize,
   ButtonType
-} from '../../../../shared/components/button/button.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+} from '../../../../shared/enums/button.enum';
 
 @Component({
   selector: 'app-sign-in-page',

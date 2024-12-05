@@ -1,9 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-
-export enum SpinnerSize {
-  Small = 'small',
-  Default = 'default'
-}
+import { SpinnerSize } from '../../enums/spiner.enum';
 
 @Component({
   selector: 'app-spinner',

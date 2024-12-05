@@ -6,31 +6,14 @@ import {
   Output
 } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { SpinnerComponent, SpinnerSize } from '../spinner/spinner.component';
-
-export enum ButtonSeverity {
-  Primary = 'primary',
-  Secondary = 'secondary',
-  Success = 'success'
-}
-
-export enum ButtonSize {
-  Small = 'small',
-  Medium = 'medium',
-  Large = 'large',
-  Wide = 'wide'
-}
-
-export enum ButtonStyle {
-  Default = 'default',
-  Icon = 'icon'
-}
-
-export enum ButtonType {
-  Button = 'button',
-  Reset = 'reset',
-  Submit = 'submit'
-}
+import { SpinnerComponent } from '../spinner/spinner.component';
+import {
+  ButtonSeverity,
+  ButtonSize,
+  ButtonStyle,
+  ButtonType
+} from '../../enums/button.enum';
+import { SpinnerSize } from '../../enums/spiner.enum';
 
 @Component({
   selector: 'app-button',

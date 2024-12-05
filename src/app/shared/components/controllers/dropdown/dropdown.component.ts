@@ -6,8 +6,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CdkConnectedOverlay, CdkOverlayOrigin } from '@angular/cdk/overlay';
-
-type DropdownItem = Record<string, unknown>;
+import { DropdownItem } from '../../../interfaces/dropdown.interface';
 
 @Component({
   selector: 'app-dropdown',
@@ -28,7 +27,7 @@ export class DropdownComponent<T extends DropdownItem>
   implements ControlValueAccessor
 {
   @Input({ required: true }) options: T[] = [];
-  @Input() optionValueName?: string = 'id'; // Empty if Need Object As Value
+  @Input() optionValueName: string | null = 'id'; // Empty if Need Object As Value
   @Input() optionLabelName: string = 'label';
   @Input() loading: boolean = false;
 
@@ -90,7 +89,7 @@ export class DropdownComponent<T extends DropdownItem>
         return JSON.stringify(option) === stringifiedOutsideValue;
       });
     } else {
-      const optionValueName: string | undefined = this.optionValueName;
+      const optionValueName: string | null = this.optionValueName;
       if (optionValueName == null) {
         return -1;
       }

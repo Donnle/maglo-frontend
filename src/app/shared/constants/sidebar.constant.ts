@@ -1,4 +1,4 @@
-import { VerticalTab } from '../components/vertical-tabs/vertical-tabs.component';
+import { VerticalTab } from '../interfaces/vertical-tab.interface';
 
 export const TOP_SIDEBAR: VerticalTab[] = [
   {
