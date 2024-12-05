@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgxEchartsDirective } from 'ngx-echarts';
 
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { DropdownComponent } from '../../shared/components/controllers/dropdown/dropdown.component';
@@ -17,7 +16,6 @@ import { TableLoadingDirective } from '../../shared/directives/table-loading.dir
     DashboardRoutingModule,
     ButtonComponent,
     NgClass,
-    NgxEchartsDirective,
     DropdownComponent,
     ReactiveFormsModule,
     TableLoadingDirective
