@@ -13,6 +13,7 @@ import { TagSeverity } from '../../../../shared/enums/tag.enum';
   styleUrl: './ui-toolkit-page.component.scss'
 })
 export class UiToolkitPageComponent {
+  control4 = new FormControl([]);
   control3 = new FormControl();
   control2 = new FormControl();
   control = new FormControl();

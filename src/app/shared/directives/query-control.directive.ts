@@ -1,4 +1,10 @@
-import { Directive, HostListener, Input, OnInit } from '@angular/core';
+import {
+  Directive,
+  HostListener,
+  Input,
+  OnInit,
+  Optional
+} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NgControl } from '@angular/forms';
 
@@ -8,11 +14,11 @@ import { NgControl } from '@angular/forms';
   standalone: true
 })
 export class QueryControlDirective implements OnInit {
-  @Input({ required: true }) query!: string | undefined;
+  @Input({ required: true }) queryControl!: string | undefined;
 
   @HostListener('ngModelChange', ['$event'])
   onNgModelChange(rawValue: object | string): void {
-    if (this.query == null) {
+    if (this.queryControl == null) {
       console.error('Ng Model Change! Query is not defined!');
       return;
     }
@@ -23,18 +29,25 @@ export class QueryControlDirective implements OnInit {
 
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
-      queryParams: { ...queryParams, [this.query]: value }
+      queryParams: { ...queryParams, [this.queryControl]: value }
     });
   }
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private ngControl: NgControl
+    @Optional() private ngControl: NgControl
   ) {}
 
   ngOnInit() {
-    const initialValue: string | undefined = this.getValueFromQuery(this.query);
+    if (this.ngControl == null || this.ngControl.control == null) {
+      return;
+    }
+
+    const initialValue: string | undefined = this.getValueFromQuery(
+      this.queryControl
+    );
+
     if (initialValue) {
       this.patchControlValue(initialValue);
     }
@@ -49,8 +62,11 @@ export class QueryControlDirective implements OnInit {
       return undefined;
     }
 
-    this.ngControl.control?.markAsTouched();
-    this.ngControl.control?.markAsDirty();
+    if (this.ngControl && this.ngControl.control) {
+      this.ngControl.control.markAsTouched();
+      this.ngControl.control.markAsDirty();
+    }
+
     return queryParams[query];
   }
 
@@ -60,7 +76,7 @@ export class QueryControlDirective implements OnInit {
       return;
     }
 
-    if (!this.ngControl.control) {
+    if (this.ngControl == null || this.ngControl.control == null) {
       console.error("Control doesn't exist!");
       return;
     }
