@@ -1,0 +1,12 @@
+<div class="card">
+  @if (icon) {
+    <div class="card__icon">
+      <i [ngClass]="[icon]"></i>
+    </div>
+  }
+
+  <div class="card__content">
+    <h5 class="card__content_label">{{ label }}</h5>
+    <span class="card__content_value">{{ value }}</span>
+  </div>
+</div>

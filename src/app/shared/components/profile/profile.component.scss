@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  border-radius: 100px;
+  background: var(--card-bg);
+  padding: 6px 15px 6px 6px;
+
+  cursor: pointer;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  &__avatar {
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+    border-radius: 100%;
+    background: var(--primary);
+
+    &_img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    font-size: 14px;
+    line-height: 1.2em;
+    font-weight: 600;
+    color: var(--text-1);
+  }
+}
+
+.dropdown .icon {
+  font-size: 17px;
+  line-height: 1.2em;
+  color: var(--text-1);
+}

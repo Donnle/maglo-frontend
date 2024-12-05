@@ -1,5 +1,8 @@
-* {
+*,
+*:before,
+*:after {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -13,4 +16,13 @@ body {
 
   height: 100%;
   background-color: var(--main-bg);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  outline: none;
+  border: none;
 }

@@ -1,21 +1,31 @@
-<p-button
+<button
   class="button"
+  [type]="type"
+  [disabled]="disabled || loading"
   [attr.data-size]="size"
-  [loading]="loading"
-  [severity]="severity"
-  [disabled]="disabled"
-  [outlined]="outlined"
-  [pTooltip]="tooltip"
+  [attr.data-style]="style"
+  [attr.data-severity]="severity"
+  [attr.data-bordered]="outlined"
+  (click)="onClick($event)"
 >
-  <span class="button__content">
-    @if (icon) {
-      <span class="button__content_icon icon" [ngClass]="[icon]">
-        <span class="path1"></span>
-        <span class="path2"></span>
-        <span class="path3"></span>
-        <span class="path4"></span>
-      </span>
-    }
-    <ng-content></ng-content>
-  </span>
-</p-button>
+  @if (icon) {
+    <span class="button__icon icon" [ngClass]="icon">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+    </span>
+  }
+
+  @if (style !== ButtonStyle.Icon) {
+    <span class="button__content">
+      <ng-content />
+    </span>
+  }
+
+  @if (loading) {
+    <span class="button__loading">
+      <app-spinner [size]="SpinnerSize.Small" />
+    </span>
+  }
+</button>

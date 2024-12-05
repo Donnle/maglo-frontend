@@ -15,9 +15,5 @@
 /** Icons */
 @import './assets/icomoon/style.css';
 
-/** PrimeNG */
-@import 'primeng/resources/themes/saga-green/theme.css';
-@import 'primeng/resources/primeng.css';
-@import 'custom-primeng';
-
-@layer primeng-custom, primeng;
+/** Angular CDK */
+@import '@angular/cdk/overlay-prebuilt.css';

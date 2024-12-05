@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="profile">
+    <div class="profile__avatar">
+      <img
+        class="profile__avatar_img"
+        alt="Profile Avatar"
+        [src]="_avatar"
+        (error)="onDownloadImageError()"
+      />
+    </div>
+    <span class="profile__name">{{ fullName }}</span>
+  </div>
+  <div class="dropdown">
+    <span class="icon icon-dropdown"></span>
+  </div>
+</div>

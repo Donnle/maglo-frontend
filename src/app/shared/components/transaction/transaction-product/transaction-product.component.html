@@ -1,0 +1,17 @@
+<div class="product">
+  <div class="product__image">
+    @if (_imageSrc) {
+      <img
+        [src]="_imageSrc"
+        alt="product"
+        class="product__image_logo"
+        (error)="onDownloadImageError()"
+      />
+    }
+  </div>
+
+  <div class="product__content">
+    <h3 class="product__content_name">{{ name }}</h3>
+    <span class="product__content_category">{{ category }}</span>
+  </div>
+</div>

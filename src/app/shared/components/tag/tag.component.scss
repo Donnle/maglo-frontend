@@ -1,0 +1,23 @@
+.tag {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+
+  padding: 8px 15px;
+  border-radius: 4px;
+
+  &.warning {
+    color: var(--tag-warning-text);
+    background: var(--tag-warning-bg);
+  }
+
+  &.success {
+    color: var(--tag-success-text);
+    background: var(--tag-success-bg);
+  }
+
+  &.error {
+    color: var(--tag-error-text);
+    background: var(--tag-error-bg);
+  }
+}

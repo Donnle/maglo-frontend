@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="header">
+    <h2 class="header__title">Dashboard</h2>
+  </div>
+
+  <div class="content">
+    <div class="dashboard">
+      <div class="dashboard__statistics">
+        <app-statistic-card
+          icon="icon icon-wallet"
+          label="Total balance"
+          value="$5240.21"
+        />
+        <app-statistic-card
+          icon="icon icon-wallet"
+          label="Total balance"
+          value="$5240.21"
+        />
+        <app-statistic-card
+          icon="icon icon-wallet"
+          label="Total balance"
+          value="$5240.21"
+        />
+      </div>
+
+      <div class="dashboard__table">
+        <table [tableLoading]="true">
+          <thead>
+            <tr>
+              <th>NAME/BUSINESS</th>
+              <th>NAME/BUSINESS</th>
+              <th>NAME/BUSINESS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>testaskjdbsajhdfbcnsdjkhf jhsbd jf dsjkf 1</td>
+              <td>test 1</td>
+              <td>test 1</td>
+            </tr>
+            <tr>
+              <td>testaskjdbsajhdfbcnsdjkhf jhsbd jf dsjkf</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>testaskjdbsajhdfbcnsdjkhf jhsbd jf dsjkf 9</td>
+              <td>test 9</td>
+              <td>test 9</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>test</th>
+              <th>test</th>
+              <th>test</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!--      <p-card class="dashboard__working-capital working-capital">-->
+      <!--        <div class="working-capital__header">-->
+      <!--          <h3 class="working-capital__header_title">Working Capital</h3>-->
+      <!--          <div class="working-capital__header_period">-->
+      <!--            <app-dropdown-->
+      <!--              [formControl]="workingCapitalPeriodControl"-->
+      <!--              [options]="[-->
+      <!--                { name: 'test', id: 'test' },-->
+      <!--                { name: 'test 2', id: 'test2' },-->
+      <!--                { name: 'test 3', id: 'test3' },-->
+      <!--                { name: 'test 3', id: 'test3' },-->
+      <!--                { name: 'test 3', id: 'test3' },-->
+      <!--                { name: 'test 3', id: 'test3' },-->
+      <!--                { name: 'test 3', id: 'test3' },-->
+      <!--                { name: 'test 3', id: 'test3' },-->
+      <!--                { name: 'test 3', id: 'test3' },-->
+      <!--                { name: 'test 4', id: 'test4' },-->
+      <!--                { name: 'test 5', id: 'test5' },-->
+      <!--                { name: 'asd2', id: 'test3' }-->
+      <!--              ]"-->
+      <!--            />-->
+      <!--          </div>-->
+      <!--        </div>-->
+
+      <!--        <div class="working-capital__chart">-->
+      <!--          <div echarts [options]="chartOptions"></div>-->
+      <!--        </div>-->
+      <!--      </p-card>-->
+    </div>
+
+    <div class="wallets">
+      <div class="wallets__list"></div>
+      <div class="wallets__transfers"></div>
+    </div>
+  </div>
+</div>
