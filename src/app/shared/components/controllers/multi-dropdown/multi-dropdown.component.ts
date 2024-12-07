@@ -1,8 +1,14 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input
+} from '@angular/core';
 import { CdkConnectedOverlay, CdkOverlayOrigin } from '@angular/cdk/overlay';
 import {
   ControlValueAccessor,
   FormsModule,
+  NG_VALUE_ACCESSOR,
   ReactiveFormsModule
 } from '@angular/forms';
 import { PrimitiveTypes } from '@angular/cli/src/analytics/analytics-parameters';
@@ -19,6 +25,13 @@ import { DropdownItem } from '../../../interfaces/dropdown.interface';
   ],
   templateUrl: './multi-dropdown.component.html',
   styleUrl: './multi-dropdown.component.scss',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => MultiDropdownComponent),
+      multi: true
+    }
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MultiDropdownComponent<T extends DropdownItem>
@@ -68,12 +81,6 @@ export class MultiDropdownComponent<T extends DropdownItem>
 
     this.onChange(selectedOptions);
     this.onTouched();
-
-    // if (this.optionValueName == null) {
-    //   this.onChange(this.options[optionIndex]);
-    // } else {
-    //   this.onChange(this.options[optionIndex][this.optionValueName]);
-    // }
   }
 
   // DropDown Open/Close
@@ -107,9 +114,10 @@ export class MultiDropdownComponent<T extends DropdownItem>
   }
 
   private getOptionIndexesByOutsideValue(
-    outsideValues: (T | PrimitiveTypes)[]
+    outsideValues: (T | PrimitiveTypes)[],
+    options: T[] = this.options
   ): number[] {
-    if (outsideValues[0] != null) {
+    if (outsideValues[0] == null) {
       return [];
     }
 
@@ -119,7 +127,7 @@ export class MultiDropdownComponent<T extends DropdownItem>
       // @ts-ignore-next-line | Value Type is Object
       outsideValues.forEach((outsideValue: T) => {
         const stringifiedOutsideValue: string = JSON.stringify(outsideValue);
-        const selectedIndex: number = this.options.findIndex(
+        const selectedIndex: number = options.findIndex(
           (option: T): boolean => {
             return JSON.stringify(option) === stringifiedOutsideValue;
           }
@@ -135,7 +143,7 @@ export class MultiDropdownComponent<T extends DropdownItem>
 
       // @ts-ignore-next-line | Value Type is PrimitiveTypes
       outsideValues.forEach((outsideValue: PrimitiveTypes) => {
-        const selectedIndex: number = this.options.findIndex(
+        const selectedIndex: number = options.findIndex(
           (option: T): boolean => option[optionValueName] === outsideValue
         );
 

@@ -1,5 +1,6 @@
 <div class="container">
   <app-multi-dropdown
+    queryControl="multiselect"
     optionValueName="id"
     optionLabelName="name"
     [options]="[
@@ -8,6 +9,7 @@
       { name: 'asd3', id: 'test5' },
       { name: 'asd4', id: 'test6' }
     ]"
+    [formControl]="control4"
   />
 
   <h2>Buttons</h2>
@@ -50,8 +52,7 @@
 
   <h2>CheckBox</h2>
   <app-checkbox
-    queryControl
-    query="checkbox"
+    queryControl="checkbox"
     [trueValue]="'testTrue'"
     [falseValue]="'testFalse'"
     [label]="'Test'"
@@ -62,8 +63,7 @@
   <app-dropdown [loading]="true" [formControl]="control" [options]="[]" />
 
   <app-dropdown
-    queryControl
-    query="test"
+    queryControl="test"
     [optionValueName]="null"
     [optionLabelName]="'name'"
     [formControl]="control"
@@ -76,12 +76,7 @@
   <br />
 
   <h2>Inputs</h2>
-  <app-input
-    queryControl
-    query="query"
-    label="Query Test"
-    [formControl]="control2"
-  />
+  <app-input queryControl="query" label="Query Test" [formControl]="control2" />
 
   <app-input [formControl]="control" />
 

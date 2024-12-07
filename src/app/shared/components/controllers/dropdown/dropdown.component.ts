@@ -39,6 +39,8 @@ export class DropdownComponent<T extends DropdownItem>
   protected isOpen: boolean = false;
   protected isDisabled: boolean = false;
 
+  constructor() {}
+
   onSelectOption(optionIndex: number): void {
     this.selectedOptionIndex = optionIndex;
     this.isOpen = false;
@@ -81,11 +83,18 @@ export class DropdownComponent<T extends DropdownItem>
     this.selectedOptionIndex = this.getOptionIndexByOutsideValue(outsideValue);
   }
 
-  private getOptionIndexByOutsideValue(outsideValue: T | string): number {
+  private getOptionIndexByOutsideValue(
+    outsideValue: T | string,
+    options: T[] = this.options
+  ): number {
+    if (outsideValue == null) {
+      return -1;
+    }
+
     if (typeof outsideValue == 'object') {
       const stringifiedOutsideValue: string = JSON.stringify(outsideValue);
 
-      return this.options.findIndex((option: T): boolean => {
+      return options.findIndex((option: T): boolean => {
         return JSON.stringify(option) === stringifiedOutsideValue;
       });
     } else {
@@ -94,7 +103,7 @@ export class DropdownComponent<T extends DropdownItem>
         return -1;
       }
 
-      return this.options.findIndex((option: T): boolean => {
+      return options.findIndex((option: T): boolean => {
         return option[optionValueName] === outsideValue;
       });
     }

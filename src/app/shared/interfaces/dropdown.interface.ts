@@ -1,3 +1,3 @@
 export interface DropdownItem {
-  [key: string]: unknown;
+  [key: string]: any;
 }

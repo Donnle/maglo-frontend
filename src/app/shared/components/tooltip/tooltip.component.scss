@@ -1,0 +1,38 @@
+.tooltip {
+  position: fixed;
+
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--tooltip-color);
+
+  opacity: 0;
+
+  padding: 3px 6px;
+  transition: opacity 300ms;
+
+  border-radius: 4px;
+  background-color: var(--tooltip-bg);
+
+  &--visible {
+    opacity: 1;
+  }
+
+  &--success {
+    color: var(--tooltip-success-color);
+    background-color: var(--tooltip-success-bg);
+  }
+
+  &--above {
+    transform: translate(-50%, -100%);
+    margin-bottom: 7px;
+
+    &::before {
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-bottom: none;
+      left: calc(50% - 5px);
+      bottom: -5px;
+    }
+  }
+}

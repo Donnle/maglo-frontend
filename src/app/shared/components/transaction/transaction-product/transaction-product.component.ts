@@ -1,29 +1,34 @@
-import { Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  InputSignal
+} from '@angular/core';
 
 @Component({
   selector: 'app-transaction-product',
   standalone: true,
   imports: [],
   templateUrl: './transaction-product.component.html',
-  styleUrl: './transaction-product.component.scss'
+  styleUrl: './transaction-product.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionProductComponent {
-  @Input() name: string = 'Iphone 13 Pro MAX';
-  @Input() category: string = 'Apple. Inc';
-  @Input() set imageSrc(imageSrc: string | undefined) {
-    if (imageSrc) {
-      this._imageSrc = imageSrc;
-    } else {
-      this._imageSrc = this.DEFAULT_PRODUCT_IMAGE;
-    }
-  }
+  protected readonly DEFAULT_PRODUCT_IMAGE: string =
+    'https://www.svgrepo.com/show/422038/product.svg';
 
-  _imageSrc?: string;
+  name: InputSignal<string> = input('Iphone 13 Pro MAX');
+  category: InputSignal<string> = input('Apple. Inc');
+  imageSrc: InputSignal<string> = input(this.DEFAULT_PRODUCT_IMAGE, {
+    transform: (imageSrc: string) => {
+      this._imageSrc = imageSrc;
+      return imageSrc;
+    }
+  });
+
+  _imageSrc: string = this.DEFAULT_PRODUCT_IMAGE;
 
   onDownloadImageError() {
     this._imageSrc = this.DEFAULT_PRODUCT_IMAGE;
   }
-
-  protected readonly DEFAULT_PRODUCT_IMAGE: string =
-    'https://www.svgrepo.com/show/422038/product.svg';
 }
