@@ -8,13 +8,18 @@ import {
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NgControl } from '@angular/forms';
 
-/** Use this directive when you need to pass value to query params */
+/**
+ * Use this directive when you need to pass value to query params
+ *
+ * Note: Works bad with [(ngModel)]
+ */
 @Directive({
   selector: '[queryControl]',
   standalone: true
 })
 export class QueryControlDirective implements OnInit {
   @Input({ required: true }) queryControl!: string | undefined;
+  @Input() queryEmitEvent: boolean = true;
 
   @HostListener('ngModelChange', ['$event'])
   onNgModelChange(rawValue: object | string): void {
@@ -82,9 +87,13 @@ export class QueryControlDirective implements OnInit {
     }
 
     try {
-      this.ngControl.control.patchValue(JSON.parse(value));
+      this.ngControl.control.patchValue(JSON.parse(value), {
+        emitEvent: this.queryEmitEvent
+      });
     } catch (e) {
-      this.ngControl.control.patchValue(value);
+      this.ngControl.control.patchValue(value, {
+        emitEvent: this.queryEmitEvent
+      });
     }
   }
 }
