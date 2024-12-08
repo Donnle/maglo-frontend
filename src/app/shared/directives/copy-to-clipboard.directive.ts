@@ -30,8 +30,8 @@ export class CopyToClipboardDirective implements OnDestroy {
     input(1000);
 
   private componentRef: ComponentRef<TooltipComponent> | null = null;
-  private showTimeout?: ReturnType<typeof setTimeout>;
-  private hideTimeout?: ReturnType<typeof setTimeout>;
+  private showTimeouts: ReturnType<typeof setTimeout>[] = [];
+  private hideTimeouts: ReturnType<typeof setTimeout>[] = [];
 
   @HostBinding('style.cursor') cursor: string = 'pointer';
   @HostListener('click', ['$event'])
@@ -74,8 +74,7 @@ export class CopyToClipboardDirective implements OnDestroy {
     tooltipText: string = this.copyToClipboardTooltipText(),
     tooltipStyle: TooltipStyle = TooltipStyle.Default
   ) {
-    clearTimeout(this.showTimeout);
-    clearTimeout(this.hideTimeout);
+    this.clearAllTimeouts();
 
     if (this.componentRef != null) {
       this.componentRef.destroy();
@@ -116,13 +115,21 @@ export class CopyToClipboardDirective implements OnDestroy {
   private setShowTooltipTimeout(
     delay: number = this.copyToClipboardTooltipShowDelay()
   ) {
-    this.showTimeout = setTimeout(() => this.showTooltip(), delay);
+    this.showTimeouts.push(setTimeout(() => this.showTooltip(), delay));
   }
 
   private setHideTooltipTimeout(
     delay: number = this.copyToClipboardTooltipHideDelay()
   ): void {
-    this.hideTimeout = setTimeout(() => this.hideTooltip(), delay);
+    this.hideTimeouts.push(setTimeout(() => this.hideTooltip(), delay));
+  }
+
+  private clearAllTimeouts(): void {
+    this.showTimeouts.forEach((i) => clearTimeout(i));
+    this.showTimeouts = [];
+
+    this.hideTimeouts.forEach((i) => clearTimeout(i));
+    this.hideTimeouts = [];
   }
 
   ngOnDestroy(): void {
@@ -130,8 +137,7 @@ export class CopyToClipboardDirective implements OnDestroy {
   }
 
   private destroy(): void {
-    clearInterval(this.showTimeout);
-    clearInterval(this.hideTimeout);
+    this.clearAllTimeouts();
 
     if (this.componentRef !== null) {
       this.appRef.detachView(this.componentRef.hostView);
