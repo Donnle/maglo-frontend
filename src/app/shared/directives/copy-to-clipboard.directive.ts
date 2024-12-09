@@ -1,5 +1,6 @@
 import {
   ApplicationRef,
+  ChangeDetectorRef,
   ComponentRef,
   Directive,
   ElementRef,
@@ -67,7 +68,8 @@ export class CopyToClipboardDirective implements OnDestroy {
     private elementRef: ElementRef,
     private appRef: ApplicationRef,
     private vcr: ViewContainerRef,
-    private clipboard: Clipboard
+    private clipboard: Clipboard,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   private initializeTooltip(
@@ -115,13 +117,23 @@ export class CopyToClipboardDirective implements OnDestroy {
   private setShowTooltipTimeout(
     delay: number = this.copyToClipboardTooltipShowDelay()
   ) {
-    this.showTimeouts.push(setTimeout(() => this.showTooltip(), delay));
+    const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
+      this.showTooltip();
+      this.changeDetectorRef.detectChanges();
+    }, delay);
+
+    this.showTimeouts.push(timeout);
   }
 
   private setHideTooltipTimeout(
     delay: number = this.copyToClipboardTooltipHideDelay()
   ): void {
-    this.hideTimeouts.push(setTimeout(() => this.hideTooltip(), delay));
+    const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
+      this.hideTooltip();
+      this.changeDetectorRef.detectChanges();
+    }, delay);
+
+    this.hideTimeouts.push(timeout);
   }
 
   private clearAllTimeouts(): void {

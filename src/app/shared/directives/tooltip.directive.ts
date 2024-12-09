@@ -1,5 +1,6 @@
 import {
   ApplicationRef,
+  ChangeDetectorRef,
   ComponentRef,
   Directive,
   ElementRef,
@@ -27,7 +28,8 @@ export class TooltipDirective implements OnDestroy {
   constructor(
     private elementRef: ElementRef,
     private appRef: ApplicationRef,
-    private vcr: ViewContainerRef
+    private vcr: ViewContainerRef,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   @HostListener('mouseenter')
@@ -77,17 +79,17 @@ export class TooltipDirective implements OnDestroy {
   }
 
   private setShowTooltipTimeout() {
-    this.showTimeout = setTimeout(
-      () => this.showTooltip(),
-      this.tooltipShowDelay()
-    );
+    this.showTimeout = setTimeout(() => {
+      this.showTooltip();
+      this.changeDetectorRef.detectChanges();
+    }, this.tooltipShowDelay());
   }
 
   private setHideTooltipTimeout() {
-    this.hideTimeout = setTimeout(
-      () => this.hideTooltip(),
-      this.tooltipHideDelay()
-    );
+    this.hideTimeout = setTimeout(() => {
+      this.hideTooltip();
+      this.changeDetectorRef.detectChanges();
+    }, this.tooltipHideDelay());
   }
 
   ngOnDestroy(): void {
