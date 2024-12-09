@@ -1,9 +1,15 @@
-import { Component, input, InputSignal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  InputSignal
+} from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-statistic-card',
   templateUrl: './dashboard-statistic-card.component.html',
-  styleUrl: './dashboard-statistic-card.component.scss'
+  styleUrl: './dashboard-statistic-card.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardStatisticCardComponent {
   icon: InputSignal<string> = input<string>('');

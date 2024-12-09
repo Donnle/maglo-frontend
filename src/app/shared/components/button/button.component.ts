@@ -1,9 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
-  Input,
-  Output
+  input,
+  InputSignal,
+  output,
+  OutputEmitterRef
 } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { SpinnerComponent } from '../spinner/spinner.component';
@@ -25,23 +26,28 @@ import { SpinnerSize } from '../../enums/spiner.enum';
 })
 export class ButtonComponent {
   // Styles
-  @Input() severity: ButtonSeverity = ButtonSeverity.Primary;
-  @Input() style: ButtonStyle = ButtonStyle.Default;
-  @Input() size: ButtonSize = ButtonSize.Medium;
-  @Input() type: ButtonType = ButtonType.Submit;
-  @Input() outlined: boolean = false;
+  style: InputSignal<ButtonStyle> = input<ButtonStyle>(ButtonStyle.Default);
+  size: InputSignal<ButtonSize> = input<ButtonSize>(ButtonSize.Medium);
+  type: InputSignal<ButtonType> = input<ButtonType>(ButtonType.Submit);
+  severity: InputSignal<ButtonSeverity> = input<ButtonSeverity>(
+    ButtonSeverity.Primary
+  );
+
+  outlined: InputSignal<boolean> = input<boolean>(false);
 
   // States
-  @Input() disabled: boolean = false;
-  @Input() loading: boolean = false;
+  disabled: InputSignal<boolean> = input<boolean>(false);
+  loading: InputSignal<boolean> = input<boolean>(false);
 
   // Icon
-  @Input() icon?: string | string[];
+  icon: InputSignal<string | string[] | undefined> = input<
+    string | string[] | undefined
+  >();
 
   // Tooltip
-  @Input() tooltip?: string;
+  tooltip: InputSignal<string | undefined> = input<string | undefined>();
 
-  @Output() click: EventEmitter<Event> = new EventEmitter<Event>();
+  click: OutputEmitterRef<Event> = output<Event>();
 
   protected readonly SpinnerSize: typeof SpinnerSize = SpinnerSize;
   protected readonly ButtonStyle: typeof ButtonStyle = ButtonStyle;

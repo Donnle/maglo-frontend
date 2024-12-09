@@ -1,19 +1,22 @@
 <label class="label">
-  @if (label) {
-    <span class="label__name">{{ label }}</span>
+  @if (label()) {
+    <span class="label__name">{{ label() }}</span>
   }
 
-  <span class="label__input" [class]="[icon ? 'icon--' + iconPosition : '']">
-    @if (icon) {
-      <i class="label__input_icon" [ngClass]="[icon]"></i>
+  <span
+    class="label__input"
+    [class]="[icon() ? 'icon--' + iconPosition() : '']"
+  >
+    @if (icon()) {
+      <i class="label__input_icon" [ngClass]="[icon()]"></i>
     }
 
     <input
       class="label__input_control"
       type="text"
-      [placeholder]="placeholder"
-      [disabled]="isDisabled"
-      [ngModel]="value"
+      [placeholder]="placeholder()"
+      [disabled]="isDisabled()"
+      [ngModel]="value()"
       (ngModelChange)="onValueChange($event)"
       (blur)="onBlur()"
     />

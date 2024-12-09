@@ -1,4 +1,9 @@
-import { Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  InputSignal
+} from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { ButtonComponent } from '../button/button.component';
 
@@ -7,18 +12,22 @@ import { ButtonComponent } from '../button/button.component';
   standalone: true,
   imports: [NgOptimizedImage, ButtonComponent],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.scss'
+  styleUrl: './profile.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfileComponent {
-  @Input() fullName?: string = 'Mahfuzul Nabil';
-  @Input() set avatar(avatar: string) {
-    this._avatar = avatar;
-  }
-
-  _avatar: string = '';
-
   protected readonly PLACEHOLDER_AVATAR_PATH: string =
     './assets/icons/profile/avatar-placeholder.png';
+
+  fullName: InputSignal<string> = input<string>('Mahfuzul Nabil');
+  avatar: InputSignal<string> = input(this.PLACEHOLDER_AVATAR_PATH, {
+    transform: (avatar: string): string => {
+      this._avatar = avatar;
+      return avatar;
+    }
+  });
+
+  _avatar: string = '';
 
   onDownloadImageError() {
     this._avatar = this.PLACEHOLDER_AVATAR_PATH;

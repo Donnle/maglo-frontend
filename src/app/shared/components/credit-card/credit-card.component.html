@@ -3,7 +3,7 @@
     <h5 class="card__header_logo">Maglo.</h5>
     <span class="card__header_separator">|</span>
     <span class="card__header_bank-name">
-      {{ bankName }}
+      {{ bankName() }}
     </span>
   </div>
 
@@ -23,15 +23,15 @@
 
   <div class="card__content">
     <div class="card__metadata">
-      <span class="card__metadata_numbers" [copyToClipboard]="cardNumbers">
-        {{ cardNumbers | cardNumbers: 6 : 12 }}
+      <span class="card__metadata_numbers" [copyToClipboard]="cardNumbers()">
+        {{ cardNumbers() | cardNumbers: 6 : 12 }}
       </span>
       <span class="card__metadata_expire">
-        {{ expireDate | date: 'MM/YY' }}
+        {{ expireDate() | date: 'MM/YY' }}
       </span>
     </div>
     <div class="card__type">
-      @switch (type) {
+      @switch (type()) {
         @case (CreditCardType.MasterCard) {
           <span class="icon icon-mastercard"></span>
         }

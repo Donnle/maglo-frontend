@@ -2,7 +2,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input
+  input,
+  InputSignal,
+  signal,
+  WritableSignal
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CdkConnectedOverlay, CdkOverlayOrigin } from '@angular/cdk/overlay';
@@ -26,29 +29,26 @@ import { DropdownItem } from '../../../interfaces/dropdown.interface';
 export class DropdownComponent<T extends DropdownItem>
   implements ControlValueAccessor
 {
-  @Input({ required: true }) options: T[] = [];
-  @Input() optionValueName: string | null = 'id'; // Empty if Need Object As Value
-  @Input() optionLabelName: string = 'label';
-  @Input() loading: boolean = false;
+  options: InputSignal<T[]> = input.required<T[]>();
+  optionValueName: InputSignal<string | null> = input<string | null>('id'); // Empty if Need Object As Value
+  optionLabelName: InputSignal<string> = input('label');
+  loading: InputSignal<boolean> = input(false);
 
-  @Input() empty: string = 'No Options';
-  @Input() placeholder: string = 'Select';
+  empty: InputSignal<string> = input('No Options');
+  placeholder: InputSignal<string> = input('Select');
 
-  selectedOptionIndex: number = -1;
-
-  protected isOpen: boolean = false;
-  protected isDisabled: boolean = false;
-
-  constructor() {}
+  selectedOptionIndex: WritableSignal<number> = signal<number>(-1);
+  isOpen: WritableSignal<boolean> = signal<boolean>(false);
+  isDisabled: WritableSignal<boolean> = signal<boolean>(false);
 
   onSelectOption(optionIndex: number): void {
-    this.selectedOptionIndex = optionIndex;
-    this.isOpen = false;
+    this.selectedOptionIndex.set(optionIndex);
+    this.isOpen.set(false);
 
-    if (this.optionValueName == null) {
-      this.onChange(this.options[optionIndex]);
+    if (this.optionValueName() == null) {
+      this.onChange(this.options()[optionIndex]);
     } else {
-      this.onChange(this.options[optionIndex][this.optionValueName]);
+      this.onChange(this.options()[optionIndex][this.optionValueName()!]);
     }
 
     this.onTouched();
@@ -56,11 +56,11 @@ export class DropdownComponent<T extends DropdownItem>
 
   // DropDown Open/Close
   toggleDropdownOpen(): void {
-    this.isOpen = !this.isOpen;
+    this.isOpen.update((isOpen: boolean): boolean => !isOpen);
   }
 
   closeDropdown(): void {
-    this.isOpen = false;
+    this.isOpen.set(false);
   }
 
   // Value Accessor Functions
@@ -68,7 +68,7 @@ export class DropdownComponent<T extends DropdownItem>
   private onTouched = () => {};
 
   setDisabledState(isDisabled: boolean): void {
-    this.isDisabled = isDisabled;
+    this.isDisabled.set(isDisabled);
   }
 
   registerOnChange(fn: (value: T | unknown) => void): void {
@@ -80,12 +80,14 @@ export class DropdownComponent<T extends DropdownItem>
   }
 
   writeValue(outsideValue: T | string): void {
-    this.selectedOptionIndex = this.getOptionIndexByOutsideValue(outsideValue);
+    this.selectedOptionIndex.set(
+      this.getOptionIndexByOutsideValue(outsideValue)
+    );
   }
 
   private getOptionIndexByOutsideValue(
     outsideValue: T | string,
-    options: T[] = this.options
+    options: T[] = this.options()
   ): number {
     if (outsideValue == null) {
       return -1;
@@ -98,7 +100,7 @@ export class DropdownComponent<T extends DropdownItem>
         return JSON.stringify(option) === stringifiedOutsideValue;
       });
     } else {
-      const optionValueName: string | null = this.optionValueName;
+      const optionValueName: string | null = this.optionValueName();
       if (optionValueName == null) {
         return -1;
       }

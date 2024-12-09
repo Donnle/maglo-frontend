@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-wallets',
   templateUrl: './dashboard-wallets.component.html',
-  styleUrl: './dashboard-wallets.component.scss'
+  styleUrl: './dashboard-wallets.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DashboardWalletsComponent {
-
-}
+export class DashboardWalletsComponent {}

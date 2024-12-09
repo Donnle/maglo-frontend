@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  InputSignal
+} from '@angular/core';
 import { SpinnerSize } from '../../enums/spiner.enum';
 
 @Component({
@@ -10,5 +15,5 @@ import { SpinnerSize } from '../../enums/spiner.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpinnerComponent {
-  @Input() size: SpinnerSize = SpinnerSize.Default;
+  size: InputSignal<SpinnerSize> = input<SpinnerSize>(SpinnerSize.Default);
 }

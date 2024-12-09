@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {
   ButtonSeverity,
@@ -10,7 +10,8 @@ import { TagSeverity } from '../../../../shared/enums/tag.enum';
 @Component({
   selector: 'app-ui-toolkit-page',
   templateUrl: './ui-toolkit-page.component.html',
-  styleUrl: './ui-toolkit-page.component.scss'
+  styleUrl: './ui-toolkit-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UiToolkitPageComponent {
   control4 = new FormControl([]);

@@ -4,8 +4,10 @@ import {
   Component,
   ElementRef,
   input,
+  InputSignal,
   OnChanges,
   output,
+  OutputEmitterRef,
   Signal,
   SimpleChange,
   SimpleChanges,
@@ -32,10 +34,15 @@ export class DashboardWorkingCapitalChartComponent
   private readonly chart: Signal<ElementRef<HTMLCanvasElement>> =
     viewChild.required<ElementRef<HTMLCanvasElement>>('chart');
 
-  datasets = input<DashboardWorkingChartDataset>();
+  datasets: InputSignal<DashboardWorkingChartDataset | undefined> =
+    input<DashboardWorkingChartDataset>();
 
-  legends = input<DashboardWorkingChartLegend[]>([]);
-  legendsChange = output<DashboardWorkingChartLegend[]>();
+  legends: InputSignal<DashboardWorkingChartLegend[]> = input<
+    DashboardWorkingChartLegend[]
+  >([]);
+
+  legendsChange: OutputEmitterRef<DashboardWorkingChartLegend[]> =
+    output<DashboardWorkingChartLegend[]>();
 
   private chartRef?: Chart;
 

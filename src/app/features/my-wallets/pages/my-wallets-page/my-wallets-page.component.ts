@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HorizontalTab } from '../../../../shared/interfaces/horizontal-tab.interface';
 import { ButtonSeverity } from '../../../../shared/enums/button.enum';
 
 @Component({
   selector: 'app-my-wallets-page',
   templateUrl: './my-wallets-page.component.html',
-  styleUrl: './my-wallets-page.component.scss'
+  styleUrl: './my-wallets-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MyWalletsPageComponent {
   testItems: HorizontalTab[] = [

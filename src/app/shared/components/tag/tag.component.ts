@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  InputSignal
+} from '@angular/core';
 import { NgClass } from '@angular/common';
 import { TagSeverity } from '../../enums/tag.enum';
 
@@ -11,5 +16,5 @@ import { TagSeverity } from '../../enums/tag.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagComponent {
-  @Input() severity: TagSeverity = TagSeverity.Success;
+  severity: InputSignal<TagSeverity> = input<TagSeverity>(TagSeverity.Success);
 }

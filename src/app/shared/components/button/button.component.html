@@ -1,15 +1,15 @@
 <button
   class="button"
-  [type]="type"
-  [disabled]="disabled || loading"
-  [attr.data-size]="size"
-  [attr.data-style]="style"
-  [attr.data-severity]="severity"
-  [attr.data-bordered]="outlined"
+  [type]="type()"
+  [disabled]="disabled() || loading()"
+  [attr.data-size]="size()"
+  [attr.data-style]="style()"
+  [attr.data-severity]="severity()"
+  [attr.data-bordered]="outlined()"
   (click)="onClick($event)"
 >
-  @if (icon) {
-    <span class="button__icon icon" [ngClass]="icon">
+  @if (icon()) {
+    <span class="button__icon icon" [ngClass]="icon()">
       <span class="path1"></span>
       <span class="path2"></span>
       <span class="path3"></span>
@@ -17,13 +17,13 @@
     </span>
   }
 
-  @if (style !== ButtonStyle.Icon) {
+  @if (style() !== ButtonStyle.Icon) {
     <span class="button__content">
       <ng-content />
     </span>
   }
 
-  @if (loading) {
+  @if (loading()) {
     <span class="button__loading">
       <app-spinner [size]="SpinnerSize.Small" />
     </span>

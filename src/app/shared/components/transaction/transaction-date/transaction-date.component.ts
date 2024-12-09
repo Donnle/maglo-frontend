@@ -1,4 +1,9 @@
-import { Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  InputSignal
+} from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -6,8 +11,9 @@ import { DatePipe } from '@angular/common';
   standalone: true,
   imports: [DatePipe],
   templateUrl: './transaction-date.component.html',
-  styleUrl: './transaction-date.component.scss'
+  styleUrl: './transaction-date.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionDateComponent {
-  @Input() date: Date | string = new Date();
+  date: InputSignal<Date | string> = input<Date | string>(new Date());
 }

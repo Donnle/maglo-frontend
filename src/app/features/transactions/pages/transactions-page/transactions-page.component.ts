@@ -1,21 +1,10 @@
 import { Component } from '@angular/core';
-import { CurrencyPipe } from '@angular/common';
-import { InputComponent } from '../../../../shared/components/controllers/input/input.component';
-import { TransactionProductComponent } from '../../../../shared/components/transaction/transaction-product/transaction-product.component';
-import { TransactionDateComponent } from '../../../../shared/components/transaction/transaction-date/transaction-date.component';
 import { Currency } from '../../../../shared/enums/api/currency/currency.enum';
 import { TransactionStatus } from '../../../../shared/enums/api/transaction/transaction.enum';
 import { Transaction } from '../../../../shared/interfaces/api/transaction/transaction.interface';
 
 @Component({
   selector: 'app-transactions-page',
-  standalone: true,
-  imports: [
-    InputComponent,
-    TransactionProductComponent,
-    TransactionDateComponent,
-    CurrencyPipe
-  ],
   templateUrl: './transactions-page.component.html',
   styleUrl: './transactions-page.component.scss'
 })
