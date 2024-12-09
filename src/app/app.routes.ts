@@ -24,6 +24,14 @@ export const routes: Routes = [
           )
       },
       {
+        path: 'my-wallets',
+        title: 'My wallets',
+        loadChildren: () =>
+          import('./features/my-wallets/my-wallets.module').then(
+            (m) => m.MyWalletsModule
+          )
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'main'
@@ -48,6 +56,11 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
+    redirectTo: 'dashboard'
+  },
+  // TODO: Add 404 page ???
+  {
+    path: '**',
     redirectTo: 'dashboard'
   }
 ];

@@ -83,6 +83,9 @@
   --tooltip-color: #ffffff;
   --tooltip-success-bg: #d9ffe9;
   --tooltip-success-color: #27ae60;
+
+  // Tabs
+  --horizontal-tab-line-color: #f5f5f5;
 }
 
 :root[data-theme='dark'] {
@@ -170,4 +173,7 @@
   --tooltip-color: #ffffff;
   --tooltip-success-bg: #1a3131;
   --tooltip-success-color: #27ae60;
+
+  // Tabs
+  --horizontal-tab-line-color: #282541;
 }

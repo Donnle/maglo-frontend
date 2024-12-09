@@ -6,10 +6,6 @@
         routerLinkActive="active"
         [routerLink]="tab.routerLink"
       >
-        @if (tab.icon) {
-          <span class="tab__link_icon icon" [class]="tab.icon"></span>
-        }
-
         <span class="tab__link_text">{{ tab.label }}</span>
       </a>
     </li>
