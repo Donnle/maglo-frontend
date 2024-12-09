@@ -119,7 +119,7 @@ export class CopyToClipboardDirective implements OnDestroy {
   ) {
     const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
       this.showTooltip();
-      this.changeDetectorRef.detectChanges();
+      this.changeDetectorRef.markForCheck();
     }, delay);
 
     this.showTimeouts.push(timeout);
@@ -130,7 +130,7 @@ export class CopyToClipboardDirective implements OnDestroy {
   ): void {
     const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
       this.hideTooltip();
-      this.changeDetectorRef.detectChanges();
+      this.changeDetectorRef.markForCheck();
     }, delay);
 
     this.hideTimeouts.push(timeout);

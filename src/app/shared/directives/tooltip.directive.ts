@@ -81,14 +81,14 @@ export class TooltipDirective implements OnDestroy {
   private setShowTooltipTimeout() {
     this.showTimeout = setTimeout(() => {
       this.showTooltip();
-      this.changeDetectorRef.detectChanges();
+      this.changeDetectorRef.markForCheck();
     }, this.tooltipShowDelay());
   }
 
   private setHideTooltipTimeout() {
     this.hideTimeout = setTimeout(() => {
       this.hideTooltip();
-      this.changeDetectorRef.detectChanges();
+      this.changeDetectorRef.markForCheck();
     }, this.tooltipHideDelay());
   }
 
