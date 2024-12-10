@@ -31,5 +31,5 @@ export class CreditCardComponent {
     CreditCardType.Visa
   );
 
-  protected readonly CreditCardType = CreditCardType;
+  protected readonly CreditCardType: typeof CreditCardType = CreditCardType;
 }

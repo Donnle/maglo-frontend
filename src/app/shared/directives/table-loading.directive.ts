@@ -22,7 +22,7 @@ export class TableLoadingDirective implements OnChanges {
     private renderer: Renderer2
   ) {}
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     const tableLoading: SimpleChange = changes['tableLoading'];
 
     if (tableLoading && tableLoading.firstChange) {
@@ -34,7 +34,7 @@ export class TableLoadingDirective implements OnChanges {
     }
   }
 
-  private toggleLoadingShow(isLoading: boolean = false) {
+  private toggleLoadingShow(isLoading: boolean = false): void {
     const tableBody: unknown =
       this.elementRef?.nativeElement?.querySelector('tbody');
 

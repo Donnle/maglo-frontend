@@ -35,15 +35,15 @@ export class DashboardWorkingCapitalComponent implements OnInit, AfterViewInit {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.initForm();
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.getWorkingCapital(this.filterForm.value);
   }
 
-  private getWorkingCapital(params: any) {
+  private getWorkingCapital(params: any): void {
     this.isWorkingCapitalLoading.set(true);
 
     of(params)
@@ -59,7 +59,7 @@ export class DashboardWorkingCapitalComponent implements OnInit, AfterViewInit {
       });
   }
 
-  private initForm() {
+  private initForm(): void {
     this.filterForm = this.formBuilder.group({
       card: ['', Validators.required],
       range: [TimeRange.LastYear, Validators.required]

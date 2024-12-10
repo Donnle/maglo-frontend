@@ -45,7 +45,7 @@ export class ThemeService {
     this.currentThemeUI = this.currentTheme || this.systemTheme || Theme.Light;
 
     this.systemThemeChanges().subscribe({
-      next: (theme: Theme) => (this.currentTheme = theme)
+      next: (theme: Theme): Theme => (this.currentTheme = theme)
     });
   }
 

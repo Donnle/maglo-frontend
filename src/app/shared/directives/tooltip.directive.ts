@@ -42,7 +42,7 @@ export class TooltipDirective implements OnDestroy {
     this.setHideTooltipTimeout();
   }
 
-  private initializeTooltip() {
+  private initializeTooltip(): void {
     clearTimeout(this.showTimeout);
     clearTimeout(this.hideTimeout);
 
@@ -55,7 +55,7 @@ export class TooltipDirective implements OnDestroy {
     this.setShowTooltipTimeout();
   }
 
-  private createTooltip() {
+  private createTooltip(): void {
     const { left, right, top } =
       this.elementRef.nativeElement.getBoundingClientRect();
 
@@ -66,27 +66,27 @@ export class TooltipDirective implements OnDestroy {
     this.componentRef.instance.top = Math.round(top);
   }
 
-  private showTooltip() {
+  private showTooltip(): void {
     if (this.componentRef != null) {
       this.componentRef.instance.visible = true;
     }
   }
 
-  private hideTooltip() {
+  private hideTooltip(): void {
     if (this.componentRef != null) {
       this.componentRef.instance.visible = false;
     }
   }
 
-  private setShowTooltipTimeout() {
-    this.showTimeout = setTimeout(() => {
+  private setShowTooltipTimeout(): void {
+    this.showTimeout = setTimeout((): void => {
       this.showTooltip();
       this.changeDetectorRef.markForCheck();
     }, this.tooltipShowDelay());
   }
 
-  private setHideTooltipTimeout() {
-    this.hideTimeout = setTimeout(() => {
+  private setHideTooltipTimeout(): void {
+    this.hideTimeout = setTimeout((): void => {
       this.hideTooltip();
       this.changeDetectorRef.markForCheck();
     }, this.tooltipHideDelay());

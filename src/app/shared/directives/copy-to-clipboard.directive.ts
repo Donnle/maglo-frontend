@@ -90,7 +90,7 @@ export class CopyToClipboardDirective implements OnDestroy {
   private createTooltip(
     tooltipText: string = this.copyToClipboardTooltipText(),
     tooltipStyle: TooltipStyle = TooltipStyle.Default
-  ) {
+  ): void {
     const { left, right, top } =
       this.elementRef.nativeElement.getBoundingClientRect();
 
@@ -102,13 +102,13 @@ export class CopyToClipboardDirective implements OnDestroy {
     this.componentRef.instance.top = Math.round(top);
   }
 
-  private showTooltip() {
+  private showTooltip(): void {
     if (this.componentRef != null) {
       this.componentRef.instance.visible = true;
     }
   }
 
-  private hideTooltip() {
+  private hideTooltip(): void {
     if (this.componentRef != null) {
       this.componentRef.instance.visible = false;
     }
@@ -116,7 +116,7 @@ export class CopyToClipboardDirective implements OnDestroy {
 
   private setShowTooltipTimeout(
     delay: number = this.copyToClipboardTooltipShowDelay()
-  ) {
+  ): void {
     const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
       this.showTooltip();
       this.changeDetectorRef.markForCheck();

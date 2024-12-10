@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Currency } from '../../../../shared/enums/api/currency/currency.enum';
 import { TransactionStatus } from '../../../../shared/enums/api/transaction/transaction.enum';
 import { Transaction } from '../../../../shared/interfaces/api/transaction/transaction.interface';
@@ -6,10 +6,11 @@ import { Transaction } from '../../../../shared/interfaces/api/transaction/trans
 @Component({
   selector: 'app-transactions-page',
   templateUrl: './transactions-page.component.html',
-  styleUrl: './transactions-page.component.scss'
+  styleUrl: './transactions-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionsPageComponent {
-  transactions: Transaction[] = [
+  protected readonly transactions: Transaction[] = [
     {
       id: 1,
       date: '12-12-2024',

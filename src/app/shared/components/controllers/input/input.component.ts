@@ -49,7 +49,7 @@ export class InputComponent implements ControlValueAccessor {
     this.onChange(value);
   }
 
-  onBlur() {
+  onBlur(): void {
     this.onTouched();
   }
 

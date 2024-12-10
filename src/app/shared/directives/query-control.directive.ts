@@ -44,7 +44,7 @@ export class QueryControlDirective implements OnInit {
     @Optional() private ngControl: NgControl
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.ngControl == null || this.ngControl.control == null) {
       return;
     }
@@ -75,7 +75,7 @@ export class QueryControlDirective implements OnInit {
     return queryParams[query];
   }
 
-  private patchControlValue(value: string) {
+  private patchControlValue(value: string): void {
     if (value == null) {
       console.error('Value is not defined!');
       return;

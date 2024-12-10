@@ -21,11 +21,11 @@ export class SignInPageComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.initSignInForm();
   }
 
-  onSubmit() {
+  onSubmit(): void {
     console.log('Submit');
   }
 

@@ -52,7 +52,7 @@ export class ButtonComponent {
   protected readonly SpinnerSize: typeof SpinnerSize = SpinnerSize;
   protected readonly ButtonStyle: typeof ButtonStyle = ButtonStyle;
 
-  onClick(event: Event) {
+  onClick(event: Event): void {
     this.click.emit(event);
   }
 }

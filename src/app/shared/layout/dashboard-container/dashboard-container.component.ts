@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BOTTOM_SIDEBAR, TOP_SIDEBAR } from '../../constants/sidebar.constant';
 import { ButtonComponent } from '../../components/button/button.component';
 import { ProfileComponent } from '../../components/profile/profile.component';
@@ -21,7 +21,8 @@ import {
     RouterOutlet
   ],
   templateUrl: './dashboard-container.component.html',
-  styleUrl: './dashboard-container.component.scss'
+  styleUrl: './dashboard-container.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardContainerComponent {
   protected readonly TOP_SIDEBAR: VerticalTab[] = TOP_SIDEBAR;
