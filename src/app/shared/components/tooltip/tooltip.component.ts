@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { TooltipStyle } from '../../enums/tooltip.enum';
 
@@ -7,8 +7,7 @@ import { TooltipStyle } from '../../enums/tooltip.enum';
   templateUrl: './tooltip.component.html',
   styleUrls: ['./tooltip.component.scss'],
   imports: [NgClass],
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  standalone: true
 })
 export class TooltipComponent {
   style: TooltipStyle = TooltipStyle.Default;
