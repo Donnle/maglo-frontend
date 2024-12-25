@@ -1,0 +1,105 @@
+.date-picker {
+}
+
+.date-picker__button {
+}
+
+.date-picker__dropdown {
+}
+
+.dropdown {
+  display: inline-block;
+  background: var(--control-bg);
+  border: 1px solid var(--control-border);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.dropdown__header {
+}
+
+.dropdown__header_arrow {
+}
+
+.dropdown__header_arrow--left {
+}
+
+.dropdown__header_period {
+}
+
+.dropdown-period {
+}
+
+.dropdown-period__month {
+}
+
+.dropdown-period__year {
+}
+
+.dropdown__header_arrow--right {
+}
+
+.dropdown__content {
+}
+
+.dropdown__content_week-days {
+}
+
+.week-days {
+}
+
+.week-days__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.week-days__content_label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 44px;
+
+  color: var(--text-1);
+}
+
+.dropdown__content_calendar {
+}
+
+.calendar {
+}
+
+.calendar__content {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calendar__content_week {
+  display: flex;
+  gap: 4px;
+}
+
+.calendar__content_day {
+  width: 50px;
+  height: 44px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &.previous {
+  }
+
+  &.current {
+  }
+
+  &.next {
+  }
+}
+
+.calendar__content_day_label {
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.2em;
+  font-weight: 400;
+}

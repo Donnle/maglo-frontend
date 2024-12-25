@@ -1,8 +1,5 @@
 import { Component, Input } from '@angular/core';
-import {
-  FilterOption,
-  FilterType
-} from '../../../interfaces/filters.interface';
+import { Filter, FilterType } from '../../../interfaces/filters.interface';
 import { DropdownComponent } from '../../controllers/dropdown/dropdown.component';
 
 @Component({
@@ -14,5 +11,5 @@ import { DropdownComponent } from '../../controllers/dropdown/dropdown.component
 })
 export class FilterComponent {
   @Input({ required: true }) type: FilterType = FilterType.Dropdown;
-  @Input() options: FilterOption[] = [];
+  @Input() options: Filter[] = [];
 }

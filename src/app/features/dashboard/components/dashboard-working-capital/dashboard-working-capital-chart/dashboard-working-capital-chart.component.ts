@@ -13,7 +13,13 @@ import {
   SimpleChanges,
   viewChild
 } from '@angular/core';
-import { Chart, ChartConfiguration, registerables } from 'chart.js';
+import {
+  Chart,
+  ChartConfiguration,
+  ChartData,
+  ChartDataset,
+  registerables
+} from 'chart.js';
 import { createDashboardWorkingCapitalChartConfig } from '../../../utils/dashboard-working-capital-chart.util';
 import {
   DashboardWorkingChartDataset,
@@ -68,9 +74,9 @@ export class DashboardWorkingCapitalChartComponent
     const chartConfig: ChartConfiguration<'line'> = this.getChartConfig(test);
     this.chartRef = new Chart(chartElement, chartConfig);
 
-    const chartData = this.chartRef!.data;
+    const chartData: ChartData = this.chartRef!.data;
     const legends: DashboardWorkingChartLegend[] = chartData.datasets.map(
-      (chartDataItem): DashboardWorkingChartLegend => ({
+      (chartDataItem: ChartDataset): DashboardWorkingChartLegend => ({
         color: chartDataItem.borderColor as string,
         label: chartDataItem.label!
       })

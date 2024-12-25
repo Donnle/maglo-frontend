@@ -18,6 +18,7 @@ export class UiToolkitPageComponent {
   control3 = new FormControl();
   control2 = new FormControl();
   control = new FormControl();
+  dateControl = new FormControl();
 
   protected readonly ButtonSize: typeof ButtonSize = ButtonSize;
   protected readonly ButtonSeverity: typeof ButtonSeverity = ButtonSeverity;

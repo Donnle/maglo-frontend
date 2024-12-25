@@ -1,0 +1,60 @@
+<div class="date-picker">
+  <button class="date-picker__button">
+    @if (selectedDate()) {
+      {{ selectedDate() | date: 'dd MMM YYYY' }}
+    } @else {
+      {{ placeholder() }}
+    }
+  </button>
+
+  <div class="date-picker__dropdown dropdown">
+    <div class="dropdown__header">
+      <div class="dropdown__header_arrow dropdown__header_arrow--left"></div>
+
+      <form
+        [formGroup]="headerForm"
+        class="dropdown__header_period dropdown-period"
+      >
+        <div class="dropdown-period__month">
+          <app-dropdown [options]="[]" formControlName="month" />
+        </div>
+        <div class="dropdown-period__year">
+          <app-dropdown [options]="[]" formControlName="year" />
+        </div>
+      </form>
+
+      <div class="dropdown__header_arrow dropdown__header_arrow--right"></div>
+    </div>
+    <div class="dropdown__content">
+      <div class="dropdown__content_week-days week-days">
+        <div class="week-days__content">
+          @for (weekDay of DATE_PICKER_WEEK_DAYS; track $index) {
+            <span class="week-days__content_label">
+              {{ weekDay.label }}
+            </span>
+          }
+        </div>
+      </div>
+
+      <div class="dropdown__content_calendar calendar">
+        <div class="calendar__content">
+          @for (week of options(); track $index) {
+            <div class="calendar__content_week">
+              @for (dayOption of week; track $index) {
+                <button
+                  class="calendar__content_day"
+                  [ngClass]="[dayOption.dayMonth]"
+                  (click)="onDateClick(dayOption)"
+                >
+                  <span class="calendar__content_day_label">
+                    {{ dayOption.day }}
+                  </span>
+                </button>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
