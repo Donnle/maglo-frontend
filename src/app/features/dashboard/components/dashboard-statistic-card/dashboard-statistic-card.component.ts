@@ -9,6 +9,7 @@ import {
   selector: 'app-dashboard-statistic-card',
   templateUrl: './dashboard-statistic-card.component.html',
   styleUrl: './dashboard-statistic-card.component.scss',
+  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardStatisticCardComponent {

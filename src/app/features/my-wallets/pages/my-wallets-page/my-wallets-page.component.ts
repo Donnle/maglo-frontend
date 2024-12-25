@@ -6,6 +6,7 @@ import { ButtonSeverity } from '../../../../shared/enums/button.enum';
   selector: 'app-my-wallets-page',
   templateUrl: './my-wallets-page.component.html',
   styleUrl: './my-wallets-page.component.scss',
+  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MyWalletsPageComponent {

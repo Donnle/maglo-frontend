@@ -14,13 +14,12 @@ import {
   ReactiveFormsModule
 } from '@angular/forms';
 import { NgClass } from '@angular/common';
-import { ButtonComponent } from '../../button/button.component';
 import { InputIconPosition } from '../../../enums/input.enum';
 
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, FormsModule, ButtonComponent],
+  imports: [ReactiveFormsModule, NgClass, FormsModule],
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
   providers: [

@@ -14,7 +14,7 @@ import {
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule
 } from '@angular/forms';
-import { DatePipe, JsonPipe, NgClass } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import {
   DatePickerOption,
   DatePickerWeekDays
@@ -27,13 +27,7 @@ import { DropdownComponent } from '../dropdown/dropdown.component';
 @Component({
   selector: 'app-date-picker',
   standalone: true,
-  imports: [
-    DatePipe,
-    JsonPipe,
-    NgClass,
-    DropdownComponent,
-    ReactiveFormsModule
-  ],
+  imports: [DatePipe, NgClass, DropdownComponent, ReactiveFormsModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

@@ -7,6 +7,7 @@ import { Transaction } from '../../../../shared/interfaces/api/transaction/trans
   selector: 'app-transactions-page',
   templateUrl: './transactions-page.component.html',
   styleUrl: './transactions-page.component.scss',
+  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TransactionsPageComponent {

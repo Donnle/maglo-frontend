@@ -32,6 +32,7 @@ Chart.register(...registerables);
   selector: 'app-dashboard-working-capital-chart',
   templateUrl: './dashboard-working-capital-chart.component.html',
   styleUrl: './dashboard-working-capital-chart.component.scss',
+  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardWorkingCapitalChartComponent

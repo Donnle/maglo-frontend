@@ -1,11 +1,11 @@
-@import 'mixin';
+@use 'mixin' as mixin;
 
 .container {
-  @include card;
+  @include mixin.card;
 }
 
 .content__table {
-  @include table;
+  @include mixin.table;
 }
 
 .header {

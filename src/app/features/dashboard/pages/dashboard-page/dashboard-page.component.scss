@@ -1,4 +1,4 @@
-@import 'mixin';
+@use 'mixin' as mixin;
 
 .container {
 }
@@ -70,7 +70,7 @@
 }
 
 .dashboard__table {
-  @include table;
+  @include mixin.table;
 }
 
 .working-capital {

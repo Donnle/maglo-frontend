@@ -9,6 +9,7 @@ import {
   selector: 'app-sign-up-page',
   templateUrl: './sign-up-page.component.html',
   styleUrl: './sign-up-page.component.scss',
+  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignUpPageComponent implements OnInit {

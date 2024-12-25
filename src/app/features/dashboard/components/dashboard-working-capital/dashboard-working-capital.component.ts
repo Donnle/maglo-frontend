@@ -20,6 +20,7 @@ import { DashboardWorkingChartLegend } from '../../interfaces/dashboard-working-
   selector: 'app-dashboard-working-capital',
   templateUrl: './dashboard-working-capital.component.html',
   styleUrl: './dashboard-working-capital.component.scss',
+  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardWorkingCapitalComponent implements OnInit, AfterViewInit {

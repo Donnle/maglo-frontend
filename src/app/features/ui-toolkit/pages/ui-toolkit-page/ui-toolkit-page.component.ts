@@ -11,6 +11,7 @@ import { TagSeverity } from '../../../../shared/enums/tag.enum';
   selector: 'app-ui-toolkit-page',
   templateUrl: './ui-toolkit-page.component.html',
   styleUrl: './ui-toolkit-page.component.scss',
+  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UiToolkitPageComponent {

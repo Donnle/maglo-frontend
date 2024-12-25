@@ -9,6 +9,7 @@ import {
   selector: 'app-my-wallets-balance',
   templateUrl: './my-wallets-balance.component.html',
   styleUrl: './my-wallets-balance.component.scss',
+  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MyWalletsBalanceComponent {

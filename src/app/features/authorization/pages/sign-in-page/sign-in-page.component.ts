@@ -10,6 +10,7 @@ import {
   selector: 'app-sign-in-page',
   templateUrl: './sign-in-page.component.html',
   styleUrl: './sign-in-page.component.scss',
+  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignInPageComponent implements OnInit {
