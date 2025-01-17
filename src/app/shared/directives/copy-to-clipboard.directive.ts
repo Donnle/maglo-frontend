@@ -93,21 +93,21 @@ export class CopyToClipboardDirective implements OnDestroy {
 
     this.componentRef = this.vcr.createComponent(TooltipComponent);
 
-    this.componentRef.instance.tooltip = tooltipText;
-    this.componentRef.instance.style = tooltipStyle;
-    this.componentRef.instance.left = Math.round((right - left) / 2 + left);
-    this.componentRef.instance.top = Math.round(top);
+    this.componentRef.setInput('tooltip', tooltipText);
+    this.componentRef.setInput('style', tooltipStyle);
+    this.componentRef.setInput('left', Math.round((right - left) / 2 + left));
+    this.componentRef.setInput('top', Math.round(top));
   }
 
   private showTooltip(): void {
     if (this.componentRef != null) {
-      this.componentRef.instance.visible = true;
+      this.componentRef.setInput('visible', true);
     }
   }
 
   private hideTooltip(): void {
     if (this.componentRef != null) {
-      this.componentRef.instance.visible = false;
+      this.componentRef.setInput('visible', false);
     }
   }
 
