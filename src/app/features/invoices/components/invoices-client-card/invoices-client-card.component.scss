@@ -1,0 +1,85 @@
+@use 'mixin' as mixins;
+
+.client {
+  @include mixins.card;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+
+    &_title {
+      font-size: 16px;
+      line-height: 1.2em;
+      font-weight: 500;
+      color: var(--text-1);
+    }
+
+    &_change {
+      @include mixins.link-button;
+    }
+  }
+
+  &__divider {
+    margin: 20px 0;
+    border: 1px solid var(--divider-color);
+  }
+}
+
+.client-user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__avatar_img {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+
+  &__info_name {
+    display: block;
+    font-size: 16px;
+    line-height: 1.2em;
+    font-weight: 500;
+    color: var(--text-1);
+    padding-bottom: 8px;
+  }
+
+  &__info_email {
+    font-size: 16px;
+    line-height: 1.2em;
+    font-weight: 500;
+    color: var(--text-2);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.client-company {
+  padding-bottom: 20px;
+
+  &__name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 16px;
+    line-height: 1.2em;
+    font-weight: 500;
+    color: var(--text-1);
+    padding-bottom: 8px;
+  }
+
+  &__address {
+    font-size: 16px;
+    line-height: 1.2em;
+    font-weight: 400;
+    color: var(--text-2);
+  }
+}

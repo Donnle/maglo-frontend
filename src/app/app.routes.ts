@@ -10,6 +10,7 @@ export const routes: Routes = [
       {
         path: 'main',
         title: 'Dashboard',
+        data: { title: 'Dashboard' },
         loadChildren: () =>
           import('./features/dashboard/dashboard.module').then(
             (m) => m.DashboardModule
@@ -18,14 +19,25 @@ export const routes: Routes = [
       {
         path: 'transactions',
         title: 'Transactions',
+        data: { title: 'Transactions' },
         loadChildren: () =>
           import('./features/transactions/transactions.module').then(
             (m) => m.TransactionsModule
           )
       },
       {
+        path: 'invoices',
+        title: 'Invoices',
+        data: { title: 'Invoices' },
+        loadChildren: () =>
+          import('./features/invoices/invoices.module').then(
+            (m) => m.InvoicesModule
+          )
+      },
+      {
         path: 'my-wallets',
         title: 'My wallets',
+        data: { title: 'My Wallets' },
         loadChildren: () =>
           import('./features/my-wallets/my-wallets.module').then(
             (m) => m.MyWalletsModule

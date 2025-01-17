@@ -58,6 +58,24 @@
       border-radius: 10px;
       background-color: transparent;
 
+      &.text-position--left {
+        text-align: left;
+      }
+
+      &.text-position--center {
+        text-align: center;
+      }
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &[type='number'] {
+        -moz-appearance: textfield;
+      }
+
       &:focus {
         outline: none;
         border: 1px solid var(--primary);

@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   forwardRef,
   input,
@@ -26,7 +27,6 @@ import { DropdownComponent } from '../dropdown/dropdown.component';
 
 @Component({
   selector: 'app-date-picker',
-  standalone: true,
   imports: [DatePipe, NgClass, DropdownComponent, ReactiveFormsModule],
   providers: [
     {
@@ -36,7 +36,8 @@ import { DropdownComponent } from '../dropdown/dropdown.component';
     }
   ],
   templateUrl: './date-picker.component.html',
-  styleUrl: './date-picker.component.scss'
+  styleUrl: './date-picker.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatePickerComponent<T> implements OnInit, ControlValueAccessor {
   headerForm!: FormGroup;
@@ -54,17 +55,7 @@ export class DatePickerComponent<T> implements OnInit, ControlValueAccessor {
 
   ngOnInit() {
     this.initForm();
-
-    const currentDate = new Date();
-    const currentMonth: number = currentDate.getMonth();
-    const currentYear: number = currentDate.getFullYear();
-
-    const options: DatePickerOption[][] = this.getGroupedDates(
-      currentMonth,
-      currentYear
-    );
-
-    this.options.set(options);
+    this.initOptions();
   }
 
   onDateClick(option: DatePickerOption): void {
@@ -104,6 +95,19 @@ export class DatePickerComponent<T> implements OnInit, ControlValueAccessor {
 
       this.options.set(options);
     }
+  }
+
+  private initOptions() {
+    const currentDate = new Date();
+    const currentMonth: number = currentDate.getMonth();
+    const currentYear: number = currentDate.getFullYear();
+
+    const options: DatePickerOption[][] = this.getGroupedDates(
+      currentMonth,
+      currentYear
+    );
+
+    this.options.set(options);
   }
 
   private getGroupedDates(month: number, year: number): DatePickerOption[][] {

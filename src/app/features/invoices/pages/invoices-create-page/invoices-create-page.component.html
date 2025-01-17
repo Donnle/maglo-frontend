@@ -1,0 +1,11 @@
+<div class="container">
+  <form [formGroup]="invoiceForm" class="form">
+    <app-invoices-items #test formControlName="items" />
+
+    {{ invoiceForm.value | json }}
+
+    <button (click)="test.addItem()">asdsad</button>
+
+    <app-invoices-client-card />
+  </form>
+</div>

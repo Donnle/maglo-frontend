@@ -1,0 +1,7 @@
+<a [routerLink]="link()" class="link">
+  <span class="link__text"><ng-content /></span>
+
+  @if (showChevron()) {
+    <span class="icon icon-chevron"></span>
+  }
+</a>

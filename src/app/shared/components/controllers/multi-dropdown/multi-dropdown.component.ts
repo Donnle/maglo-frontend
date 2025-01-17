@@ -19,7 +19,6 @@ import { DropdownItem } from '../../../interfaces/dropdown.interface';
 
 @Component({
   selector: 'app-multi-dropdown',
-  standalone: true,
   imports: [
     CdkConnectedOverlay,
     CdkOverlayOrigin,

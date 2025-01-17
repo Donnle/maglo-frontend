@@ -9,7 +9,6 @@ import { HorizontalTab } from '../../interfaces/horizontal-tab.interface';
 
 @Component({
   selector: 'app-horizontal-tabs',
-  standalone: true,
   imports: [RouterLinkActive, RouterLink],
   templateUrl: './horizontal-tabs.component.html',
   styleUrl: './horizontal-tabs.component.scss',

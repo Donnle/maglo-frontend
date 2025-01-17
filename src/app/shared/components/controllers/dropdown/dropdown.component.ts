@@ -13,7 +13,6 @@ import { DropdownItem } from '../../../interfaces/dropdown.interface';
 
 @Component({
   selector: 'app-dropdown',
-  standalone: true,
   imports: [CdkOverlayOrigin, CdkConnectedOverlay],
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.scss',

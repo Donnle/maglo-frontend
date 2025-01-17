@@ -7,7 +7,6 @@ import {
 
 @Component({
   selector: 'app-transaction-product',
-  standalone: true,
   imports: [],
   templateUrl: './transaction-product.component.html',
   styleUrl: './transaction-product.component.scss',

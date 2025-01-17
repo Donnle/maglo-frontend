@@ -11,7 +11,6 @@ import { CopyToClipboardDirective } from '../../directives/copy-to-clipboard.dir
 
 @Component({
   selector: 'app-credit-card',
-  standalone: true,
   imports: [DatePipe, CardNumbersPipe, CopyToClipboardDirective],
   templateUrl: './credit-card.component.html',
   styleUrl: './credit-card.component.scss',

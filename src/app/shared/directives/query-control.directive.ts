@@ -13,10 +13,7 @@ import { NgControl } from '@angular/forms';
  *
  * Note: Works bad with [(ngModel)]
  */
-@Directive({
-  selector: '[queryControl]',
-  standalone: true
-})
+@Directive({ selector: '[queryControl]', standalone: true })
 export class QueryControlDirective implements OnInit {
   @Input({ required: true }) queryControl!: string | undefined;
   @Input() queryEmitEvent: boolean = true;

@@ -22,7 +22,6 @@ import {
 
 @Component({
   selector: 'app-input-password',
-  standalone: true,
   imports: [ReactiveFormsModule, ButtonComponent, FormsModule],
   templateUrl: './input-password.component.html',
   styleUrl: './input-password.component.scss',

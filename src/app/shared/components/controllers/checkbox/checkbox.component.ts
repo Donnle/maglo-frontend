@@ -15,7 +15,6 @@ import {
 
 @Component({
   selector: 'app-checkbox',
-  standalone: true,
   imports: [FormsModule],
   templateUrl: './checkbox.component.html',
   styleUrl: './checkbox.component.scss',

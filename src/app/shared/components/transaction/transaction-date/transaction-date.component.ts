@@ -8,7 +8,6 @@ import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-transaction-date',
-  standalone: true,
   imports: [DatePipe],
   templateUrl: './transaction-date.component.html',
   styleUrl: './transaction-date.component.scss',

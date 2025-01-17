@@ -1,4 +1,5 @@
 <button
+  data-testingId="button"
   class="button"
   [type]="type()"
   [disabled]="disabled() || loading()"
@@ -9,7 +10,7 @@
   (click)="onClick($event)"
 >
   @if (icon()) {
-    <span class="button__icon icon" [ngClass]="icon()">
+    <span data-testingId="icon" class="button__icon icon" [ngClass]="icon()">
       <span class="path1"></span>
       <span class="path2"></span>
       <span class="path3"></span>
@@ -18,13 +19,13 @@
   }
 
   @if (style() !== ButtonStyle.Icon) {
-    <span class="button__content">
+    <span data-testingId="content" class="button__content">
       <ng-content />
     </span>
   }
 
   @if (loading()) {
-    <span class="button__loading">
+    <span data-testingId="loader" class="button__loading">
       <app-spinner [size]="SpinnerSize.Small" />
     </span>
   }

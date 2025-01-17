@@ -11,9 +11,11 @@
       <i class="label__input_icon" [ngClass]="[icon()]"></i>
     }
 
+    <!-- TODO: Safari fix -->
     <input
       class="label__input_control"
-      type="text"
+      [class]="[textPosition() ? 'text-position--' + textPosition() : '']"
+      [type]="type()"
       [placeholder]="placeholder()"
       [disabled]="isDisabled()"
       [ngModel]="value()"

@@ -1,14 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Filter } from '../../interfaces/filters.interface';
 import { FormGroup } from '@angular/forms';
 
 // TODO: Not ready
 @Component({
   selector: 'app-filters',
-  standalone: true,
-  imports: [],
   templateUrl: './filters.component.html',
-  styleUrl: './filters.component.scss'
+  styleUrl: './filters.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FiltersComponent {
   @Input({ required: true }) filters: Filter[] = [];

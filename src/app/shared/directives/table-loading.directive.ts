@@ -8,10 +8,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 
-@Directive({
-  selector: '[tableLoading]',
-  standalone: true
-})
+@Directive({ selector: '[tableLoading]', standalone: true })
 export class TableLoadingDirective implements OnChanges {
   @Input({ required: true }) tableLoading: boolean = false;
 

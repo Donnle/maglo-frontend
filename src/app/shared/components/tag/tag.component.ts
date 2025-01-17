@@ -9,7 +9,6 @@ import { TagSeverity } from '../../enums/tag.enum';
 
 @Component({
   selector: 'app-tag',
-  standalone: true,
   imports: [NgClass],
   templateUrl: './tag.component.html',
   styleUrl: './tag.component.scss',

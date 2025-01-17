@@ -1,45 +1,3 @@
-:host ::ng-deep {
-  .p-menu {
-    border: none;
-    outline: none;
-    background: transparent;
-  }
-
-  .p-menuitem {
-    background: transparent;
-
-    &-content {
-      overflow: hidden;
-      border-radius: 12px;
-    }
-
-    &-link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-
-      font-family: 'Kumbh Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-
-      padding: 15px;
-      background: transparent;
-
-      span {
-        color: var(--sidebar-text);
-      }
-
-      &-active {
-        background: var(--primary);
-
-        span {
-          color: var(--sidebar-active-text);
-        }
-      }
-    }
-  }
-}
-
 .container {
   display: flex;
   height: 100%;
@@ -92,20 +50,44 @@
 }
 
 .content {
+  position: relative;
   margin-left: 250px;
   padding: 30px 40px;
   width: 100%;
 }
 
 .header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 16px;
 
-  padding-bottom: 30px;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border-color);
 
-  &__profile {
+  margin: -30px -40px 30px;
+  padding: 16px 40px;
+
+  &__page_title {
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 24px;
+    line-height: 1.2em;
+    font-weight: 600;
+    color: var(--text-1);
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+
     width: fit-content;
   }
 }

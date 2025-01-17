@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BOTTOM_SIDEBAR, TOP_SIDEBAR } from '../../constants/sidebar.constant';
 import { ButtonComponent } from '../../components/button/button.component';
 import { ProfileComponent } from '../../components/profile/profile.component';
@@ -10,9 +10,9 @@ import {
   ButtonSize,
   ButtonStyle
 } from '../../enums/button.enum';
+import { RouteTitleService } from '../../services/route-title.service';
 
 @Component({
-  standalone: true,
   imports: [
     ButtonComponent,
     ProfileComponent,
@@ -24,10 +24,24 @@ import {
   styleUrl: './dashboard-container.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DashboardContainerComponent {
+export class DashboardContainerComponent implements OnInit {
+  activeRouterTitle?: string = '';
+
   protected readonly TOP_SIDEBAR: VerticalTab[] = TOP_SIDEBAR;
   protected readonly BOTTOM_SIDEBAR: VerticalTab[] = BOTTOM_SIDEBAR;
   protected readonly ButtonSeverity: typeof ButtonSeverity = ButtonSeverity;
   protected readonly ButtonSize: typeof ButtonSize = ButtonSize;
   protected readonly ButtonStyle: typeof ButtonStyle = ButtonStyle;
+
+  constructor(private routeTitleService: RouteTitleService) {}
+
+  ngOnInit() {
+    this.activeRouterTitle = this.routeTitleService.activeRouterTitle;
+
+    this.routeTitleService.activeRouterTitle$.subscribe({
+      next: (routeTitle: string | undefined) => {
+        this.activeRouterTitle = routeTitle;
+      }
+    });
+  }
 }

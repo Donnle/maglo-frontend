@@ -17,7 +17,7 @@ import { TagSeverity } from '../../../../shared/enums/tag.enum';
 export class UiToolkitPageComponent {
   control4 = new FormControl([]);
   control3 = new FormControl();
-  control2 = new FormControl();
+  control2 = new FormControl(1);
   control = new FormControl();
   dateControl = new FormControl();
 

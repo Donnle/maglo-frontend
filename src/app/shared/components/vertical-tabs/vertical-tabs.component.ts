@@ -9,7 +9,6 @@ import { VerticalTab } from '../../interfaces/vertical-tab.interface';
 
 @Component({
   selector: 'app-vertical-tabs',
-  standalone: true,
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './vertical-tabs.component.html',
   styleUrl: './vertical-tabs.component.scss',

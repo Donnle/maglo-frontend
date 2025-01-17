@@ -12,10 +12,7 @@ import {
 } from '@angular/core';
 import { TooltipComponent } from '../components/tooltip/tooltip.component';
 
-@Directive({
-  selector: '[tooltip]',
-  standalone: true
-})
+@Directive({ selector: '[tooltip]', standalone: true })
 export class TooltipDirective implements OnDestroy {
   tooltip: InputSignal<string> = input('');
   tooltipShowDelay: InputSignal<number> = input(0);

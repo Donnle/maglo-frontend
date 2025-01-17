@@ -18,6 +18,7 @@ import { SkeletonDirective } from '../../shared/directives/skeleton-loading.dire
 import { DashboardRecentTransactionsComponent } from './components/dashboard-recent-transactions/dashboard-recent-transactions.component';
 import { TransactionProductComponent } from '../../shared/components/transaction/transaction-product/transaction-product.component';
 import { DashboardWalletsComponent } from './components/dashboard-wallets/dashboard-wallets.component';
+import { LinkComponent } from '../../shared/components/link/link.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { DashboardWalletsComponent } from './components/dashboard-wallets/dashbo
     SkeletonDirective,
     JsonPipe,
     NgStyle,
-    TransactionProductComponent
+    TransactionProductComponent,
+    LinkComponent
   ]
 })
 export class DashboardModule {}

@@ -18,7 +18,6 @@ import { SpinnerSize } from '../../enums/spiner.enum';
 
 @Component({
   selector: 'app-button',
-  standalone: true,
   imports: [NgClass, SpinnerComponent],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
@@ -47,12 +46,12 @@ export class ButtonComponent {
   // Tooltip
   tooltip: InputSignal<string | undefined> = input<string | undefined>();
 
-  click: OutputEmitterRef<Event> = output<Event>();
+  buttonClick: OutputEmitterRef<Event> = output<Event>();
 
   protected readonly SpinnerSize: typeof SpinnerSize = SpinnerSize;
   protected readonly ButtonStyle: typeof ButtonStyle = ButtonStyle;
 
   onClick(event: Event): void {
-    this.click.emit(event);
+    this.buttonClick.emit(event);
   }
 }

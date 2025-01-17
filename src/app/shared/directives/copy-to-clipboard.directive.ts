@@ -15,10 +15,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 import { TooltipComponent } from '../components/tooltip/tooltip.component';
 import { TooltipStyle } from '../enums/tooltip.enum';
 
-@Directive({
-  selector: '[copyToClipboard]',
-  standalone: true
-})
+@Directive({ selector: '[copyToClipboard]', standalone: true })
 export class CopyToClipboardDirective implements OnDestroy {
   copyToClipboard: InputSignal<string> = input.required();
   copyToClipboardTooltipShow: InputSignal<boolean> = input(true);

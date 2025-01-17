@@ -10,9 +10,9 @@ import { ButtonSeverity } from '../../../../shared/enums/button.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MyWalletsPageComponent {
+  protected readonly ButtonSeverity = ButtonSeverity;
   protected readonly testItems: HorizontalTab[] = [
     { label: 'Test 2', routerLink: '/dashboard/my-wallets/test' },
     { label: 'Test 3', routerLink: '/dashboard/my-wallets/test3' }
   ];
-  protected readonly ButtonSeverity = ButtonSeverity;
 }
