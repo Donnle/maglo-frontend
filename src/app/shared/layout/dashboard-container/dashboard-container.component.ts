@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  OnInit
+} from '@angular/core';
 import { BOTTOM_SIDEBAR, TOP_SIDEBAR } from '../../constants/sidebar.constant';
 import { ButtonComponent } from '../../components/button/button.component';
 import { ProfileComponent } from '../../components/profile/profile.component';
@@ -11,6 +16,8 @@ import {
   ButtonStyle
 } from '../../enums/button.enum';
 import { RouteTitleService } from '../../services/route-title.service';
+import { ThemeService } from '../../services/theme.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   imports: [
@@ -33,15 +40,25 @@ export class DashboardContainerComponent implements OnInit {
   protected readonly ButtonSize: typeof ButtonSize = ButtonSize;
   protected readonly ButtonStyle: typeof ButtonStyle = ButtonStyle;
 
-  constructor(private routeTitleService: RouteTitleService) {}
+  constructor(
+    private routeTitleService: RouteTitleService,
+    private themeService: ThemeService,
+    private destroyRef: DestroyRef
+  ) {}
 
   ngOnInit() {
     this.activeRouterTitle = this.routeTitleService.activeRouterTitle;
 
-    this.routeTitleService.activeRouterTitle$.subscribe({
-      next: (routeTitle: string | undefined) => {
-        this.activeRouterTitle = routeTitle;
-      }
-    });
+    this.routeTitleService.activeRouterTitle$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (routeTitle: string | undefined) => {
+          this.activeRouterTitle = routeTitle;
+        }
+      });
+  }
+
+  onThemeChange() {
+    this.themeService.toggleTheme();
   }
 }

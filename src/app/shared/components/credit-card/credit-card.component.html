@@ -33,7 +33,12 @@
     <div class="card__type">
       @switch (type()) {
         @case (CreditCardType.MasterCard) {
-          <span class="icon icon-mastercard"></span>
+          <span class="icon icon-mastercard">
+            <span class="path1"></span>
+            <span class="path2"></span>
+            <span class="path3"></span>
+            <span class="path4"></span>
+          </span>
         }
         @case (CreditCardType.Visa) {
           <span class="icon icon-visa"></span>

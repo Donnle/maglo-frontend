@@ -1,0 +1,24 @@
+@use 'mixin' as mixins;
+
+.container {
+  @include mixins.card;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 24px;
+}
+
+.content__table {
+  @include mixins.table;
+
+  table tbody {
+    max-height: 200px !important;
+
+    .value {
+      text-align: right;
+    }
+  }
+}

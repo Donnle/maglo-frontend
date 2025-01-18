@@ -1,5 +1,0 @@
-@use 'mixin' as mixins;
-
-:host {
-  @include mixins.table;
-}

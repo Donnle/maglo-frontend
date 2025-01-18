@@ -11,7 +11,7 @@ export class ThemeService {
   private readonly LOCAL_STORAGE_KEY: string = LocalStorageKey.Theme;
   private readonly renderer: Renderer2;
 
-  private get currentTheme(): Theme | null {
+  private get currentTheme(): Theme {
     return localStorage.getItem(this.LOCAL_STORAGE_KEY) as Theme;
   }
 
@@ -41,11 +41,22 @@ export class ThemeService {
     this.renderer = this.rendererFactory.createRenderer(null, null);
   }
 
+  toggleTheme(): void {
+    const oppositeTheme: Record<Theme, Theme> = {
+      [Theme.Light]: Theme.Dark,
+      [Theme.Dark]: Theme.Light
+    };
+
+    this.currentTheme = oppositeTheme[this.currentTheme];
+  }
+
   initTheme(): void {
-    this.currentThemeUI = this.currentTheme || this.systemTheme || Theme.Light;
+    this.currentTheme = this.currentTheme || this.systemTheme || Theme.Light;
 
     this.systemThemeChanges().subscribe({
-      next: (theme: Theme): Theme => (this.currentTheme = theme)
+      next: (theme: Theme) => {
+        this.currentTheme = theme;
+      }
     });
   }
 

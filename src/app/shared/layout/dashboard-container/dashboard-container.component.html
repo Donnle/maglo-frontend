@@ -19,6 +19,16 @@
         <h2 class="header__page_title">{{ activeRouterTitle }}</h2>
       </div>
       <div class="header__user">
+        <div class="header__user_theme-toggle">
+          <app-button
+            icon="icon icon-theme-toggle"
+            [outlined]="true"
+            [style]="ButtonStyle.Icon"
+            [size]="ButtonSize.Small"
+            [severity]="ButtonSeverity.Secondary"
+            (buttonClick)="onThemeChange()"
+          />
+        </div>
         <div class="header__user_notifications">
           <app-button
             icon="icon icon-notification-bing"

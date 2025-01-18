@@ -6,6 +6,7 @@ import { TransactionsPageComponent } from './pages/transactions-page/transaction
 import { TransactionProductComponent } from '../../shared/components/transaction/transaction-product/transaction-product.component';
 import { TransactionDateComponent } from '../../shared/components/transaction/transaction-date/transaction-date.component';
 import { InputComponent } from '../../shared/components/controllers/input/input.component';
+import { TableLoadingDirective } from '../../shared/directives/table-loading.directive';
 
 @NgModule({
   declarations: [TransactionsPageComponent],
@@ -14,7 +15,8 @@ import { InputComponent } from '../../shared/components/controllers/input/input.
     TransactionsRoutingModule,
     TransactionProductComponent,
     TransactionDateComponent,
-    InputComponent
+    InputComponent,
+    TableLoadingDirective
   ]
 })
 export class TransactionsModule {}

@@ -1,10 +1,58 @@
 <div class="container">
   <form [formGroup]="invoiceForm" class="form">
-    <app-invoices-items #test formControlName="items" />
+    <div class="form__invoice-items">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Rate</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (invoiceItem of invoiceItems.controls; track $index) {
+            <ng-container [formGroup]="invoiceItem">
+              <tr>
+                <td>
+                  <app-input
+                    formControlName="name"
+                    placeholder="Enter Item Name"
+                  />
+                </td>
+                <td>
+                  <app-input
+                    formControlName="quantity"
+                    type="number"
+                    placeholder="Enter Item Name"
+                  />
+                </td>
+                <td>
+                  <app-input
+                    formControlName="rate"
+                    type="number"
+                    icon="icon icon-chevron"
+                    placeholder="Enter Rate"
+                  />
+                </td>
+                <td>
+                  <app-input
+                    formControlName="total"
+                    type="number"
+                    placeholder="Auto Calculate"
+                  />
+                </td>
+              </tr>
+            </ng-container>
+          }
+        </tbody>
+      </table>
+    </div>
 
     {{ invoiceForm.value | json }}
 
-    <button (click)="test.addItem()">asdsad</button>
+    <button (click)="addInvoiceItem()">asdsad</button>
 
     <app-invoices-client-card />
   </form>
