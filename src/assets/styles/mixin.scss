@@ -68,7 +68,7 @@
 /** Table Mixins **/
 @mixin table {
   overflow-y: auto;
-  max-height: 20vh;
+  max-height: 80vh;
 
   table {
     width: 100%;
@@ -92,19 +92,16 @@
           padding: 10px 0;
           color: var(--table-header-text);
           background-color: var(--main-bg);
+
+          &.centered {
+            text-align: center;
+          }
         }
       }
     }
 
-    tbody {
-      tr {
-        &:not(:last-child) {
-          border-bottom: 1px solid var(--table-body-line);
-        }
-
-        td {
-        }
-      }
+    tbody tr:not(:last-child) {
+      border-bottom: 1px solid var(--table-body-line);
     }
 
     tfoot {

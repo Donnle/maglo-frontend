@@ -14,7 +14,10 @@ import {
   ReactiveFormsModule
 } from '@angular/forms';
 import { NgClass } from '@angular/common';
-import { InputIconPosition, TextPosition } from '../../../enums/input.enum';
+import {
+  InputIconPosition,
+  InputTextPosition
+} from '../../../enums/input.enum';
 
 @Component({
   selector: 'app-input',
@@ -31,8 +34,8 @@ import { InputIconPosition, TextPosition } from '../../../enums/input.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputComponent implements ControlValueAccessor {
-  textPosition: InputSignal<TextPosition> = input<TextPosition>(
-    TextPosition.Left
+  textPosition: InputSignal<InputTextPosition> = input<InputTextPosition>(
+    InputTextPosition.Left
   );
   iconPosition: InputSignal<InputIconPosition> = input<InputIconPosition>(
     InputIconPosition.Left

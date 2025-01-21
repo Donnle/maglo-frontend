@@ -9,6 +9,7 @@ import {
   InvoicesItem,
   InvoicesItemGroup
 } from '../../interfaces/invoices-items.interface';
+import { InputTextPosition } from '../../../../shared/enums/input.enum';
 
 @Component({
   selector: 'app-invoices-create-page',
@@ -18,9 +19,10 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InvoicesCreatePageComponent {
-  protected readonly invoiceForm: FormGroup;
+  protected invoiceForm: FormGroup;
 
   protected readonly ButtonSeverity = ButtonSeverity;
+  protected readonly InputTextPosition = InputTextPosition;
 
   protected get invoiceItems(): FormArray<FormGroup<InvoicesItemGroup>> {
     return this.invoiceForm.get('items') as FormArray<FormGroup>;
@@ -54,7 +56,10 @@ export class InvoicesCreatePageComponent {
         Validators.min(1)
       ]),
       rate: this.formBuilder.control(item?.rate || 0, [Validators.required]),
-      total: this.formBuilder.control(item?.total || 0, [Validators.required])
+      total: this.formBuilder.control(
+        { value: item?.total || 0, disabled: true },
+        [Validators.required]
+      )
     });
 
     this.invoiceItems.push(invoiceItem);

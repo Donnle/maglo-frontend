@@ -3,7 +3,9 @@ export enum InputIconPosition {
   Right = 'right'
 }
 
-export enum TextPosition {
+export enum InputTextPosition {
   Left = 'left',
   Center = 'center'
 }
+
+// export type InputTextPosition = 'left' | 'center'; TODO: Do like that

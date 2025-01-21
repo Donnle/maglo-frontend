@@ -102,6 +102,10 @@
 
   // Divider
   --divider-color: #f5f5f5;
+
+  // Skeleton
+  --skeleton-bg: #e6e6e6;
+  --skeleton-line-color: #ffffff;
 }
 
 :root[data-theme='dark'] {
@@ -208,4 +212,8 @@
 
   // Divider
   --divider-color: #282541;
+
+  // Skeleton
+  --skeleton-bg: #292745;
+  --skeleton-line-color: #433e73;
 }

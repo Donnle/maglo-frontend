@@ -19,7 +19,6 @@
         formControlName="card"
         placeholder="Select Card"
         queryControl="working_capital_card"
-        [queryEmitEvent]="false"
         [loading]="isWorkingCapitalLoading()"
         [options]="cards()"
       />
@@ -27,7 +26,6 @@
       <app-dropdown
         formControlName="range"
         queryControl="working_capital_range"
-        [queryEmitEvent]="false"
         [options]="TIME_RANGE"
       />
     </form>

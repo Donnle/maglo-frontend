@@ -6,6 +6,11 @@
 
 .content__table {
   @include mixin.table;
+  max-height: 216px;
+
+  td {
+    padding: 8px 0;
+  }
 }
 
 .header {

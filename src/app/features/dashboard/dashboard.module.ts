@@ -16,6 +16,8 @@ import { CreditCardComponent } from '../../shared/components/credit-card/credit-
 import { SkeletonDirective } from '../../shared/directives/skeleton-loading.directive';
 import { TransactionProductComponent } from '../../shared/components/transaction/transaction-product/transaction-product.component';
 import { LinkComponent } from '../../shared/components/link/link.component';
+import { CardNumbersPipe } from '../../shared/pipes/card-numbers.pipe';
+import { ButtonComponent } from '../../shared/components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { LinkComponent } from '../../shared/components/link/link.component';
     CreditCardComponent,
     SkeletonDirective,
     TransactionProductComponent,
-    LinkComponent
+    LinkComponent,
+    CardNumbersPipe,
+    ButtonComponent
   ]
 })
 export class DashboardModule {}

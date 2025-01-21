@@ -4,10 +4,10 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Rate</th>
-            <th>Amount</th>
+            <th class="table__header_item">Item</th>
+            <th class="centered">Quantity</th>
+            <th class="centered">Rate</th>
+            <th class="centered">Amount</th>
           </tr>
         </thead>
 
@@ -26,14 +26,15 @@
                     formControlName="quantity"
                     type="number"
                     placeholder="Enter Item Name"
+                    [textPosition]="InputTextPosition.Center"
                   />
                 </td>
                 <td>
                   <app-input
                     formControlName="rate"
                     type="number"
-                    icon="icon icon-chevron"
                     placeholder="Enter Rate"
+                    [textPosition]="InputTextPosition.Center"
                   />
                 </td>
                 <td>
@@ -41,6 +42,7 @@
                     formControlName="total"
                     type="number"
                     placeholder="Auto Calculate"
+                    [textPosition]="InputTextPosition.Center"
                   />
                 </td>
               </tr>
@@ -50,7 +52,7 @@
       </table>
     </div>
 
-    {{ invoiceForm.value | json }}
+    {{ invoiceForm.getRawValue() | json }}
 
     <button (click)="addInvoiceItem()">asdsad</button>
 

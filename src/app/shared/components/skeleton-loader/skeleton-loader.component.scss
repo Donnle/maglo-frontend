@@ -5,7 +5,7 @@
 .skeleton {
   display: inline-block;
   position: relative;
-  background-color: #292745;
+  background-color: var(--skeleton-bg);
   overflow: hidden;
 
   &::after {
@@ -16,7 +16,7 @@
     height: 200%;
 
     transform: translateY(-50%) rotate(15deg);
-    box-shadow: 5px 5px 20px 7px #433e73;
+    box-shadow: 5px 5px 20px 7px var(--skeleton-line-color);
     animation: 3s infinite ease-in-out skeleton-loader;
   }
 }

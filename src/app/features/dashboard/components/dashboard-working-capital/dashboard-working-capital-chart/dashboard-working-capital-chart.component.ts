@@ -54,7 +54,7 @@ export class DashboardWorkingCapitalChartComponent
   private chartRef?: Chart;
 
   ngAfterViewInit() {
-    this.upsertChart([132, 224, 133, 233, 142, 345, 341, 334, 46, 35, 435]);
+    this.upsertChart([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   }
 
   ngOnChanges(changes: SimpleChanges) {
