@@ -1,7 +1,8 @@
 import {
   Directive,
   ElementRef,
-  Input,
+  input,
+  InputSignal,
   OnChanges,
   Renderer2,
   SimpleChange,
@@ -10,7 +11,7 @@ import {
 
 @Directive({ selector: '[tableLoading]', standalone: true })
 export class TableLoadingDirective implements OnChanges {
-  @Input({ required: true }) tableLoading: boolean = false;
+  tableLoading: InputSignal<boolean> = input(false);
 
   private loaderRow!: HTMLElement;
 

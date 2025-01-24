@@ -1,7 +1,8 @@
 import {
   Directive,
   HostListener,
-  Input,
+  input,
+  InputSignal,
   OnInit,
   Optional
 } from '@angular/core';
@@ -15,8 +16,8 @@ import { NgControl } from '@angular/forms';
  */
 @Directive({ selector: '[queryControl]', standalone: true })
 export class QueryControlDirective implements OnInit {
-  @Input({ required: true }) queryControl!: string | undefined;
-  @Input() queryEmitEvent: boolean = true;
+  queryControl: InputSignal<string> = input.required<string>();
+  queryEmitEvent: InputSignal<boolean> = input<boolean>(true);
 
   @HostListener('ngModelChange', ['$event'])
   onNgModelChange(rawValue: object | string): void {
@@ -31,7 +32,7 @@ export class QueryControlDirective implements OnInit {
 
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
-      queryParams: { ...queryParams, [this.queryControl]: value }
+      queryParams: { ...queryParams, [this.queryControl()]: value }
     });
   }
 
@@ -47,7 +48,7 @@ export class QueryControlDirective implements OnInit {
     }
 
     const initialValue: string | undefined = this.getValueFromQuery(
-      this.queryControl
+      this.queryControl()
     );
 
     if (initialValue) {
