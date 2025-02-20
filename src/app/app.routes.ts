@@ -9,7 +9,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'main',
-        title: 'Dashboard',
+        title: 'Dashboard2',
         data: { title: 'Dashboard' },
         loadChildren: () =>
           import('./features/dashboard/dashboard.module').then(
