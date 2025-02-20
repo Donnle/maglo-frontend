@@ -1,34 +1,24 @@
-name: Deploy to Firebase Hosting
+name: CI
 
 on:
   push:
     branches:
-      - main  # Runs on push to main branch
+      - main
 
 jobs:
-  deploy:
-    name: Deploy to Firebase
+  firebase-deploy:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
         with:
-          node-version: 18
-
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Build Angular Application
-        run: npm run build -- --configuration=production
-
-      - name: Deploy to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
+          node-version: '12.x'
+      - run: npm install
+      - run: npm run build
+      - uses: w9jds/firebase-action@master
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
-          channelId: live  # Deploys to the live environment
-          projectId: maglo-a1d85  # Replace with your actual Firebase project ID
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
