@@ -8,10 +8,11 @@ import { SpinnerComponent } from '../../shared/components/spinner/spinner.compon
 import { InputComponent } from '../../shared/components/controllers/input/input.component';
 import { DropdownComponent } from '../../shared/components/controllers/dropdown/dropdown.component';
 import { TagComponent } from '../../shared/components/tag/tag.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CheckboxComponent } from '../../shared/components/controllers/checkbox/checkbox.component';
 import { MultiDropdownComponent } from '../../shared/components/controllers/multi-dropdown/multi-dropdown.component';
 import { QueryControlDirective } from '../../shared/directives/query-control.directive';
+import { DatePickerComponent } from '../../shared/components/controllers/date-picker/date-picker.component';
 
 @NgModule({
   declarations: [UiToolkitPageComponent],
@@ -26,7 +27,9 @@ import { QueryControlDirective } from '../../shared/directives/query-control.dir
     ReactiveFormsModule,
     CheckboxComponent,
     MultiDropdownComponent,
-    QueryControlDirective
+    QueryControlDirective,
+    DatePickerComponent,
+    FormsModule
   ]
 })
 export class UiToolkitModule {}

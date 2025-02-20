@@ -1,16 +1,8 @@
-@import 'mixin';
+:host ::ng-deep app-dashboard-scheduled-transfers {
+  height: 100%;
 
-.container {
-}
-
-.header {
-  padding-bottom: 24px;
-
-  &__title {
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 1.2em;
-    color: var(--text-1);
+  & > .container > .content > .content__table {
+    max-height: 487px;
   }
 }
 
@@ -20,107 +12,35 @@
   gap: 24px;
 
   &__general {
-    flex: 0 1 66%;
+    flex: 1 1 66%;
 
     &_statistic-cards {
       display: flex;
+      flex-wrap: wrap;
       align-items: flex-start;
       gap: 24px;
 
+      padding-bottom: 24px;
+    }
+
+    &_working-capital {
       padding-bottom: 24px;
     }
   }
 
   &__wallets {
-    flex: 0 1 34%;
-  }
-}
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
 
-.content__general {
-  flex: 0 1 66%;
-}
+    flex: 1 1 34%;
 
-.content__general_statistic-cards {
-}
-
-.content__general_working-capital {
-  padding-bottom: 30px;
-}
-
-.content__general_recent-transactions {
-}
-
-.content__wallets {
-}
-
-.content__wallets_info {
-}
-
-.wallet {
-}
-
-.content__wallet_transactions {
-}
-
-.dashboard__working-capital {
-}
-
-.dashboard__working-capital {
-}
-
-.dashboard__table {
-  @include table;
-}
-
-.working-capital {
-}
-.working-capital__chart div {
-}
-.working-capital__header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-
-  padding-bottom: 16px;
-}
-
-.working-capital {
-  position: relative;
-  width: 100%;
-
-  &__header_title {
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1.2em;
-    color: var(--text-1);
-  }
-}
-
-.working-capital__header_period {
-}
-
-.working-capital__chart {
-}
-
-.content {
-  display: flex;
-  align-items: flex-start;
-  gap: 24px;
-
-  .dashboard {
-    flex: 0 1 66%;
-
-    &__statistics {
-      display: flex;
-      align-items: flex-start;
-      gap: 24px;
-
+    &_info {
       padding-bottom: 24px;
     }
-  }
 
-  .wallets {
-    flex: 0 1 33%;
+    &_scheduled-transfers {
+      flex: 0;
+    }
   }
 }

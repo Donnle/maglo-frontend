@@ -6,18 +6,18 @@
     cdkOverlayOrigin
     #trigger="cdkOverlayOrigin"
     class="multi-dropdown__button"
-    [class.opened]="isOpen"
-    [disabled]="isDisabled"
+    [class.opened]="isOpen()"
+    [disabled]="isDisabled()"
     (click)="toggleDropdownOpen()"
   >
     <span
       class="multi-dropdown__button_name"
       [class.placeholder]="selectedOptionLabels.length === 0"
     >
-      @if (selectedOptionLabels.length > countVisibleSelectedOptions) {
+      @if (selectedOptionLabels.length > countVisibleSelectedOptions()) {
         {{ selectedOptionLabels.length }} items selected
       } @else {
-        {{ selectedOptionLabels.join(', ') || placeholder }}
+        {{ selectedOptionLabels.join(', ') || placeholder() }}
       }
     </span>
 
@@ -27,14 +27,14 @@
   <!-- DropDown Options -->
   <ng-template
     cdkConnectedOverlay
-    [cdkConnectedOverlayOpen]="isOpen"
+    [cdkConnectedOverlayOpen]="isOpen()"
     [cdkConnectedOverlayOrigin]="trigger"
     [cdkConnectedOverlayWidth]="dropdownButtonWidth"
     (overlayOutsideClick)="closeDropdown()"
   >
     <ul class="multi-dropdown__options">
-      @for (option of options; track $index) {
-        @let isActive = selectedOptionIndexes.includes($index);
+      @for (option of options(); track $index) {
+        @let isActive = selectedOptionIndexes().includes($index);
 
         <li class="multi-dropdown__options_item option">
           <label class="option__checkbox">
@@ -53,12 +53,12 @@
             </span>
           </label>
 
-          {{ option[optionLabelName] }}
+          {{ option[optionLabelName()] }}
         </li>
       }
 
-      @if (options.length === 0) {
-        <li class="multi-dropdown__options_item empty">{{ empty }}</li>
+      @if (options().length === 0) {
+        <li class="multi-dropdown__options_item empty">{{ empty() }}</li>
       }
     </ul>
   </ng-template>

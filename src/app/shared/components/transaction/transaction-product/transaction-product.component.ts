@@ -7,7 +7,6 @@ import {
 
 @Component({
   selector: 'app-transaction-product',
-  standalone: true,
   imports: [],
   templateUrl: './transaction-product.component.html',
   styleUrl: './transaction-product.component.scss',
@@ -20,7 +19,7 @@ export class TransactionProductComponent {
   name: InputSignal<string> = input('Iphone 13 Pro MAX');
   category: InputSignal<string> = input('Apple. Inc');
   imageSrc: InputSignal<string> = input(this.DEFAULT_PRODUCT_IMAGE, {
-    transform: (imageSrc: string) => {
+    transform: (imageSrc: string): string => {
       this._imageSrc = imageSrc;
       return imageSrc;
     }

@@ -1,0 +1,41 @@
+<div class="client">
+  <div class="client__header">
+    <h5 class="client__header_title">Client Details</h5>
+    <span class="client__header_change">Change</span>
+  </div>
+
+  <div class="client__user client-user">
+    <div class="client-user__avatar">
+      <img
+        class="client-user__avatar_img"
+        src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        alt="client avatar"
+      />
+    </div>
+    <div class="client-user__info">
+      <span class="client-user__info_name">Sajib Rahman</span>
+      <a class="client-user__info_email" href="mailto:rahmansajib@uihut.com">
+        {{ 'rahmansajib@uihut.com' }}
+      </a>
+    </div>
+  </div>
+
+  <hr class="client__divider" />
+
+  <div class="client__company client-company">
+    <span class="client-company__name">
+      UIHUT Agency LTD
+
+      <span class="icon icon-verify"></span>
+    </span>
+    <span class="client-company__address">
+      3471 Rainy Day Drive Tulsa, USA
+    </span>
+  </div>
+
+  <div class="client__add">
+    <app-button [size]="ButtonSize.Wide" [severity]="ButtonSeverity.Success">
+      Add Customer
+    </app-button>
+  </div>
+</div>

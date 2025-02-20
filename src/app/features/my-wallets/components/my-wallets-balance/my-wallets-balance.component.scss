@@ -1,0 +1,68 @@
+.container {
+  padding: 25px;
+  background: var(--card-bg);
+  border-radius: 10px;
+}
+
+.content {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.content__balance {
+}
+
+.balance {
+}
+
+.balance__label {
+  display: block;
+  font-size: 14px;
+  line-height: 1.2em;
+  font-weight: 500;
+  color: var(--text-2);
+  padding-bottom: 4px;
+}
+
+.balance__value {
+  font-size: 20px;
+  line-height: 1.2em;
+  font-weight: 600;
+  color: var(--text-1);
+}
+
+.balance__value_total {
+}
+
+.balance__value_profit {
+}
+
+.content__profit {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  &:has(.icon-arrow-up) {
+    color: var(--success);
+  }
+
+  &:has(.icon-arrow-down) {
+    color: var(--error);
+  }
+
+  &_value {
+    font-size: 14px;
+    line-height: 1.2em;
+    font-weight: 400;
+  }
+}
+
+.balance-profit__arrow {
+}
+
+.icon {
+}
+
+.balance-profit__value {
+}

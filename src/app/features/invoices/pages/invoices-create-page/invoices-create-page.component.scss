@@ -1,0 +1,19 @@
+@use 'mixin' as mixins;
+
+.form__invoice-items {
+  @include mixins.table;
+
+  thead tr th,
+  tbody tr td {
+    padding: 0 8px !important;
+  }
+
+  .table__header_item {
+    width: 45%;
+  }
+
+  tbody tr {
+    height: 70px;
+    border-bottom: none !important;
+  }
+}

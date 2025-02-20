@@ -3,19 +3,19 @@
   <input
     class="checkbox__input"
     type="checkbox"
-    [ngModel]="isChecked"
+    [ngModel]="isChecked()"
     (ngModelChange)="onCheckboxClick($event)"
   />
 
   <!-- UI Checkbox Content -->
   <span class="checkbox__content">
-    @if (isChecked) {
+    @if (isChecked()) {
       <i class="icon icon-done"></i>
     }
   </span>
 
   <!-- Label -->
-  @if (label) {
-    <span class="checkbox__name">{{ label }}</span>
+  @if (label()) {
+    <span class="checkbox__name">{{ label() }}</span>
   }
 </label>

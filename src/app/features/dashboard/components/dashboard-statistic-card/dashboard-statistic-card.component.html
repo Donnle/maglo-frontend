@@ -1,12 +1,17 @@
 <div class="card">
-  @if (icon) {
+  @if (icon()) {
     <div class="card__icon">
-      <i [ngClass]="[icon]"></i>
+      <i [ngClass]="[icon()]"></i>
     </div>
   }
 
   <div class="card__content">
-    <h5 class="card__content_label">{{ label }}</h5>
-    <span class="card__content_value">{{ value }}</span>
+    <h5 class="card__content_label">{{ label() }}</h5>
+    <span
+      *skeleton="isLoading(); width: '100%'; height: '30px'"
+      class="card__content_value"
+    >
+      {{ value() }}
+    </span>
   </div>
 </div>

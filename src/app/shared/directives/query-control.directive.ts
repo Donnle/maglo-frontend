@@ -1,7 +1,8 @@
 import {
   Directive,
   HostListener,
-  Input,
+  input,
+  InputSignal,
   OnInit,
   Optional
 } from '@angular/core';
@@ -13,13 +14,10 @@ import { NgControl } from '@angular/forms';
  *
  * Note: Works bad with [(ngModel)]
  */
-@Directive({
-  selector: '[queryControl]',
-  standalone: true
-})
+@Directive({ selector: '[queryControl]', standalone: true })
 export class QueryControlDirective implements OnInit {
-  @Input({ required: true }) queryControl!: string | undefined;
-  @Input() queryEmitEvent: boolean = true;
+  queryControl: InputSignal<string> = input.required<string>();
+  queryEmitEvent: InputSignal<boolean> = input<boolean>(true);
 
   @HostListener('ngModelChange', ['$event'])
   onNgModelChange(rawValue: object | string): void {
@@ -34,7 +32,7 @@ export class QueryControlDirective implements OnInit {
 
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
-      queryParams: { ...queryParams, [this.queryControl]: value }
+      queryParams: { ...queryParams, [this.queryControl()]: value }
     });
   }
 
@@ -44,13 +42,13 @@ export class QueryControlDirective implements OnInit {
     @Optional() private ngControl: NgControl
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.ngControl == null || this.ngControl.control == null) {
       return;
     }
 
     const initialValue: string | undefined = this.getValueFromQuery(
-      this.queryControl
+      this.queryControl()
     );
 
     if (initialValue) {
@@ -75,7 +73,7 @@ export class QueryControlDirective implements OnInit {
     return queryParams[query];
   }
 
-  private patchControlValue(value: string) {
+  private patchControlValue(value: string): void {
     if (value == null) {
       console.error('Value is not defined!');
       return;

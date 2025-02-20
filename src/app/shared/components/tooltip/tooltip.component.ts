@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, input, InputSignal } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { TooltipStyle } from '../../enums/tooltip.enum';
 
 @Component({
-  selector: 'tooltip',
+  selector: 'app-tooltip',
   templateUrl: './tooltip.component.html',
   styleUrls: ['./tooltip.component.scss'],
   imports: [NgClass],
-  standalone: true
 })
 export class TooltipComponent {
-  style: TooltipStyle = TooltipStyle.Default;
-  tooltip: string = '';
-  left: number = 0;
-  top: number = 0;
-  visible: boolean = false;
+  style: InputSignal<TooltipStyle> = input<TooltipStyle>(TooltipStyle.Default);
+  tooltip: InputSignal<string> = input('');
+  left: InputSignal<number> = input(0);
+  top: InputSignal<number> = input(0);
+  visible: InputSignal<boolean> = input(false);
 }

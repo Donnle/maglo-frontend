@@ -1,12 +1,17 @@
-import { Component, input, InputSignal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  InputSignal
+} from '@angular/core';
 import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-skeleton-loader',
-  standalone: true,
   imports: [NgStyle],
   templateUrl: './skeleton-loader.component.html',
-  styleUrl: './skeleton-loader.component.scss'
+  styleUrl: './skeleton-loader.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SkeletonLoaderComponent {
   width: InputSignal<string> = input('100px');

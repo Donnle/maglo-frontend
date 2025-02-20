@@ -2,7 +2,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input
+  input,
+  InputSignal,
+  signal,
+  WritableSignal
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -11,13 +14,14 @@ import {
   ReactiveFormsModule
 } from '@angular/forms';
 import { NgClass } from '@angular/common';
-import { ButtonComponent } from '../../button/button.component';
-import { InputIconPosition } from '../../../enums/input.enum';
+import {
+  InputIconPosition,
+  InputTextPosition
+} from '../../../enums/input.enum';
 
 @Component({
   selector: 'app-input',
-  standalone: true,
-  imports: [ReactiveFormsModule, NgClass, FormsModule, ButtonComponent],
+  imports: [ReactiveFormsModule, NgClass, FormsModule],
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
   providers: [
@@ -30,22 +34,27 @@ import { InputIconPosition } from '../../../enums/input.enum';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputComponent implements ControlValueAccessor {
-  @Input() iconPosition: InputIconPosition = InputIconPosition.Left;
-  @Input() icon?: string;
+  textPosition: InputSignal<InputTextPosition> = input<InputTextPosition>(
+    InputTextPosition.Left
+  );
+  iconPosition: InputSignal<InputIconPosition> = input<InputIconPosition>(
+    InputIconPosition.Left
+  );
 
-  @Input() label: string = '';
-  @Input() placeholder: string = '';
+  type: InputSignal<string> = input<string>('text');
+  icon: InputSignal<string | undefined> = input<string>();
+  label: InputSignal<string> = input<string>('');
+  placeholder: InputSignal<string> = input<string>('');
 
-  value: string = '';
-
-  protected isDisabled: boolean = false;
+  value: WritableSignal<string> = signal<string>('');
+  isDisabled: WritableSignal<boolean> = signal<boolean>(false);
 
   onValueChange(value: string) {
-    this.value = value;
+    this.value.set(value);
     this.onChange(value);
   }
 
-  onBlur() {
+  onBlur(): void {
     this.onTouched();
   }
 
@@ -62,10 +71,10 @@ export class InputComponent implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.isDisabled = isDisabled;
+    this.isDisabled.set(isDisabled);
   }
 
   writeValue(value: string): void {
-    this.value = value;
+    this.value.set(value);
   }
 }
