@@ -1,0 +1,20 @@
+@use 'mixin' as mixin;
+
+:host {
+  width: 100%;
+  max-width: 555px;
+}
+
+.header {
+  padding-bottom: 25px !important;
+  @include mixin.authorization-header;
+}
+
+.form {
+  padding-bottom: 25px !important;
+  @include mixin.authorization-form;
+}
+
+.footer {
+  @include mixin.authorization-footer;
+}

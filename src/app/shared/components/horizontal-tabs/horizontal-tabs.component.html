@@ -1,0 +1,11 @@
+@for (tab of tabs(); track tab.routerLink) {
+  <div class="tab">
+    <a
+      class="tab__link"
+      routerLinkActive="active"
+      [routerLink]="tab.routerLink"
+    >
+      <span class="tab__link_text">{{ tab.label }}</span>
+    </a>
+  </div>
+}

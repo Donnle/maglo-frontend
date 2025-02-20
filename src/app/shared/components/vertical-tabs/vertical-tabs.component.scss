@@ -1,0 +1,40 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  cursor: pointer;
+  background: transparent;
+  text-decoration: none;
+
+  padding: 12px 15px;
+  border-radius: 12px;
+
+  &.active {
+    background: var(--primary);
+
+    .tab__link_icon,
+    .tab__link_text {
+      color: var(--sidebar-active-text);
+    }
+  }
+
+  &_icon {
+    font-size: 16px;
+    line-height: 1.2em;
+    color: var(--sidebar-text);
+  }
+
+  &_text {
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.2em;
+    font-weight: 500;
+    color: var(--sidebar-text);
+  }
+}

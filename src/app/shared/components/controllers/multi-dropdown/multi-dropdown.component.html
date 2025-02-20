@@ -1,0 +1,65 @@
+@let dropdownButtonWidth = trigger.elementRef.nativeElement.offsetWidth;
+
+<div class="multi-dropdown">
+  <!-- DropDown Button -->
+  <button
+    cdkOverlayOrigin
+    #trigger="cdkOverlayOrigin"
+    class="multi-dropdown__button"
+    [class.opened]="isOpen()"
+    [disabled]="isDisabled()"
+    (click)="toggleDropdownOpen()"
+  >
+    <span
+      class="multi-dropdown__button_name"
+      [class.placeholder]="selectedOptionLabels.length === 0"
+    >
+      @if (selectedOptionLabels.length > countVisibleSelectedOptions()) {
+        {{ selectedOptionLabels.length }} items selected
+      } @else {
+        {{ selectedOptionLabels.join(', ') || placeholder() }}
+      }
+    </span>
+
+    <i class="multi-dropdown__button_icon icon icon-chevron"></i>
+  </button>
+
+  <!-- DropDown Options -->
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOpen]="isOpen()"
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayWidth]="dropdownButtonWidth"
+    (overlayOutsideClick)="closeDropdown()"
+  >
+    <ul class="multi-dropdown__options">
+      @for (option of options(); track $index) {
+        @let isActive = selectedOptionIndexes().includes($index);
+
+        <li class="multi-dropdown__options_item option">
+          <label class="option__checkbox">
+            <input
+              class="option__checkbox_input"
+              type="checkbox"
+              [ngModel]="isActive"
+              (ngModelChange)="toggleSelect($index, $event)"
+            />
+
+            <!-- UI Checkbox Content -->
+            <span class="option__checkbox_content">
+              @if (isActive) {
+                <i class="icon icon-done"></i>
+              }
+            </span>
+          </label>
+
+          {{ option[optionLabelName()] }}
+        </li>
+      }
+
+      @if (options().length === 0) {
+        <li class="multi-dropdown__options_item empty">{{ empty() }}</li>
+      }
+    </ul>
+  </ng-template>
+</div>

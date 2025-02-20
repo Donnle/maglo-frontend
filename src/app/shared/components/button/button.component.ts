@@ -1,42 +1,57 @@
-import { Component, Input } from '@angular/core';
-import { SpinnerComponent } from '../spinner/spinner.component';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  InputSignal,
+  output,
+  OutputEmitterRef
+} from '@angular/core';
 import { NgClass } from '@angular/common';
-import { Button } from 'primeng/button';
-import { TooltipModule } from 'primeng/tooltip';
-
-export enum ButtonSeverity {
-  Primary = 'primary',
-  Secondary = 'secondary',
-  Success = 'success'
-}
-
-export enum ButtonSize {
-  Small = 'small',
-  Medium = 'medium',
-  Large = 'large',
-  Wide = 'wide'
-}
+import { SpinnerComponent } from '../spinner/spinner.component';
+import {
+  ButtonSeverity,
+  ButtonSize,
+  ButtonStyle,
+  ButtonType
+} from '../../enums/button.enum';
+import { SpinnerSize } from '../../enums/spiner.enum';
 
 @Component({
   selector: 'app-button',
-  standalone: true,
-  imports: [SpinnerComponent, NgClass, Button, TooltipModule],
+  imports: [NgClass, SpinnerComponent],
   templateUrl: './button.component.html',
-  styleUrl: './button.component.scss'
+  styleUrl: './button.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent {
   // Styles
-  @Input() severity: ButtonSeverity = ButtonSeverity.Primary;
-  @Input() size: ButtonSize = ButtonSize.Medium;
-  @Input() outlined: boolean = false;
+  style: InputSignal<ButtonStyle> = input<ButtonStyle>(ButtonStyle.Default);
+  size: InputSignal<ButtonSize> = input<ButtonSize>(ButtonSize.Medium);
+  type: InputSignal<ButtonType> = input<ButtonType>(ButtonType.Submit);
+  severity: InputSignal<ButtonSeverity> = input<ButtonSeverity>(
+    ButtonSeverity.Primary
+  );
+
+  outlined: InputSignal<boolean> = input<boolean>(false);
 
   // States
-  @Input() disabled: boolean = false;
-  @Input() loading: boolean = false;
+  disabled: InputSignal<boolean> = input<boolean>(false);
+  loading: InputSignal<boolean> = input<boolean>(false);
 
   // Icon
-  @Input() icon?: string;
+  icon: InputSignal<string | string[] | undefined> = input<
+    string | string[] | undefined
+  >();
 
   // Tooltip
-  @Input() tooltip?: string;
+  tooltip: InputSignal<string | undefined> = input<string | undefined>();
+
+  buttonClick: OutputEmitterRef<Event> = output<Event>();
+
+  protected readonly SpinnerSize: typeof SpinnerSize = SpinnerSize;
+  protected readonly ButtonStyle: typeof ButtonStyle = ButtonStyle;
+
+  onClick(event: Event): void {
+    this.buttonClick.emit(event);
+  }
 }

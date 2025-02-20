@@ -1,0 +1,16 @@
+.date {
+  &__day {
+    font-size: 14px;
+    line-height: 1.2em;
+    font-weight: 500;
+    color: var(--text-1);
+
+    padding-bottom: 4px;
+  }
+
+  &__time {
+    font-size: 12px;
+    line-height: 1.2em;
+    color: var(--text-2);
+  }
+}

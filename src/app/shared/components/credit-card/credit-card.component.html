@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="card__header">
+    <h5 class="card__header_logo">Maglo.</h5>
+    <span class="card__header_separator">|</span>
+    <span class="card__header_bank-name">
+      {{ bankName() }}
+    </span>
+  </div>
+
+  <div class="card__icons">
+    <span class="icon icon-chip">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+      <span class="path5"></span>
+      <span class="path6"></span>
+      <span class="path7"></span>
+      <span class="path8"></span>
+    </span>
+    <span class="icon icon-wifi"></span>
+  </div>
+
+  <div class="card__content">
+    <div class="card__metadata">
+      <span class="card__metadata_numbers" [copyToClipboard]="cardNumbers()">
+        {{ cardNumbers() | cardNumbers: 6 : 12 }}
+      </span>
+      <span class="card__metadata_expire">
+        {{ expireDate() | date: 'MM/YY' }}
+      </span>
+    </div>
+    <div class="card__type">
+      @switch (type()) {
+        @case (CreditCardType.MasterCard) {
+          <span class="icon icon-mastercard">
+            <span class="path1"></span>
+            <span class="path2"></span>
+            <span class="path3"></span>
+            <span class="path4"></span>
+          </span>
+        }
+        @case (CreditCardType.Visa) {
+          <span class="icon icon-visa"></span>
+        }
+      }
+    </div>
+  </div>
+</div>

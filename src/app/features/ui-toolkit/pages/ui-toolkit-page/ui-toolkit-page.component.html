@@ -1,0 +1,108 @@
+<div class="container">
+  <app-multi-dropdown
+    queryControl="multiselect"
+    optionValueName="id"
+    optionLabelName="name"
+    [options]="[
+      { name: 'asd', id: 'test' },
+      { name: 'asd2', id: 'test3' },
+      { name: 'asd3', id: 'test5' },
+      { name: 'asd4', id: 'test6' }
+    ]"
+    [formControl]="control4"
+  />
+
+  <app-date-picker [placeholder]="'test'" [formControl]="dateControl" />
+
+  <h2>Buttons</h2>
+  <app-button [tooltip]="'Tooltip'">Button</app-button>
+  <app-button [loading]="true">Button Loading</app-button>
+  <app-button [size]="ButtonSize.Small">Button Small</app-button>
+  <app-button [size]="ButtonSize.Medium">Button Medium</app-button>
+  <app-button [size]="ButtonSize.Large">Button Large</app-button>
+  <app-button [size]="ButtonSize.Wide">Button Wide</app-button>
+
+  <app-button [severity]="ButtonSeverity.Primary">Button Primary</app-button>
+  <app-button [severity]="ButtonSeverity.Secondary">
+    Button Secondary
+  </app-button>
+
+  <app-button [severity]="ButtonSeverity.Success">Button Success</app-button>
+
+  <app-button
+    [icon]="'icon-search'"
+    [outlined]="true"
+    [severity]="ButtonSeverity.Secondary"
+  >
+    Button Secondary outlined
+  </app-button>
+
+  <br />
+
+  <h2>Tags</h2>
+
+  <app-tag [severity]="TagSeverity.Warning">Pending</app-tag>
+  <app-tag [severity]="TagSeverity.Success">Paid</app-tag>
+  <app-tag [severity]="TagSeverity.Error">Unpaid</app-tag>
+
+  <br />
+
+  <h2>Spinner</h2>
+  <app-spinner />
+
+  <br />
+
+  <h2>CheckBox</h2>
+  <app-checkbox
+    queryControl="checkbox"
+    [trueValue]="'testTrue'"
+    [falseValue]="'testFalse'"
+    [label]="'Test'"
+    [formControl]="control3"
+  />
+
+  <h2>Dropdown</h2>
+  <app-dropdown [loading]="true" [formControl]="control" [options]="[]" />
+
+  <app-dropdown
+    queryControl="test"
+    [optionValueName]="null"
+    [optionLabelName]="'name'"
+    [formControl]="control"
+    [options]="[
+      { name: 'asd', id: 'test' },
+      { name: 'asd2', id: 'test3' }
+    ]"
+  />
+
+  <br />
+
+  <h2>Inputs</h2>
+  <app-input queryControl="query" label="Query Test" [formControl]="control2" />
+
+  <app-input [formControl]="control" />
+
+  <app-input [formControl]="control" label="Test" />
+  <app-input
+    [formControl]="control"
+    label="Test 2"
+    placeholder="Test placeholder"
+  />
+
+  <!--    [disabled]="true"-->
+  <app-input
+    [formControl]="control"
+    [icon]="'icon-search'"
+    label="Test 3"
+    placeholder="Test placeholder"
+  />
+
+  <!--    [disabled]="true"-->
+  <app-input
+    [formControl]="control"
+    [iconPosition]="InputIconPosition.Right"
+    [icon]="'icon-search'"
+    label="Test 4"
+    placeholder="Test placeholder"
+  />
+</div>

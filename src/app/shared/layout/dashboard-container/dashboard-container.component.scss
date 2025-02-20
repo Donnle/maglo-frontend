@@ -1,0 +1,96 @@
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: 9999;
+
+  padding: 30px 25px 100px;
+  width: fit-content;
+  background: var(--sidebar-bg);
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    text-decoration: none;
+    color: var(--text-1);
+    margin-bottom: 40px;
+
+    &_icon {
+      font-size: 30px;
+    }
+
+    &_name {
+      font-family: 'Gordita', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+}
+
+.menus {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: fit-content;
+
+  .menu--top {
+    width: 200px;
+    flex: 1;
+  }
+}
+
+.content {
+  position: relative;
+  margin-left: 250px;
+  width: 100%;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border-color);
+
+  margin: -30px 0px 30px;
+  padding: 16px 40px;
+
+  &__page_title {
+    font-family: 'Kumbh Sans', sans-serif;
+    font-size: 24px;
+    line-height: 1.2em;
+    font-weight: 600;
+    color: var(--text-1);
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+
+    width: fit-content;
+  }
+}
+
+.main {
+  padding: 30px 40px;
+}

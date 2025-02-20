@@ -64,3 +64,93 @@
     }
   }
 }
+
+/** Table Mixins **/
+@mixin table {
+  overflow-y: auto;
+  max-height: 80vh;
+
+  table {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    border-collapse: collapse;
+
+    thead {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+
+      tr {
+        th {
+          font-family: 'Kumbh Sans', sans-serif;
+          font-size: 12px;
+          line-height: 1.2em;
+          font-weight: 600;
+          text-transform: uppercase;
+
+          padding: 10px 0;
+          color: var(--table-header-text);
+          background-color: var(--main-bg);
+
+          &.centered {
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    tbody tr:not(:last-child) {
+      border-bottom: 1px solid var(--table-body-line);
+    }
+
+    tfoot {
+      position: sticky;
+      bottom: 0;
+      z-index: 3;
+
+      tr {
+        th,
+        td {
+          font-family: 'Kumbh Sans', sans-serif;
+          font-size: 12px;
+          line-height: 1.2em;
+          font-weight: 600;
+          text-transform: uppercase;
+
+          padding: 10px 0;
+
+          color: var(--table-header-text);
+          background-color: var(--main-bg);
+        }
+      }
+    }
+  }
+}
+
+@mixin card {
+  padding: 15px 25px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+}
+
+@mixin link-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.2em;
+  text-decoration: none;
+  color: var(--secondary);
+  cursor: pointer;
+
+  .icon.icon-chevron {
+    writing-mode: vertical-rl;
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+  }
+}

@@ -1,27 +1,38 @@
-# MagloFrontend
+# Maglo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+## Folder Structure
+- `app`: Main app Folder.
+  - `core`: Logic related only for `Maglo` project, and can't be used in other projects.
+  - `features`: Global Features (eg. Authorization, Settings, Transactions etc.).
+  - `shared`: Files that not directly related for `Maglo` project and can be used in other projects.
 
-## Development server
+## File Naming
+*General*: 
+1. Should describe all functionalities that implemented in.
+2. Placed files (components, services, pipes, etc.) in feature, should have the same 
+prefix as feature name.
+3. Files (components, services, pipes, etc.) placed in `api` folder should end with `-api`.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Service
+1. If service makes only requests, this service name should end with `-api`, 
+and should be placed in `api` folder.
 
-## Code scaffolding
+### Component
+1. If component is modal, it should end with `-modal`
+2. If component is page, it should end with `-page`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Variable Naming
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Interfaces
 
-## Running unit tests
+1. Interfaces that describes body of some request, should have similar name pattern - 
+*"MethodName"* + *"EntityName"* + *Body*. (e.g. PostProductBody, PutProductBody).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. Interfaces that describes query params for request, should have similar name pattern -
+*"MethodName"* + *"EntityName"* + *Parameters* (e.g. GetProductParameters).
 
-## Running end-to-end tests
+### Components
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+1. Loading variable status should have next name pattern - 
+*is (if that's correct)* + *"EntityName"* + *Loading* (e.g. productsLoading, isProductLoading etc.)

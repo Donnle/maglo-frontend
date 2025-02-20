@@ -1,0 +1,56 @@
+<div class="header">
+  <h2 class="header__title">Welcome back</h2>
+  <p class="header__subtitle">Welcome back! Please enter your details</p>
+</div>
+<form [formGroup]="signInForm" (ngSubmit)="onSubmit()" class="form">
+  <div class="form__content">
+    <app-input
+      label="Email"
+      placeholder="example@gmail.com"
+      formControlName="email"
+    />
+
+    <app-input-password
+      label="Password"
+      placeholder="••••••••"
+      formControlName="password"
+    />
+  </div>
+
+  <div class="form__options">
+    <div class="form__options_remember">
+      <app-checkbox
+        label="Remember for 30 Days"
+        formControlName="short_remember"
+      />
+    </div>
+    <a routerLink="/authorization/forgot-password" class="form__options_link">
+      Forgot password
+    </a>
+  </div>
+
+  <div class="form__actions">
+    <app-button
+      [disabled]="signInForm.invalid"
+      [severity]="ButtonSeverity.Primary"
+      [size]="ButtonSize.Wide"
+    >
+      Sign in
+    </app-button>
+    <app-button
+      [type]="ButtonType.Button"
+      [icon]="'icon-google'"
+      [outlined]="true"
+      [severity]="ButtonSeverity.Secondary"
+      [size]="ButtonSize.Wide"
+    >
+      Sign In with Google
+    </app-button>
+  </div>
+</form>
+<div class="footer">
+  <span class="footer__question">Already have an account?</span>
+  <a class="footer__link" routerLink="/authorization/sign-up">
+    Sign up for free
+  </a>
+</div>

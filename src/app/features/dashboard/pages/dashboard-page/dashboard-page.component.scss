@@ -1,0 +1,46 @@
+:host ::ng-deep app-dashboard-scheduled-transfers {
+  height: 100%;
+
+  & > .container > .content > .content__table {
+    max-height: 487px;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+
+  &__general {
+    flex: 1 1 66%;
+
+    &_statistic-cards {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 24px;
+
+      padding-bottom: 24px;
+    }
+
+    &_working-capital {
+      padding-bottom: 24px;
+    }
+  }
+
+  &__wallets {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+
+    flex: 1 1 34%;
+
+    &_info {
+      padding-bottom: 24px;
+    }
+
+    &_scheduled-transfers {
+      flex: 0;
+    }
+  }
+}

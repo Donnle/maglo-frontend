@@ -1,0 +1,52 @@
+@let selectedOption = options()[selectedOptionIndex()];
+@let selectedOptionLabel = selectedOption && selectedOption[optionLabelName()];
+
+@let dropdownButtonWidth = trigger.elementRef.nativeElement.offsetWidth;
+
+<div class="dropdown">
+  <!-- DropDown Button -->
+  <button
+    cdkOverlayOrigin
+    #trigger="cdkOverlayOrigin"
+    class="dropdown__button"
+    [class.opened]="isOpen()"
+    [disabled]="isDisabled()"
+    (click)="toggleDropdownOpen()"
+  >
+    <span
+      class="dropdown__button_name"
+      [class.placeholder]="!selectedOptionLabel"
+    >
+      {{ selectedOptionLabel || placeholder() }}
+    </span>
+
+    <i class="dropdown__button_icon icon icon-chevron"></i>
+  </button>
+
+  <!-- DropDown Options -->
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOpen]="isOpen()"
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayWidth]="dropdownButtonWidth"
+    (overlayOutsideClick)="closeDropdown()"
+  >
+    <ul class="dropdown__options">
+      @for (option of options(); track $index) {
+        @let isActive = selectedOptionIndex() === $index;
+
+        <li
+          class="dropdown__options_item option"
+          [class.active]="isActive"
+          (click)="onSelectOption($index)"
+        >
+          {{ option[optionLabelName()] }}
+        </li>
+      }
+
+      @if (options().length === 0) {
+        <li class="dropdown__options_item empty">{{ empty() }}</li>
+      }
+    </ul>
+  </ng-template>
+</div>

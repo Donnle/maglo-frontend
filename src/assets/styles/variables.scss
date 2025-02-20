@@ -8,42 +8,104 @@
   // Backgrounds
   --main-bg: #ffffff;
   --sidebar-bg: #fafafa;
-  --search-bg: #f8f8f8;
+  --icon-bg: #ebe8e8;
 
+  // Header
+  --header-bg: var(--main-bg);
+  --header-border-color: #f5f5f5;
+
+  // Card
   --card-bg: #f8f8f8;
-  --active-card-bg: #363a3f;
+  --card-icon: #363a3f;
+  --card-icon-bg: #ebe8e8;
+  --card-border: #f5f5f5;
+  --card-active-bg: #363a3f;
+  --card-expire-text: #868685;
 
-  // Text
-  --search-text: var(--text-1);
-  --search-placeholder-text: #929eae;
+  // Credit Card
+  --credit-card-bg: linear-gradient(135deg, #4a4a49, #20201f);
+  --credit-card-nfc-icon: #363b41;
+  --credit-card-expire-text: #868685;
+  --credit-card-visa: #ffffff;
+  --credit-card-bank-name: #626260;
+
+  // Sidebar
   --sidebar-text: #929eae;
   --sidebar-active-text: #1b212d;
 
+  // Text
   --text-1: #1b212d;
   --text-2: #78778b;
   --text-3: #ffffff;
+  --text-4: #ffffff;
+
+  // Control
+  --control-bg: #f8f8f8;
+  --control-text: var(--text-1);
+  --control-placeholder-text: #929eae;
+  --control-border: 1px solid #f2f2f2;
+  --control-checkbox-border: 1px solid #929eae;
+
+  --dropdown-text: var(--text-1);
+  --dropdown-active-text: var(--text-1);
+  --dropdown-bg: var(--control-bg);
+  --dropdown-active-bg: var(--primary);
+  --dropdown-hover-bg: #e0e0e0;
 
   // Buttons
-  --success-button-bg: #eefef2;
-  --success-button-text: #29a073;
-  --success-button-hover: #c2f0d0;
+  --button-success-bg: #eefef2;
+  --button-success-text: #29a073;
+  --button-success-hover: #c2f0d0;
+  --button-success-border: 1px solid var(--button-success-bg);
 
-  --primary-button-bg: var(--primary);
-  --primary-button-text: var(--text-1);
-  --primary-button-hover: #c2e343;
+  --button-primary-bg: var(--primary);
+  --button-primary-text: var(--text-1);
+  --button-primary-hover: #c2e343;
+  --button-primary-border: 1px solid var(--button-primary-bg);
 
-  --input-border: 1px solid #f2f2f2;
-  --secondary-button-text: var(--text-2);
+  --button-secondary-bg: transparent;
+  --button-secondary-text: var(--text-2);
+  --button-secondary-hover: #f1f1f1;
+  --button-secondary-border: 1px solid #f2f2f2;
 
   // Tags
-  --success-tag-bg: #d9ffe9;
-  --success-tag-text: #27ae60;
+  --tag-success-bg: #d9ffe9;
+  --tag-success-text: #27ae60;
 
-  --warning-tag-bg: #fff1e5;
-  --warning-tag-text: #f2994a;
+  --tag-warning-bg: #fff1e5;
+  --tag-warning-text: #f2994a;
 
-  --danger-tag-bg: #ffefef;
-  --danger-tag-text: #eb5757;
+  --tag-error-bg: #ffefef;
+  --tag-error-text: #eb5757;
+
+  // Tables
+  --table-header-text: #929eae;
+  --table-body-line: #f5f5f5;
+
+  // Tooltip
+  --tooltip-bg: #262629;
+  --tooltip-color: #ffffff;
+  --tooltip-success-bg: #d9ffe9;
+  --tooltip-success-color: #27ae60;
+
+  // Tabs
+  --horizontal-tab-line-color: #f5f5f5;
+
+  // Calendar
+  --calendar-bg: #f8f8f8;
+  --calendar-cell-color: #ffffff;
+  //--calendar-active-cell-color: var(--primary);
+  //--calendar-head-text: var(--text-1);
+  //--calendar-cell-text: var(--text-1);
+  //--calendar-active-cell-text: var(--text-3);
+  --calendar-disabled-cell-text: rgba(0, 23, 84, 0.15);
+
+  // Divider
+  --divider-color: #f5f5f5;
+
+  // Skeleton
+  --skeleton-bg: #e6e6e6;
+  --skeleton-line-color: #ffffff;
 }
 
 :root[data-theme='dark'] {
@@ -56,42 +118,102 @@
   // Backgrounds
   --main-bg: #1c1a2e;
   --sidebar-bg: #1e1c30;
-  --search-bg: #282541;
+  --icon-bg: #292642;
 
+  // Header
+  --header-bg: var(--main-bg);
+  --header-border-color: #282541;
+
+  // Card
   --card-bg: #201e34;
-  --active-card-bg: #282541;
+  --card-icon: #ffffff;
+  --card-icon-bg: #292642;
+  --card-border: #282541;
+  --card-active-bg: #282541;
 
-  // Text
-  --search-text: var(--text-1);
-  --search-placeholder-text: #929eae;
+  // Credit Card
+  --credit-card-bg: linear-gradient(135deg, #2e2b4a, #29263f);
+  --credit-card-nfc-icon: #78778b;
+  --credit-card-expire-text: #868685;
+  --credit-card-visa: #ffffff;
+  --credit-card-bank-name: #78778b;
+
+  // Sidebar
   --sidebar-text: #929eae;
   --sidebar-active-text: #1b212d;
 
+  // Text
   --text-1: #ffffff;
   --text-2: #78778b;
   --text-3: #ffffff;
+  --text-4: #1b212d;
+
+  // Control
+  --control-bg: #282541;
+  --control-text: var(--text-1);
+  --control-placeholder-text: #929eae;
+  --control-border: 1px solid #282541;
+  --control-checkbox-border: 1px solid #78778b;
+
+  // Dropdown
+  --dropdown-text: var(--text-1);
+  --dropdown-active-text: var(--text-4);
+  --dropdown-bg: var(--control-bg);
+  --dropdown-active-bg: var(--primary);
+  --dropdown-hover-bg: #3c3a55;
 
   // Buttons
-  --success-button-bg: #1a3131;
-  --success-button-text: #29a073;
-  --success-button-hover: #254544;
+  --button-success-bg: #1a3131;
+  --button-success-text: #29a073;
+  --button-success-hover: #254544;
+  --button-success-border: 1px solid var(--button-success-bg);
 
-  --primary-button-bg: var(--primary);
-  --primary-button-text: #1b212d;
-  --primary-button-hover: #c2e343;
+  --button-primary-bg: var(--primary);
+  --button-primary-text: #1b212d;
+  --button-primary-hover: #c2e343;
+  --button-primary-border: 1px solid var(--button-primary-bg);
 
-  --input-border: 1px solid #282541;
-  --secondary-button-border: 1px solid #282541;
-
-  --secondary-button-text: var(--text-2);
+  --button-secondary-bg: transparent;
+  --button-secondary-hover: #2d2a4a;
+  --button-secondary-text: var(--text-2);
+  --button-secondary-border: 1px solid #282541;
 
   // Tags
-  --success-tag-bg: #1a3131;
-  --success-tag-text: #27ae60;
+  --tag-success-bg: #1a3131;
+  --tag-success-text: #27ae60;
 
-  --warning-tag-bg: #30292f;
-  --warning-tag-text: #f2994a;
+  --tag-warning-bg: #30292f;
+  --tag-warning-text: #f2994a;
 
-  --danger-tag-bg: #442121;
-  --danger-tag-text: #eb5757;
+  --tag-error-bg: #442121;
+  --tag-error-text: #eb5757;
+
+  // Tables
+  --table-header-text: #78778b;
+  --table-body-line: #282541;
+
+  // Tooltip
+  --tooltip-bg: #262629;
+  --tooltip-color: #ffffff;
+  --tooltip-success-bg: #1a3131;
+  --tooltip-success-color: #27ae60;
+
+  // Tabs
+  --horizontal-tab-line-color: #282541;
+
+  // Calendar
+  --calendar-bg: #201e34;
+  --calendar-cell-color: #ffffff;
+  //--calendar-active-cell-color: var(--primary);
+  //--calendar-head-text: var(--text-1);
+  //--calendar-cell-text: var(--text-1);
+  //--calendar-active-cell-text: var(--text-3);
+  --calendar-disabled-cell-text: rgba(255, 255, 255, 0.1);
+
+  // Divider
+  --divider-color: #282541;
+
+  // Skeleton
+  --skeleton-bg: #292745;
+  --skeleton-line-color: #433e73;
 }

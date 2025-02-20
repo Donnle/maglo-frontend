@@ -1,21 +1,32 @@
-<p-button
+<button
+  data-testingId="button"
   class="button"
-  [attr.data-size]="size"
-  [loading]="loading"
-  [severity]="severity"
-  [disabled]="disabled"
-  [outlined]="outlined"
-  [pTooltip]="tooltip"
+  [type]="type()"
+  [disabled]="disabled() || loading()"
+  [attr.data-size]="size()"
+  [attr.data-style]="style()"
+  [attr.data-severity]="severity()"
+  [attr.data-bordered]="outlined()"
+  (click)="onClick($event)"
 >
-  <span class="button__content">
-    @if (icon) {
-      <span class="button__content_icon icon" [ngClass]="[icon]">
-        <span class="path1"></span>
-        <span class="path2"></span>
-        <span class="path3"></span>
-        <span class="path4"></span>
-      </span>
-    }
-    <ng-content></ng-content>
-  </span>
-</p-button>
+  @if (icon()) {
+    <span data-testingId="icon" class="button__icon icon" [ngClass]="icon()">
+      <span class="path1"></span>
+      <span class="path2"></span>
+      <span class="path3"></span>
+      <span class="path4"></span>
+    </span>
+  }
+
+  @if (style() !== ButtonStyle.Icon) {
+    <span data-testingId="content" class="button__content">
+      <ng-content />
+    </span>
+  }
+
+  @if (loading()) {
+    <span data-testingId="loader" class="button__loading">
+      <app-spinner [size]="SpinnerSize.Small" />
+    </span>
+  }
+</button>
