@@ -29,6 +29,18 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          firebaseServiceAccount: '{
+            "type": "service_account",
+            "project_id": "maglo-a1d85",
+            "private_key_id": "406e16f2b1445aa2103d53d6cdd1f427e82664d9",
+            "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDQbfIXoLoJ1nNl\nZfhGapmnU4HfX6xPDDC7in3D7dxUytl6ksvLDe+dW7P6s4s1Zk6bKh8h5YJ0IsbP\nf2xAUwoolFLXxlyCEXye0vBdVZoO9D5ODOo9ttwYorPKeSk6pVOGEzemkE6KIlRt\nHYnOH4w6T0rGz32QyscXr/8reQuet+Q4GbHFuFXYzw/duxrJejDrYb5dqivnUTVK\nANOJLVLUSWwvB+HU9v4EpO3X4vPpPMy7bn4q3CQEKY0CokE4OkTMqvu14xmdR2DA\nhQPuC8OZxFX27izPjfSxwKXwOg9A8vvRaeNQdZl4Gw9RFUlGqcQ8X/D6+kxf9+MQ\n6ygUwQKVAgMBAAECggEAVYdYWaPF07WhgtF2MQcbaFNXLt9mqMVa1gp9k0HvMQhQ\neAD3Car9UbhIwa6diFskFH4TamhwwNFofctPE5I/z+kVmZ+3ZFRirBXpNpOi9VH6\nozKfiJWZ+a4CUyqm5X7kKFeIdZwv7nUp6eC+JMxDUcYp7C1G3HypeCnrbt5sC0Oz\nF51RzHlWfLxJddJFGGzC4Ljf4iRGRrnSQTWeLjkFIBHveoJccT9xmvvKRj5zYl5U\nQT1groue6k+joUQrrYzUxwXjaUR5LLUO4x0JGdsR9VZ5p+x8+if8rxqqG01EW14h\nlzCihR2xu7cy23KFG/bvhU3FIQc8h2tXqwhk7T1eXQKBgQDpNb8Dxrzg2mR2I/O2\nWYcHhZ/lRYtHmTRdGhbvAY72k1pJcB9FgRY+0LKE1NF7PrhzBa4uno0ucPZFj4h4\neu9E9K3BBHru1NY5oZyRWPBtmtWsKmaj4DJ6HLFFOLdBI2YZXwvwKDh0lIOxID2s\noTVDK7XDI6pWxAvUxwrUbXffNwKBgQDkzEMdnsU1GacrWXdTu+erTS5VKGqCJxBf\n36YfK2nljsz3UJxyrOIx+M9R6JajmXOoRqzTXusA081IB/ulmOCNcXrjXzDMmSX7\nxzVSmVTo6784OLRN/tX+FtdzUVQH8EW4KMzokI7KsM6VWTM4LQ5F1ZX3NlbO1MMy\n1Ejxd2HakwKBgQDMOt4x/2xPedI6x9dZXOPsiW/yx8lmhVufIQbufi3l8DtETuWD\n571Ee12rB/j/9nhveo0ElKNNBW4WktFPuVEq0SANBdBmsYt94vMLMpkzU0JGSMek\nQeXSnKf91+JcMBTsqRj6Uy7FoX4GsxZvxKmxTmkaIHS/EWbPCxSH3en5VwKBgQCQ\n1hmak5qFjdK8Z2tZj3cNgtNUxzv9XltIRdz0mFf2INrxqI8RLQ4X0kjzsghCUm7b\n1LmtKMYdhPbLpXoRD2D/SRog+2555m0cILRJsJUGyc4H+iVxxmOS8MS81Hwcdma8\nON/WTUSHXTu5YXlCE4uYe6fukfCMCDX1ZFs0uH0yjwKBgQC/IZ+2JMb26dmZqGwu\nsNBac1VW3ZgaWUrv1CYJSX8jRr47J+4ySUjfar39KaSYnXdtl54PppADgOdhtS3m\nmlUwiGbPXB110KA/sgLAuiZ0vX7iq3ZstVF1c8ZdC03TWGo2573P6XE5nNb4BJy4\n4pdaDMCMqQE9rpvwdg87i1ApKA==\n-----END PRIVATE KEY-----\n",
+            "client_email": "firebase-adminsdk-fbsvc@maglo-a1d85.iam.gserviceaccount.com",
+            "client_id": "103027003190104509502",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+            "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40maglo-a1d85.iam.gserviceaccount.com",
+            "universe_domain": "googleapis.com"
+          }'
           channelId: live  # Deploy directly to live channel
           projectId: maglo-a1d85
