@@ -1,0 +1,32 @@
+@use 'mixins' as mixins;
+
+.content__table {
+  @include mixins.table;
+}
+
+.container {
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding-bottom: 40px;
+}
+
+.header__search {
+  min-width: 400px;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.content {
+}
+
+.content__table {
+}

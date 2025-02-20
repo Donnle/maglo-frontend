@@ -1,17 +1,15 @@
 @let selectedOption = options()[selectedOptionIndex()];
 @let selectedOptionLabel = selectedOption && selectedOption[optionLabelName()];
 
-@let dropdownButtonWidth = trigger.elementRef.nativeElement.offsetWidth;
+@let dropdownButtonWidth = button.offsetWidth;
 
 <div class="dropdown">
   <!-- DropDown Button -->
   <button
-    cdkOverlayOrigin
-    #trigger="cdkOverlayOrigin"
+    #button
     class="dropdown__button"
-    [class.opened]="isOpen()"
     [disabled]="isDisabled()"
-    (click)="toggleDropdownOpen()"
+    [cdkMenuTriggerFor]="menu"
   >
     <span
       class="dropdown__button_name"
@@ -24,29 +22,33 @@
   </button>
 
   <!-- DropDown Options -->
-  <ng-template
-    cdkConnectedOverlay
-    [cdkConnectedOverlayOpen]="isOpen()"
-    [cdkConnectedOverlayOrigin]="trigger"
-    [cdkConnectedOverlayWidth]="dropdownButtonWidth"
-    (overlayOutsideClick)="closeDropdown()"
-  >
-    <ul class="dropdown__options">
+  <ng-template #menu>
+    <div
+      cdkMenu
+      class="dropdown__options"
+      [style.min-width.px]="dropdownButtonWidth"
+    >
       @for (option of options(); track $index) {
         @let isActive = selectedOptionIndex() === $index;
 
         <li
+          cdkMenuItem
           class="dropdown__options_item option"
           [class.active]="isActive"
           (click)="onSelectOption($index)"
         >
+          <button>
+            <span class="option__checkbox_content">
+              @if (isActive) {
+                <i class="icon icon-done"></i>
+              }
+            </span>
+          </button>
           {{ option[optionLabelName()] }}
         </li>
-      }
-
-      @if (options().length === 0) {
+      } @empty {
         <li class="dropdown__options_item empty">{{ empty() }}</li>
       }
-    </ul>
+    </div>
   </ng-template>
 </div>

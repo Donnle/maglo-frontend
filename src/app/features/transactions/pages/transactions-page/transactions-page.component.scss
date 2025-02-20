@@ -1,9 +1,9 @@
-@use 'mixin' as mixin;
+@use 'mixins' as mixins;
 
 .content__table {
   margin-top: 25px !important;
-  padding-top: 10px !important;
+  padding-top: 15px !important;
   border-top: 1px solid var(--table-body-line) !important;
 
-  @include mixin.table;
+  @include mixins.table;
 }

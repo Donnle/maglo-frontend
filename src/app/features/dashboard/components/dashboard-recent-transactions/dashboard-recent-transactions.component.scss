@@ -1,11 +1,11 @@
-@use 'mixin' as mixin;
+@use 'mixins' as mixins;
 
 .container {
-  @include mixin.card;
+  @include mixins.card;
 }
 
 .content__table {
-  @include mixin.table;
+  @include mixins.table;
   max-height: 216px;
 
   td {

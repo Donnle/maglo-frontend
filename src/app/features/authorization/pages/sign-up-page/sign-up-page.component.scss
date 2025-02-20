@@ -1,4 +1,4 @@
-@use 'mixin' as mixin;
+@use 'mixins' as mixins;
 
 :host {
   width: 100%;
@@ -7,14 +7,14 @@
 
 .header {
   padding-bottom: 25px !important;
-  @include mixin.authorization-header;
+  @include mixins.authorization-header;
 }
 
 .form {
   padding-bottom: 25px !important;
-  @include mixin.authorization-form;
+  @include mixins.authorization-form;
 }
 
 .footer {
-  @include mixin.authorization-footer;
+  @include mixins.authorization-footer;
 }

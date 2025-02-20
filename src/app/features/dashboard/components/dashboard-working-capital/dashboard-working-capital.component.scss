@@ -1,7 +1,7 @@
-@use 'mixin' as mixin;
+@use 'mixins' as mixins;
 
 .container {
-  @include mixin.card;
+  @include mixins.card;
 }
 
 .legends {

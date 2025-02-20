@@ -8,12 +8,13 @@ import {
   WritableSignal
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { CdkConnectedOverlay, CdkOverlayOrigin } from '@angular/cdk/overlay';
+import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { DropdownItem } from '../../../interfaces/dropdown.interface';
+import { CdkMenu, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
 
 @Component({
   selector: 'app-dropdown',
-  imports: [CdkOverlayOrigin, CdkConnectedOverlay],
+  imports: [CdkOverlayOrigin, CdkMenu, CdkMenuItem, CdkMenuTrigger],
   templateUrl: './dropdown.component.html',
   styleUrl: './dropdown.component.scss',
   providers: [
@@ -51,15 +52,6 @@ export class DropdownComponent<T extends DropdownItem>
     }
 
     this.onTouched();
-  }
-
-  // DropDown Open/Close
-  toggleDropdownOpen(): void {
-    this.isOpen.update((isOpen: boolean): boolean => !isOpen);
-  }
-
-  closeDropdown(): void {
-    this.isOpen.set(false);
   }
 
   // Value Accessor Functions

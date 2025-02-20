@@ -9,6 +9,10 @@ import { ButtonComponent } from '../../shared/components/button/button.component
 import { LinkComponent } from '../../shared/components/link/link.component';
 import { InvoicesPageComponent } from './pages/invoices-page/invoices-page.component';
 import { InvoicesClientCardComponent } from './components/invoices-client-card/invoices-client-card.component';
+import { QueryControlDirective } from '../../shared/directives/query-control.directive';
+import { TransactionProductComponent } from '../../shared/components/transaction/transaction-product/transaction-product.component';
+import { TransactionDateComponent } from '../../shared/components/transaction/transaction-date/transaction-date.component';
+import { TagComponent } from '../../shared/components/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { InvoicesClientCardComponent } from './components/invoices-client-card/i
     ReactiveFormsModule,
     InputComponent,
     ButtonComponent,
-    LinkComponent
+    LinkComponent,
+    QueryControlDirective,
+    TransactionProductComponent,
+    TransactionDateComponent,
+    TagComponent
   ]
 })
 export class InvoicesModule {}

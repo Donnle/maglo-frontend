@@ -1,1 +1,51 @@
-<p>invoices-page works!</p>
+<div class="container">
+  <div class="header">
+    <div class="header__search">
+      <app-input icon="icon icon-search" placeholder="Search Invoices" />
+    </div>
+
+    <div class="header__actions">
+      <app-button icon="icon icon-receipt">Create Invoice</app-button>
+      <app-button icon="icon icon-filter" [severity]="ButtonSeverity.Secondary">
+        Filters
+      </app-button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content__table">
+      <table>
+        <thead>
+          <tr>
+            <th>Name/Client</th>
+            <th>Date</th>
+            <th>Orders/Type</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <app-transaction-product />
+            </td>
+            <td>
+              <app-transaction-date />
+            </td>
+            <td>
+              {{ 20 }}
+            </td>
+            <td>
+              {{ 420 | currency }}
+            </td>
+            <td>
+              <app-tag [severity]="TagSeverity.Warning">Pending</app-tag>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
