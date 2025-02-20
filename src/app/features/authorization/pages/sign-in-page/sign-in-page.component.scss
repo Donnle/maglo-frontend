@@ -1,4 +1,4 @@
-@import '../../../../../assets/styles/mixin';
+@use 'mixin' as mixin;
 
 :host {
   width: 100%;
@@ -6,13 +6,13 @@
 }
 
 .header {
-  @include authorization-header;
-  padding-bottom: 25px;
+  padding-bottom: 25px !important;
+  @include mixin.authorization-header;
 }
 
 .form {
-  @include authorization-form;
-  padding-bottom: 20px;
+  padding-bottom: 20px !important;
+  @include mixin.authorization-form;
 
   &__options {
     display: flex;
@@ -31,5 +31,5 @@
 }
 
 .footer {
-  @include authorization-footer('vector-underline');
+  @include mixin.authorization-footer('vector-underline');
 }

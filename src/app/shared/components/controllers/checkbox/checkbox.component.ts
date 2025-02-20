@@ -2,7 +2,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input
+  input,
+  InputSignal,
+  signal,
+  WritableSignal
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -12,7 +15,6 @@ import {
 
 @Component({
   selector: 'app-checkbox',
-  standalone: true,
   imports: [FormsModule],
   templateUrl: './checkbox.component.html',
   styleUrl: './checkbox.component.scss',
@@ -26,22 +28,20 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  @Input() trueValue: unknown = true;
-  @Input() falseValue: unknown = false;
+  trueValue: InputSignal<unknown> = input<unknown>(true);
+  falseValue: InputSignal<unknown> = input<unknown>(false);
+  label: InputSignal<string> = input<string>('');
 
-  @Input() label: string = '';
-
-  isChecked: boolean = false;
-
-  protected isDisabled: boolean = false;
+  isChecked: WritableSignal<boolean> = signal<boolean>(false);
+  isDisabled: WritableSignal<boolean> = signal<boolean>(false);
 
   onCheckboxClick(isChecked: boolean): void {
-    this.isChecked = isChecked;
+    this.isChecked.set(isChecked);
 
-    if (this.isChecked) {
-      this.onChange(this.trueValue);
+    if (this.isChecked()) {
+      this.onChange(this.trueValue());
     } else {
-      this.onChange(this.falseValue);
+      this.onChange(this.falseValue());
     }
 
     this.onTouch();
@@ -60,11 +60,13 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.isDisabled = isDisabled;
+    this.isDisabled.set(isDisabled);
   }
 
   writeValue(outsideValue: unknown): void {
-    this.isChecked =
-      JSON.stringify(outsideValue) === JSON.stringify(this.trueValue);
+    const isChecked: boolean =
+      JSON.stringify(outsideValue) === JSON.stringify(this.trueValue());
+
+    this.isChecked.set(isChecked);
   }
 }

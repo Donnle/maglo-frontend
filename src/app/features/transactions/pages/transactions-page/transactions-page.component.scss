@@ -1,9 +1,9 @@
-@import 'mixin';
+@use 'mixin' as mixin;
 
 .content__table {
-  @include table;
+  margin-top: 25px !important;
+  padding-top: 10px !important;
+  border-top: 1px solid var(--table-body-line) !important;
 
-  margin-top: 25px;
-  padding-top: 10px;
-  border-top: 1px solid var(--table-body-line);
+  @include mixin.table;
 }

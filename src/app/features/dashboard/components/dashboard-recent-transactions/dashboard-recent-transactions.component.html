@@ -2,10 +2,7 @@
   <div class="header">
     <h3 class="header__title">Recent Transaction</h3>
 
-    <a [routerLink]="[]" class="header__view-all">
-      <span class="header__view-all_text">View All</span>
-      <span class="icon icon-chevron"></span>
-    </a>
+    <app-link [link]="[]">View All</app-link>
   </div>
 
   <div class="content">
@@ -21,9 +18,19 @@
         </thead>
         <tbody>
           <tr>
-            <td>
-              <app-transaction-product />
-            </td>
+            <td><app-transaction-product /></td>
+            <td>Mobile</td>
+            <td>$420.84</td>
+            <td>14 Apr 2022</td>
+          </tr>
+          <tr>
+            <td><app-transaction-product /></td>
+            <td>Mobile</td>
+            <td>$420.84</td>
+            <td>14 Apr 2022</td>
+          </tr>
+          <tr>
+            <td><app-transaction-product /></td>
             <td>Mobile</td>
             <td>$420.84</td>
             <td>14 Apr 2022</td>

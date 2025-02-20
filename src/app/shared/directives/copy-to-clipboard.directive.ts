@@ -1,5 +1,6 @@
 import {
   ApplicationRef,
+  ChangeDetectorRef,
   ComponentRef,
   Directive,
   ElementRef,
@@ -14,10 +15,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 import { TooltipComponent } from '../components/tooltip/tooltip.component';
 import { TooltipStyle } from '../enums/tooltip.enum';
 
-@Directive({
-  selector: '[copyToClipboard]',
-  standalone: true
-})
+@Directive({ selector: '[copyToClipboard]', standalone: true })
 export class CopyToClipboardDirective implements OnDestroy {
   copyToClipboard: InputSignal<string> = input.required();
   copyToClipboardTooltipShow: InputSignal<boolean> = input(true);
@@ -30,8 +28,8 @@ export class CopyToClipboardDirective implements OnDestroy {
     input(1000);
 
   private componentRef: ComponentRef<TooltipComponent> | null = null;
-  private showTimeout?: ReturnType<typeof setTimeout>;
-  private hideTimeout?: ReturnType<typeof setTimeout>;
+  private showTimeouts: ReturnType<typeof setTimeout>[] = [];
+  private hideTimeouts: ReturnType<typeof setTimeout>[] = [];
 
   @HostBinding('style.cursor') cursor: string = 'pointer';
   @HostListener('click', ['$event'])
@@ -67,15 +65,15 @@ export class CopyToClipboardDirective implements OnDestroy {
     private elementRef: ElementRef,
     private appRef: ApplicationRef,
     private vcr: ViewContainerRef,
-    private clipboard: Clipboard
+    private clipboard: Clipboard,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   private initializeTooltip(
     tooltipText: string = this.copyToClipboardTooltipText(),
     tooltipStyle: TooltipStyle = TooltipStyle.Default
   ) {
-    clearTimeout(this.showTimeout);
-    clearTimeout(this.hideTimeout);
+    this.clearAllTimeouts();
 
     if (this.componentRef != null) {
       this.componentRef.destroy();
@@ -89,40 +87,58 @@ export class CopyToClipboardDirective implements OnDestroy {
   private createTooltip(
     tooltipText: string = this.copyToClipboardTooltipText(),
     tooltipStyle: TooltipStyle = TooltipStyle.Default
-  ) {
+  ): void {
     const { left, right, top } =
       this.elementRef.nativeElement.getBoundingClientRect();
 
     this.componentRef = this.vcr.createComponent(TooltipComponent);
 
-    this.componentRef.instance.tooltip = tooltipText;
-    this.componentRef.instance.style = tooltipStyle;
-    this.componentRef.instance.left = Math.round((right - left) / 2 + left);
-    this.componentRef.instance.top = Math.round(top);
+    this.componentRef.setInput('tooltip', tooltipText);
+    this.componentRef.setInput('style', tooltipStyle);
+    this.componentRef.setInput('left', Math.round((right - left) / 2 + left));
+    this.componentRef.setInput('top', Math.round(top));
   }
 
-  private showTooltip() {
+  private showTooltip(): void {
     if (this.componentRef != null) {
-      this.componentRef.instance.visible = true;
+      this.componentRef.setInput('visible', true);
     }
   }
 
-  private hideTooltip() {
+  private hideTooltip(): void {
     if (this.componentRef != null) {
-      this.componentRef.instance.visible = false;
+      this.componentRef.setInput('visible', false);
     }
   }
 
   private setShowTooltipTimeout(
     delay: number = this.copyToClipboardTooltipShowDelay()
-  ) {
-    this.showTimeout = setTimeout(() => this.showTooltip(), delay);
+  ): void {
+    const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
+      this.showTooltip();
+      this.changeDetectorRef.markForCheck();
+    }, delay);
+
+    this.showTimeouts.push(timeout);
   }
 
   private setHideTooltipTimeout(
     delay: number = this.copyToClipboardTooltipHideDelay()
   ): void {
-    this.hideTimeout = setTimeout(() => this.hideTooltip(), delay);
+    const timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
+      this.hideTooltip();
+      this.changeDetectorRef.markForCheck();
+    }, delay);
+
+    this.hideTimeouts.push(timeout);
+  }
+
+  private clearAllTimeouts(): void {
+    this.showTimeouts.forEach((i) => clearTimeout(i));
+    this.showTimeouts = [];
+
+    this.hideTimeouts.forEach((i) => clearTimeout(i));
+    this.hideTimeouts = [];
   }
 
   ngOnDestroy(): void {
@@ -130,8 +146,7 @@ export class CopyToClipboardDirective implements OnDestroy {
   }
 
   private destroy(): void {
-    clearInterval(this.showTimeout);
-    clearInterval(this.hideTimeout);
+    this.clearAllTimeouts();
 
     if (this.componentRef !== null) {
       this.appRef.detachView(this.componentRef.hostView);

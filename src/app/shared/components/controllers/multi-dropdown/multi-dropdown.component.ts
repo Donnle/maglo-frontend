@@ -2,7 +2,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input
+  input,
+  InputSignal,
+  signal,
+  WritableSignal
 } from '@angular/core';
 import { CdkConnectedOverlay, CdkOverlayOrigin } from '@angular/cdk/overlay';
 import {
@@ -16,7 +19,6 @@ import { DropdownItem } from '../../../interfaces/dropdown.interface';
 
 @Component({
   selector: 'app-multi-dropdown',
-  standalone: true,
   imports: [
     CdkConnectedOverlay,
     CdkOverlayOrigin,
@@ -37,45 +39,54 @@ import { DropdownItem } from '../../../interfaces/dropdown.interface';
 export class MultiDropdownComponent<T extends DropdownItem>
   implements ControlValueAccessor
 {
-  @Input({ required: true }) options: T[] = [];
-  @Input() optionValueName?: string = 'id'; // Empty if Need Object As Value
-  @Input() optionLabelName: string = 'label';
-  @Input() loading: boolean = false;
+  options: InputSignal<T[]> = input.required<T[]>();
+  optionValueName: InputSignal<string | null> = input<string | null>('id'); // Empty if Need Object As Value
+  optionLabelName: InputSignal<string> = input('label');
+  loading: InputSignal<boolean> = input(false);
 
-  @Input() empty: string = 'No Options';
-  @Input() placeholder: string = 'Select';
+  empty: InputSignal<string> = input<string>('No Options');
+  placeholder: InputSignal<string> = input<string>('Select');
+  countVisibleSelectedOptions: InputSignal<number> = input<number>(2);
 
-  @Input() countVisibleSelectedOptions: number = 2;
-  selectedOptionIndexes: number[] = [];
+  selectedOptionIndexes: WritableSignal<number[]> = signal<number[]>([]);
 
-  protected isOpen: boolean = false;
-  protected isDisabled: boolean = false;
+  isOpen: WritableSignal<boolean> = signal<boolean>(false);
+  isDisabled: WritableSignal<boolean> = signal<boolean>(false);
 
-  get selectedOptionLabels() {
-    return this.selectedOptionIndexes.map(
-      (selectedOptionIndex) =>
-        this.options[selectedOptionIndex][this.optionLabelName]
+  get selectedOptionLabels(): unknown[] {
+    return this.selectedOptionIndexes().map(
+      (selectedOptionIndex: number): unknown =>
+        this.options()[selectedOptionIndex][this.optionLabelName()]
     );
   }
 
   toggleSelect(optionIndex: number, optionValue: boolean): void {
     if (optionValue) {
-      this.selectedOptionIndexes = [...this.selectedOptionIndexes, optionIndex];
+      this.selectedOptionIndexes.update(
+        (selectedOptionIndexes: number[]): number[] => {
+          return [...selectedOptionIndexes, optionIndex];
+        }
+      );
     } else {
-      this.selectedOptionIndexes = this.selectedOptionIndexes.filter(
-        (selectedOptionIndex: number): boolean => {
-          return selectedOptionIndex !== optionIndex;
+      this.selectedOptionIndexes.update(
+        (selectedOptionIndexes: number[]): number[] => {
+          return selectedOptionIndexes.filter(
+            (selectedOptionIndex: number): boolean => {
+              return selectedOptionIndex !== optionIndex;
+            }
+          );
         }
       );
     }
 
-    const selectedOptions: unknown[] = this.selectedOptionIndexes.map(
+    const selectedOptions: unknown[] = this.selectedOptionIndexes().map(
       (selectedOptionIndex: number): unknown => {
-        if (this.optionValueName) {
-          return this.options[selectedOptionIndex][this.optionValueName];
+        const optionValueName: string | null = this.optionValueName();
+        if (optionValueName) {
+          return this.options()[selectedOptionIndex][optionValueName];
         }
 
-        return this.options[selectedOptionIndex];
+        return this.options()[selectedOptionIndex];
       }
     );
 
@@ -85,11 +96,11 @@ export class MultiDropdownComponent<T extends DropdownItem>
 
   // DropDown Open/Close
   toggleDropdownOpen(): void {
-    this.isOpen = !this.isOpen;
+    this.isOpen.update((isOpen: boolean): boolean => !isOpen);
   }
 
   closeDropdown(): void {
-    this.isOpen = false;
+    this.isOpen.set(false);
   }
 
   // Value Accessor Functions
@@ -97,7 +108,7 @@ export class MultiDropdownComponent<T extends DropdownItem>
   private onTouched = () => {};
 
   setDisabledState(isDisabled: boolean): void {
-    this.isDisabled = isDisabled;
+    this.isDisabled.set(isDisabled);
   }
 
   registerOnChange(fn: (value: T | unknown) => void): void {
@@ -109,13 +120,13 @@ export class MultiDropdownComponent<T extends DropdownItem>
   }
 
   writeValue(outsideValue: (T | PrimitiveTypes)[]): void {
-    this.selectedOptionIndexes =
-      this.getOptionIndexesByOutsideValue(outsideValue);
+    const indexes: number[] = this.getOptionIndexesByOutsideValue(outsideValue);
+    this.selectedOptionIndexes.set(indexes);
   }
 
   private getOptionIndexesByOutsideValue(
     outsideValues: (T | PrimitiveTypes)[],
-    options: T[] = this.options
+    options: T[] = this.options()
   ): number[] {
     if (outsideValues[0] == null) {
       return [];
@@ -136,7 +147,7 @@ export class MultiDropdownComponent<T extends DropdownItem>
         result.push(selectedIndex);
       });
     } else {
-      const optionValueName: string | undefined = this.optionValueName;
+      const optionValueName: string | null = this.optionValueName();
       if (optionValueName == null) {
         return [];
       }

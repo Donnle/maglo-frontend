@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="content">
+    <div class="content__balance balance">
+      <span class="balance__label">Your Balance</span>
+      <span
+        class="balance__value"
+        *skeleton="isLoading(); height: '25px'; width: '100%'"
+      >
+        {{ balance() || 0 | currency }}
+      </span>
+    </div>
+    <div
+      class="content__profit"
+      *skeleton="isLoading(); width: '75px'; height: '16px'"
+    >
+      <span
+        class="content__profit_arrow icon"
+        [ngClass]="{
+          'icon-arrow-up': (profitPercentage() || 0) > 0,
+          'icon-arrow-down': (profitPercentage() || 0) < 0
+        }"
+      ></span>
+      <span class="content__profit_value">{{ profitPercentage() || 0 }}%</span>
+    </div>
+  </div>
+</div>

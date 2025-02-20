@@ -15,21 +15,36 @@
   </div>
   <div class="content">
     <header class="content__header header">
-      <div class="header__notifications">
-        <app-button
-          icon="icon icon-notification-bing"
-          [outlined]="true"
-          [style]="ButtonStyle.Icon"
-          [size]="ButtonSize.Small"
-          [severity]="ButtonSeverity.Secondary"
-        />
+      <div class="header__page">
+        <h2 class="header__page_title">{{ activeRouterTitle }}</h2>
       </div>
-      <div class="header__profile">
-        <app-profile />
+      <div class="header__user">
+        <div class="header__user_theme-toggle">
+          <app-button
+            icon="icon icon-theme-toggle"
+            [outlined]="true"
+            [style]="ButtonStyle.Icon"
+            [size]="ButtonSize.Small"
+            [severity]="ButtonSeverity.Secondary"
+            (buttonClick)="onThemeChange()"
+          />
+        </div>
+        <div class="header__user_notifications">
+          <app-button
+            icon="icon icon-notification-bing"
+            [outlined]="true"
+            [style]="ButtonStyle.Icon"
+            [size]="ButtonSize.Small"
+            [severity]="ButtonSeverity.Secondary"
+          />
+        </div>
+        <div class="header__user_profile">
+          <app-profile />
+        </div>
       </div>
     </header>
 
-    <main class="content__main">
+    <main class="content__main main">
       <router-outlet />
     </main>
   </div>

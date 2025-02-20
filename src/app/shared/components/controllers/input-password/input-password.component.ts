@@ -2,7 +2,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input
+  input,
+  InputSignal,
+  signal,
+  WritableSignal
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -19,7 +22,6 @@ import {
 
 @Component({
   selector: 'app-input-password',
-  standalone: true,
   imports: [ReactiveFormsModule, ButtonComponent, FormsModule],
   templateUrl: './input-password.component.html',
   styleUrl: './input-password.component.scss',
@@ -33,13 +35,12 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputPasswordComponent implements ControlValueAccessor {
-  @Input() label: string = '';
-  @Input() placeholder: string = '';
+  label: InputSignal<string> = input<string>('');
+  placeholder: InputSignal<string> = input<string>('');
 
-  value: string = '';
-  isVisible: boolean = false;
-
-  protected isDisabled: boolean = false;
+  value: WritableSignal<string> = signal<string>('');
+  isVisible: WritableSignal<boolean> = signal<boolean>(false);
+  isDisabled: WritableSignal<boolean> = signal<boolean>(false);
 
   protected readonly ButtonStyle = ButtonStyle;
   protected readonly ButtonSeverity = ButtonSeverity;
@@ -47,15 +48,15 @@ export class InputPasswordComponent implements ControlValueAccessor {
 
   toggleVisible(event: Event) {
     event.stopPropagation();
-    this.isVisible = !this.isVisible;
+    this.isVisible.set(!this.isVisible());
   }
 
   onValueChange(value: string) {
-    this.value = value;
+    this.value.set(value);
     this.onChange(value);
   }
 
-  onBlur() {
+  onBlur(): void {
     this.onTouched();
   }
 
@@ -72,10 +73,10 @@ export class InputPasswordComponent implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.isDisabled = isDisabled;
+    this.isDisabled.set(isDisabled);
   }
 
   writeValue(value: string): void {
-    this.value = value;
+    this.value.set(value);
   }
 }

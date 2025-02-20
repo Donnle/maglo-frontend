@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   ButtonSeverity,
@@ -9,7 +9,9 @@ import {
 @Component({
   selector: 'app-sign-in-page',
   templateUrl: './sign-in-page.component.html',
-  styleUrl: './sign-in-page.component.scss'
+  styleUrl: './sign-in-page.component.scss',
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignInPageComponent implements OnInit {
   signInForm!: FormGroup;
@@ -20,11 +22,11 @@ export class SignInPageComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.initSignInForm();
   }
 
-  onSubmit() {
+  onSubmit(): void {
     console.log('Submit');
   }
 

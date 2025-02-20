@@ -19,7 +19,7 @@ export const TOP_SIDEBAR: VerticalTab[] = [
   {
     label: 'My Wallets',
     icon: 'icon icon-wallet-open',
-    routerLink: '/dashboard/wallets'
+    routerLink: '/dashboard/my-wallets'
   },
   {
     label: 'Settings',

@@ -19,7 +19,6 @@
         formControlName="card"
         placeholder="Select Card"
         queryControl="working_capital_card"
-        [queryEmitEvent]="false"
         [loading]="isWorkingCapitalLoading()"
         [options]="cards()"
       />
@@ -27,14 +26,13 @@
       <app-dropdown
         formControlName="range"
         queryControl="working_capital_range"
-        [queryEmitEvent]="false"
         [options]="TIME_RANGE"
       />
     </form>
   </div>
   <div
     class="content"
-    *skeleton="isWorkingCapitalLoading(); width: '100%'; height: '245px'"
+    *skeleton="isWorkingCapitalLoading(); width: '100%'; height: '250px'"
   >
     <app-dashboard-working-capital-chart [(legends)]="legends" />
   </div>

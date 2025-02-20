@@ -1,11 +1,16 @@
-@import 'mixin';
+@use 'mixin' as mixin;
 
 .container {
-  @include card;
+  @include mixin.card;
 }
 
 .content__table {
-  @include table;
+  @include mixin.table;
+  max-height: 216px;
+
+  td {
+    padding: 8px 0;
+  }
 }
 
 .header {
@@ -18,25 +23,5 @@
     font-size: 18px;
     line-height: 1.2em;
     font-weight: 600;
-  }
-
-  &__view-all {
-    position: relative;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    line-height: 1.2em;
-    text-decoration: none;
-    color: var(--secondary);
-
-    .icon.icon-chevron {
-      writing-mode: vertical-rl;
-      transform-origin: 50% 50%;
-      transform: rotate(-90deg);
-      -o-transform: rotate(-90deg);
-      -ms-transform: rotate(-90deg);
-      -moz-transform: rotate(-90deg);
-      -webkit-transform: rotate(-90deg);
-    }
   }
 }

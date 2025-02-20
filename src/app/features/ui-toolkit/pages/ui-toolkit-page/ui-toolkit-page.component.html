@@ -12,6 +12,8 @@
     [formControl]="control4"
   />
 
+  <app-date-picker [placeholder]="'test'" [formControl]="dateControl" />
+
   <h2>Buttons</h2>
   <app-button [tooltip]="'Tooltip'">Button</app-button>
   <app-button [loading]="true">Button Loading</app-button>
@@ -87,16 +89,16 @@
     placeholder="Test placeholder"
   />
 
+  <!--    [disabled]="true"-->
   <app-input
-    [disabled]="true"
     [formControl]="control"
     [icon]="'icon-search'"
     label="Test 3"
     placeholder="Test placeholder"
   />
 
+  <!--    [disabled]="true"-->
   <app-input
-    [disabled]="true"
     [formControl]="control"
     [iconPosition]="InputIconPosition.Right"
     [icon]="'icon-search'"

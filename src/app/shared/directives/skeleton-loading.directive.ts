@@ -20,26 +20,26 @@ export class SkeletonDirective implements OnChanges {
   skeletonHeight: InputSignal<string> = input<string>('16px'); // Default text height
 
   constructor(
-    private tpl: TemplateRef<any>,
-    private vcr: ViewContainerRef
+    private templateRef: TemplateRef<unknown>,
+    private viewContainerRef: ViewContainerRef
   ) {}
 
   ngOnChanges(changes: SimpleChanges) {
     const isLoadingChange: SimpleChange = changes['skeleton'];
 
     if (isLoadingChange) {
-      this.vcr.clear();
+      this.viewContainerRef.clear();
 
       if (isLoadingChange.currentValue) {
         const skeletonLoaderComponentRef: ComponentRef<SkeletonLoaderComponent> =
-          this.vcr.createComponent(SkeletonLoaderComponent);
+          this.viewContainerRef.createComponent(SkeletonLoaderComponent);
 
         Object.assign(skeletonLoaderComponentRef.instance, {
           width: this.skeletonWidth,
           height: this.skeletonHeight
         });
       } else {
-        this.vcr.createEmbeddedView(this.tpl);
+        this.viewContainerRef.createEmbeddedView(this.templateRef);
       }
     }
   }

@@ -4,14 +4,22 @@ import {
   Component,
   ElementRef,
   input,
+  InputSignal,
   OnChanges,
   output,
+  OutputEmitterRef,
   Signal,
   SimpleChange,
   SimpleChanges,
   viewChild
 } from '@angular/core';
-import { Chart, ChartConfiguration, registerables } from 'chart.js';
+import {
+  Chart,
+  ChartConfiguration,
+  ChartData,
+  ChartDataset,
+  registerables
+} from 'chart.js';
 import { createDashboardWorkingCapitalChartConfig } from '../../../utils/dashboard-working-capital-chart.util';
 import {
   DashboardWorkingChartDataset,
@@ -24,6 +32,7 @@ Chart.register(...registerables);
   selector: 'app-dashboard-working-capital-chart',
   templateUrl: './dashboard-working-capital-chart.component.html',
   styleUrl: './dashboard-working-capital-chart.component.scss',
+  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardWorkingCapitalChartComponent
@@ -32,15 +41,20 @@ export class DashboardWorkingCapitalChartComponent
   private readonly chart: Signal<ElementRef<HTMLCanvasElement>> =
     viewChild.required<ElementRef<HTMLCanvasElement>>('chart');
 
-  datasets = input<DashboardWorkingChartDataset>();
+  datasets: InputSignal<DashboardWorkingChartDataset | undefined> =
+    input<DashboardWorkingChartDataset>();
 
-  legends = input<DashboardWorkingChartLegend[]>([]);
-  legendsChange = output<DashboardWorkingChartLegend[]>();
+  legends: InputSignal<DashboardWorkingChartLegend[]> = input<
+    DashboardWorkingChartLegend[]
+  >([]);
+
+  legendsChange: OutputEmitterRef<DashboardWorkingChartLegend[]> =
+    output<DashboardWorkingChartLegend[]>();
 
   private chartRef?: Chart;
 
   ngAfterViewInit() {
-    this.upsertChart([132, 224, 133, 233, 142, 345, 341, 334, 46, 35, 435]);
+    this.upsertChart([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -61,9 +75,9 @@ export class DashboardWorkingCapitalChartComponent
     const chartConfig: ChartConfiguration<'line'> = this.getChartConfig(test);
     this.chartRef = new Chart(chartElement, chartConfig);
 
-    const chartData = this.chartRef!.data;
+    const chartData: ChartData = this.chartRef!.data;
     const legends: DashboardWorkingChartLegend[] = chartData.datasets.map(
-      (chartDataItem): DashboardWorkingChartLegend => ({
+      (chartDataItem: ChartDataset): DashboardWorkingChartLegend => ({
         color: chartDataItem.borderColor as string,
         label: chartDataItem.label!
       })
