@@ -29,7 +29,7 @@ jobs:
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: '{
+          firebaseServiceAccount: {
             "type": "service_account",
             "project_id": "maglo-a1d85",
             "private_key_id": "406e16f2b1445aa2103d53d6cdd1f427e82664d9",
@@ -41,6 +41,6 @@ jobs:
             "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
             "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40maglo-a1d85.iam.gserviceaccount.com",
             "universe_domain": "googleapis.com"
-          }'
+          }
           channelId: live  # Deploy directly to live channel
           projectId: maglo-a1d85
