@@ -39,7 +39,7 @@ import { DropdownComponent } from '../dropdown/dropdown.component';
   styleUrl: './date-picker.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DatePickerComponent<T> implements OnInit, ControlValueAccessor {
+export class DatePickerComponent implements OnInit, ControlValueAccessor {
   headerForm!: FormGroup;
 
   placeholder: InputSignal<string> = input<string>('Select Date');
@@ -65,36 +65,38 @@ export class DatePickerComponent<T> implements OnInit, ControlValueAccessor {
       const date = new Date(year, month, option.day);
       this.selectedDate.set(date);
     } else if (option.dayMonth === DatePickerDayMonth.Previous) {
-      const previousMonth: number = month === 0 ? 11 : month - 1;
-      const previousYear: number = month === 0 ? year - 1 : year;
-
-      this.headerForm.patchValue({
-        month: previousMonth,
-        year: previousYear
-      });
-
-      const options: DatePickerOption[][] = this.getGroupedDates(
-        previousMonth,
-        previousYear
-      );
-
-      this.options.set(options);
+      this.onPreviousMonthClick();
     } else if (option.dayMonth === DatePickerDayMonth.Next) {
-      const nextMonth: number = month === 11 ? 0 : month + 1;
-      const nextYear: number = month === 11 ? year + 1 : year;
-
-      this.headerForm.patchValue({
-        month: nextMonth,
-        year: nextYear
-      });
-
-      const options: DatePickerOption[][] = this.getGroupedDates(
-        nextMonth,
-        nextYear
-      );
-
-      this.options.set(options);
+      this.onNextMonthClick();
     }
+  }
+
+  onPreviousMonthClick(): void {
+    const { month, year } = this.headerForm.value;
+    const previousMonth: number = month === 0 ? 11 : month - 1;
+    const previousYear: number = month === 0 ? year - 1 : year;
+
+    this.headerForm.patchValue({ month: previousMonth, year: previousYear });
+    const options: DatePickerOption[][] = this.getGroupedDates(
+      previousMonth,
+      previousYear
+    );
+
+    this.options.set(options);
+  }
+
+  onNextMonthClick(): void {
+    const { month, year } = this.headerForm.value;
+    const nextMonth: number = month === 11 ? 0 : month + 1;
+    const nextYear: number = month === 11 ? year + 1 : year;
+
+    this.headerForm.patchValue({ month: nextMonth, year: nextYear });
+    const options: DatePickerOption[][] = this.getGroupedDates(
+      nextMonth,
+      nextYear
+    );
+
+    this.options.set(options);
   }
 
   private initOptions() {
@@ -175,7 +177,7 @@ export class DatePickerComponent<T> implements OnInit, ControlValueAccessor {
   }
 
   // Value Accessor Functions
-  private onChange = (value: T | unknown) => {};
+  private onChange = (value: Date | unknown) => {};
   private onTouch = () => {};
 
   registerOnChange(fn: (value: unknown) => void): void {
