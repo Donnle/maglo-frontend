@@ -5,7 +5,7 @@ import {
   InputSignal
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { VerticalTab } from '../../interfaces/vertical-tab.interface';
+import { VerticalTab } from '../../../interfaces/vertical-tab.interface';
 
 @Component({
   selector: 'app-vertical-tabs',

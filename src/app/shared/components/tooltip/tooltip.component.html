@@ -1,9 +1,10 @@
 <div
-  class="tooltip tooltip--above"
-  [ngClass]="['tooltip--' + style()]"
+  class="tooltip"
+  [attr.data-position]="'above'"
+  [attr.data-style]="style()"
   [class.tooltip--visible]="visible()"
-  [style.left]="left() + 'px'"
-  [style.top]="top() + 'px'"
+  [style.left.px]="left()"
+  [style.top.px]="top()"
 >
   {{ tooltip() }}
 </div>

@@ -1,12 +1,10 @@
 import { Component, input, InputSignal } from '@angular/core';
-import { NgClass } from '@angular/common';
 import { TooltipStyle } from '../../enums/tooltip.enum';
 
 @Component({
   selector: 'app-tooltip',
   templateUrl: './tooltip.component.html',
-  styleUrls: ['./tooltip.component.scss'],
-  imports: [NgClass],
+  styleUrls: ['./tooltip.component.scss']
 })
 export class TooltipComponent {
   style: InputSignal<TooltipStyle> = input<TooltipStyle>(TooltipStyle.Default);

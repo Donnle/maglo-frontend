@@ -17,3 +17,8 @@
 
 /** Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Gorditas:wght@400;700&family=Kumbh+Sans:wght@100..900&display=swap');
+
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 2px 1px var(--primary);
+}

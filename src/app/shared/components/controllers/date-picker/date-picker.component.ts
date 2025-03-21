@@ -10,24 +10,27 @@ import {
 } from '@angular/core';
 import {
   ControlValueAccessor,
-  FormBuilder,
-  FormGroup,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule
 } from '@angular/forms';
 import { DatePipe, NgClass } from '@angular/common';
-import {
-  DatePickerOption,
-  DatePickerWeekDays
-} from '../../../interfaces/date-picker.interface';
+import { DatePickerOption } from '../../../interfaces/date-picker.interface';
 import { DatePickerDayMonth } from '../../../enums/date-picker.enum';
 import { chunkArray } from '../../../utils/chunk.util';
-import { DATE_PICKER_WEEK_DAYS } from '../../../constants/date-picker.constant';
-import { DropdownComponent } from '../dropdown/dropdown.component';
+import { MONTHS, WEEK_DAYS } from '../../../constants/date-picker.constant';
+import { CdkConnectedOverlay, CdkOverlayOrigin } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-date-picker',
-  imports: [DatePipe, NgClass, DropdownComponent, ReactiveFormsModule],
+  imports: [
+    DatePipe,
+    NgClass,
+    ReactiveFormsModule,
+    CdkConnectedOverlay,
+    CdkOverlayOrigin
+  ],
+  templateUrl: './date-picker.component.html',
+  styleUrl: './date-picker.component.scss',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -35,78 +38,71 @@ import { DropdownComponent } from '../dropdown/dropdown.component';
       multi: true
     }
   ],
-  templateUrl: './date-picker.component.html',
-  styleUrl: './date-picker.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatePickerComponent implements OnInit, ControlValueAccessor {
-  headerForm!: FormGroup;
+  protected readonly currentDate: Date = new Date();
+  protected readonly MONTHS: string[] = MONTHS;
+  protected readonly WEEK_DAYS: string[] = WEEK_DAYS;
 
+  minDate: InputSignal<Date> = input<Date>(new Date(0));
+  maxDate: InputSignal<Date> = input<Date>(new Date(Infinity));
   placeholder: InputSignal<string> = input<string>('Select Date');
+  isWeekendDisabled: InputSignal<boolean> = input<boolean>(false);
 
+  year: WritableSignal<number> = signal<number>(this.currentDate.getFullYear());
+  month: WritableSignal<number> = signal<number>(this.currentDate.getMonth());
   options: WritableSignal<DatePickerOption[][]> = signal([]);
   selectedDate: WritableSignal<Date | null> = signal<Date | null>(null);
+
+  // State
+  isCalendarOpen: WritableSignal<boolean> = signal<boolean>(false);
   isDisabled: WritableSignal<boolean> = signal<boolean>(false);
 
-  protected readonly DATE_PICKER_WEEK_DAYS: DatePickerWeekDays[] =
-    DATE_PICKER_WEEK_DAYS;
-
-  constructor(private formBuilder: FormBuilder) {}
+  constructor() {}
 
   ngOnInit() {
-    this.initForm();
-    this.initOptions();
+    this.updateOptions();
   }
 
   onDateClick(option: DatePickerOption): void {
-    const { month, year } = this.headerForm.value;
-
     if (option.dayMonth === DatePickerDayMonth.Current) {
-      const date = new Date(year, month, option.day);
-      this.selectedDate.set(date);
+      this.selectedDate.set(option.date);
+      this.onChange(option.date);
+      this.closeCalendar();
     } else if (option.dayMonth === DatePickerDayMonth.Previous) {
-      this.onPreviousMonthClick();
+      this.onPrevClick();
     } else if (option.dayMonth === DatePickerDayMonth.Next) {
-      this.onNextMonthClick();
+      this.onNextClick();
     }
+
+    this.onTouch();
   }
 
-  onPreviousMonthClick(): void {
-    const { month, year } = this.headerForm.value;
-    const previousMonth: number = month === 0 ? 11 : month - 1;
-    const previousYear: number = month === 0 ? year - 1 : year;
-
-    this.headerForm.patchValue({ month: previousMonth, year: previousYear });
-    const options: DatePickerOption[][] = this.getGroupedDates(
-      previousMonth,
-      previousYear
-    );
-
-    this.options.set(options);
+  onPrevClick() {
+    this.month.update((month: number) => (month === 0 ? 11 : month - 1));
+    this.year.update((year: number) => (this.month() === 11 ? year - 1 : year));
+    this.updateOptions();
   }
 
-  onNextMonthClick(): void {
-    const { month, year } = this.headerForm.value;
-    const nextMonth: number = month === 11 ? 0 : month + 1;
-    const nextYear: number = month === 11 ? year + 1 : year;
-
-    this.headerForm.patchValue({ month: nextMonth, year: nextYear });
-    const options: DatePickerOption[][] = this.getGroupedDates(
-      nextMonth,
-      nextYear
-    );
-
-    this.options.set(options);
+  onNextClick() {
+    this.month.update((month: number) => (month === 11 ? 0 : month + 1));
+    this.year.update((year: number) => (this.month() === 0 ? year + 1 : year));
+    this.updateOptions();
   }
 
-  private initOptions() {
-    const currentDate = new Date();
-    const currentMonth: number = currentDate.getMonth();
-    const currentYear: number = currentDate.getFullYear();
+  toggleOpen() {
+    this.isCalendarOpen.update((isCalendarOpen: boolean) => !isCalendarOpen);
+  }
 
+  closeCalendar() {
+    this.isCalendarOpen.set(false);
+  }
+
+  private updateOptions() {
     const options: DatePickerOption[][] = this.getGroupedDates(
-      currentMonth,
-      currentYear
+      this.month(),
+      this.year()
     );
 
     this.options.set(options);
@@ -127,24 +123,34 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     const currentMonthFirstDay: number = currentMonthStart.getDay();
     const currentMonthLastDate: number = currentMonthEnd.getDate();
 
+    const prevMonth: number = this.month() === 0 ? 11 : month - 1;
+    const prevYear: number = prevMonth === 11 ? this.year() - 1 : this.year();
     const previousMonthDays: DatePickerOption[] =
       currentMonthFirstDay === 0
         ? []
         : this.getDaysOptions(
             previousMonthLastDate + 1 - currentMonthFirstDay,
             previousMonthLastDate + 1,
+            prevMonth,
+            prevYear,
             DatePickerDayMonth.Previous
           );
 
     const currentMonthDays: DatePickerOption[] = this.getDaysOptions(
       1,
       currentMonthLastDate + 1,
+      this.month(),
+      this.year(),
       DatePickerDayMonth.Current
     );
 
+    const nextMonth: number = this.month() === 11 ? 0 : month + 1;
+    const nextYear: number = nextMonth === 0 ? this.year() + 1 : this.year();
     const nextMonthDays: DatePickerOption[] = this.getDaysOptions(
       1,
       7 - currentMonthLastDay,
+      nextMonth,
+      nextYear,
       DatePickerDayMonth.Next
     );
 
@@ -154,26 +160,17 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
   private getDaysOptions(
     from: number,
     to: number,
+    month: number,
+    year: number,
     dayMonth: DatePickerDayMonth = DatePickerDayMonth.Current
   ): DatePickerOption[] {
     const result: DatePickerOption[] = [];
 
     for (let day: number = from; day < to; day++) {
-      result.push({ day, dayMonth });
+      result.push({ date: new Date(year, month, day), dayMonth });
     }
 
     return result;
-  }
-
-  private initForm(): void {
-    const currentDate = new Date();
-    const currentMonth: number = currentDate.getMonth();
-    const currentYear: number = currentDate.getFullYear();
-
-    this.headerForm = this.formBuilder.group({
-      month: [currentMonth],
-      year: [currentYear]
-    });
   }
 
   // Value Accessor Functions

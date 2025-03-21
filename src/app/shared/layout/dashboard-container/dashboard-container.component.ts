@@ -7,7 +7,7 @@ import {
 import { BOTTOM_SIDEBAR, TOP_SIDEBAR } from '../../constants/sidebar.constant';
 import { ButtonComponent } from '../../components/button/button.component';
 import { ProfileComponent } from '../../components/profile/profile.component';
-import { VerticalTabsComponent } from '../../components/vertical-tabs/vertical-tabs.component';
+import { VerticalTabsComponent } from '../../components/tabs/vertical-tabs/vertical-tabs.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { VerticalTab } from '../../interfaces/vertical-tab.interface';
 import {
