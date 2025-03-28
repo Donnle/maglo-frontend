@@ -11,6 +11,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CdkConnectedOverlay, CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { DropdownItem } from '../../../interfaces/dropdown.interface';
 
+export enum DropdownSize {
+  Small = 'small',
+  Medium = 'medium',
+  Large = 'large',
+  Wide = 'wide'
+}
+
 @Component({
   selector: 'app-dropdown',
   imports: [CdkOverlayOrigin, CdkConnectedOverlay],
@@ -35,6 +42,9 @@ export class DropdownComponent<T extends DropdownItem>
 
   empty: InputSignal<string> = input('No Options');
   placeholder: InputSignal<string> = input('Select');
+
+  // Styles
+  size: InputSignal<DropdownSize> = input<DropdownSize>(DropdownSize.Small);
 
   selectedOptionIndex: WritableSignal<number> = signal<number>(-1);
   isOpen: WritableSignal<boolean> = signal<boolean>(false);

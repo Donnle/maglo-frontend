@@ -13,6 +13,7 @@
 
 .content__table {
   @include mixins.table;
+  @include mixins.scrollbar;
 
   table tbody td {
     padding: 8px 0;

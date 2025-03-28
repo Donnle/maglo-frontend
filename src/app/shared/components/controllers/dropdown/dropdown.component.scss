@@ -48,7 +48,7 @@
     }
   }
 
-  &__options {
+  &__options-list {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -86,7 +86,19 @@
       font-size: 14px;
       font-weight: 400;
       color: var(--dropdown-text);
-      padding: 6px 10px;
     }
+  }
+}
+
+// Sizes
+[data-size='medium'] .dropdown {
+  &__button,
+  &__options-list_item {
+    padding: 16px 24px !important;
+  }
+
+  &__button,
+  &__options-list {
+    border-radius: 8px;
   }
 }

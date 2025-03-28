@@ -3,9 +3,10 @@
 
 @let dropdownButtonWidth = trigger.elementRef.nativeElement.offsetWidth;
 
-<div class="dropdown">
+<div class="dropdown" [attr.data-size]="size()">
   <!-- DropDown Button -->
   <button
+    type="button"
     cdkOverlayOrigin
     #trigger="cdkOverlayOrigin"
     class="dropdown__button"
@@ -31,12 +32,12 @@
     [cdkConnectedOverlayWidth]="dropdownButtonWidth"
     (overlayOutsideClick)="closeDropdown()"
   >
-    <ul class="dropdown__options">
+    <ul class="dropdown__options-list">
       @for (option of options(); track $index) {
         @let isActive = selectedOptionIndex() === $index;
 
         <li
-          class="dropdown__options_item option"
+          class="dropdown__options-list_item option"
           [class.active]="isActive"
           (click)="onSelectOption($index)"
         >
@@ -45,7 +46,7 @@
       }
 
       @if (options().length === 0) {
-        <li class="dropdown__options_item empty">{{ empty() }}</li>
+        <li class="dropdown__options-list_item empty">{{ empty() }}</li>
       }
     </ul>
   </ng-template>

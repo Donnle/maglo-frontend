@@ -6,6 +6,8 @@
 
 .content__table {
   @include mixin.table;
+  @include mixin.scrollbar;
+
   max-height: 216px;
 
   td {

@@ -1,0 +1,24 @@
+<app-dialog-wrapper>
+  <div class="content">
+    <form class="form">
+      <div class="form__content">
+        <div class="form__content_category">
+          <app-dropdown [size]="DropdownSize.Medium" [options]="[]" />
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div footer class="footer">
+    <app-button
+      [size]="ButtonSize.Wide"
+      [severity]="ButtonSeverity.Secondary"
+      (buttonClick)="closeDialog()"
+    >
+      Cancel
+    </app-button>
+    <app-button [size]="ButtonSize.Wide" (buttonClick)="submitForm()">
+      Save
+    </app-button>
+  </div>
+</app-dialog-wrapper>

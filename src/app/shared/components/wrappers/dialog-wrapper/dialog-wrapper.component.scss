@@ -1,0 +1,46 @@
+@use 'mixin' as mixin;
+
+:host ::ng-deep {
+  .container .header__close-button app-button > button > .icon-cross {
+    font-size: 14px;
+  }
+}
+
+.container {
+  background: var(--card-bg);
+  border-radius: 4px;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+}
+
+.header__title {
+}
+
+.header__button-close_icon {
+}
+
+.icon {
+}
+
+.icon-cross {
+}
+
+.content {
+  max-height: 60vh;
+  overflow-y: auto;
+  @include mixin.scrollbar(var(--primary));
+}
+
+.footer {
+  position: sticky;
+}

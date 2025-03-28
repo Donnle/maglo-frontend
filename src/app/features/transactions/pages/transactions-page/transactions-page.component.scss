@@ -6,4 +6,5 @@
   border-top: 1px solid var(--table-body-line) !important;
 
   @include mixin.table;
+  @include mixin.scrollbar;
 }
