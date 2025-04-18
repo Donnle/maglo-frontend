@@ -1,100 +1,102 @@
+@use 'mixin' as mixins;
+
 :host {
+  display: block;
   width: 125px;
 
   --options-height: 200px;
+}
+
+:host:has(.dropdown[data-size='wide']) {
+  width: 100%;
 }
 
 .dropdown {
   width: inherit;
 
   &__button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-
-    text-align: start;
-    cursor: pointer;
-
-    width: inherit;
-    border-radius: 5px;
-    background-color: var(--control-bg);
-
-    padding: 6px 10px;
-
-    &_name {
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 1.2em;
-      color: var(--text-1);
-
-      overflow: hidden;
-      text-overflow: ellipsis;
-      -ms-text-overflow: ellipsis;
-
-      &.placeholder {
-        color: var(--control-placeholder-text);
-      }
-    }
-
-    .icon {
-      color: var(--icon);
-      transition: transform 0.25s ease;
-    }
-
-    &.opened .icon {
-      -webkit-transform: rotate(180deg);
-      transform: rotate(180deg);
-    }
+    @include mixins.dropdown-button;
   }
 
-  &__options-list {
-    display: flex;
-    flex-direction: column;
+  &__options {
     width: 100%;
 
-    height: fit-content;
-    min-height: 0;
-    max-height: 200px;
+    &-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
 
-    overflow: auto;
-    border-radius: 4px;
-    background-color: var(--dropdown-bg);
+      height: fit-content;
+      min-height: 0;
+      max-height: 200px;
+      overflow: auto;
 
-    .option {
-      text-overflow: ellipsis;
-      -ms-text-overflow: ellipsis;
-
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--dropdown-text);
-      padding: 6px 10px;
-
-      cursor: pointer;
-
-      &.active {
-        color: var(--dropdown-active-text);
-        background-color: var(--dropdown-active-bg);
+      .option {
+        @include mixins.dropdown-option;
       }
 
-      &:not(.active):hover {
-        background-color: var(--dropdown-hover-bg);
+      .empty {
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--dropdown-text);
       }
-    }
-
-    .empty {
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--dropdown-text);
     }
   }
 }
 
+// Styles
+[data-style='primary'] .dropdown {
+  &__button,
+  &__options-list {
+    border: 1px solid #ededed;
+    background-color: var(--dropdown-bg);
+  }
+
+  &__options-list {
+    @include mixins.scrollbar;
+  }
+}
+
+[data-style='secondary'] .dropdown {
+  &__button,
+  &__options-list {
+    background-color: var(--dropdown-bg);
+  }
+
+  &__options-list {
+    @include mixins.scrollbar;
+  }
+}
+
 // Sizes
+[data-size='small'] .dropdown {
+  &__button,
+  &__options-list_item {
+    padding: 6px 10px;
+  }
+
+  &__button,
+  &__options-list {
+    border-radius: 4px;
+  }
+}
+
 [data-size='medium'] .dropdown {
   &__button,
   &__options-list_item {
-    padding: 16px 24px !important;
+    padding: 16px 24px;
+  }
+
+  &__button,
+  &__options-list {
+    border-radius: 8px;
+  }
+}
+
+[data-size='wide'] .dropdown {
+  &__button,
+  &__options-list_item {
+    padding: 16px 24px;
   }
 
   &__button,

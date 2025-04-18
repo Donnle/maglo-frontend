@@ -17,11 +17,9 @@ import {
 export class UpsertTransactionDialogComponent extends BaseDialogComponent {
   protected readonly ButtonSize = ButtonSize;
   protected readonly ButtonSeverity = ButtonSeverity;
+  protected readonly DropdownSize = DropdownSize;
 
   submitForm() {
-    console.log(1);
     this.closeDialog();
   }
-
-  protected readonly DropdownSize = DropdownSize;
 }

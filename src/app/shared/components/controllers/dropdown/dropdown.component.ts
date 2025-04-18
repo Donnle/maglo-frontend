@@ -18,6 +18,11 @@ export enum DropdownSize {
   Wide = 'wide'
 }
 
+export enum DropdownStyle {
+  Primary = 'primary',
+  Secondary = 'secondary'
+}
+
 @Component({
   selector: 'app-dropdown',
   imports: [CdkOverlayOrigin, CdkConnectedOverlay],
@@ -45,6 +50,9 @@ export class DropdownComponent<T extends DropdownItem>
 
   // Styles
   size: InputSignal<DropdownSize> = input<DropdownSize>(DropdownSize.Small);
+  style: InputSignal<DropdownStyle> = input<DropdownStyle>(
+    DropdownStyle.Primary
+  );
 
   selectedOptionIndex: WritableSignal<number> = signal<number>(-1);
   isOpen: WritableSignal<boolean> = signal<boolean>(false);

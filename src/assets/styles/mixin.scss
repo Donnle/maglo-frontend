@@ -65,6 +65,69 @@
   }
 }
 
+/** Shared Components **/
+@mixin dropdown-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  text-align: start;
+  cursor: pointer;
+
+  width: inherit;
+  border-radius: 5px;
+  background-color: var(--control-bg);
+
+  padding: 6px 10px;
+
+  &_name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2em;
+    color: var(--text-1);
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+
+    &.placeholder {
+      color: var(--control-placeholder-text);
+    }
+  }
+
+  .icon {
+    color: var(--icon);
+    transition: transform 0.25s ease;
+  }
+
+  &.opened .icon {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+
+@mixin dropdown-option {
+  text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--dropdown-text);
+  padding: 6px 10px;
+
+  cursor: pointer;
+
+  &.active {
+    color: var(--dropdown-active-text);
+    background-color: var(--dropdown-active-bg);
+  }
+
+  &:not(.active):hover {
+    background-color: var(--dropdown-hover-bg);
+  }
+}
+
 /** Table Mixins **/
 @mixin table {
   overflow-y: auto;

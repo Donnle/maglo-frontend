@@ -23,21 +23,10 @@
   padding: 12px 20px;
 }
 
-.header__title {
-}
-
-.header__button-close_icon {
-}
-
-.icon {
-}
-
-.icon-cross {
-}
-
 .content {
   max-height: 60vh;
   overflow-y: auto;
+  padding: 8px 12px;
   @include mixin.scrollbar(var(--primary));
 }
 
