@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { filter, map, Observable } from 'rxjs';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -9,18 +8,30 @@ import { Title } from '@angular/platform-browser';
 export class RouteTitleService {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private titleService: Title
+    private router: Router
   ) {}
 
   get activeRouterTitle() {
-    return this.titleService.getTitle();
+    let route: ActivatedRoute = this.activatedRoute;
+
+    while (route.firstChild) {
+      route = route.firstChild;
+    }
+
+    return route.snapshot.data['title'];
   }
 
   get activeRouterTitle$(): Observable<string | undefined> {
     return this.router.events.pipe(
-      filter((event) => event instanceof NavigationEnd),
-      map((): string | undefined => this.titleService.getTitle())
+      filter((event): boolean => event instanceof NavigationEnd),
+      map((): ActivatedRoute => this.activatedRoute),
+      map((route: ActivatedRoute): string | undefined => {
+        while (route.firstChild) {
+          route = route.firstChild;
+        }
+
+        return route.snapshot.data['title'];
+      })
     );
   }
 }
