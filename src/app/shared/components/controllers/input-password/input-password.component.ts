@@ -4,6 +4,8 @@ import {
   forwardRef,
   input,
   InputSignal,
+  model,
+  ModelSignal,
   signal,
   WritableSignal
 } from '@angular/core';
@@ -37,9 +39,9 @@ import {
 export class InputPasswordComponent implements ControlValueAccessor {
   label: InputSignal<string> = input<string>('');
   placeholder: InputSignal<string> = input<string>('');
+  isVisible: ModelSignal<boolean> = model<boolean>(false);
 
   value: WritableSignal<string> = signal<string>('');
-  isVisible: WritableSignal<boolean> = signal<boolean>(false);
   isDisabled: WritableSignal<boolean> = signal<boolean>(false);
 
   protected readonly ButtonStyle = ButtonStyle;

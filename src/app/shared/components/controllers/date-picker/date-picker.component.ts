@@ -45,17 +45,18 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
   protected readonly MONTHS: string[] = MONTHS;
   protected readonly WEEK_DAYS: string[] = WEEK_DAYS;
 
+  label: InputSignal<string> = input<string>('Query Test');
+  placeholder: InputSignal<string> = input<string>('Select Date');
+
   minDate: InputSignal<Date> = input<Date>(new Date(0));
   maxDate: InputSignal<Date> = input<Date>(new Date(Infinity));
-  placeholder: InputSignal<string> = input<string>('Select Date');
   isWeekendDisabled: InputSignal<boolean> = input<boolean>(false);
 
+  // State
   year: WritableSignal<number> = signal<number>(this.currentDate.getFullYear());
   month: WritableSignal<number> = signal<number>(this.currentDate.getMonth());
   options: WritableSignal<DatePickerOption[][]> = signal([]);
   selectedDate: WritableSignal<Date | null> = signal<Date | null>(null);
-
-  // State
   isCalendarOpen: WritableSignal<boolean> = signal<boolean>(false);
   isDisabled: WritableSignal<boolean> = signal<boolean>(false);
 

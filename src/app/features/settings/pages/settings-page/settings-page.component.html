@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="header">
+    <div class="header__general">
+      <h2 class="header__general-title">Account Information</h2>
+      <p class="header__general-subtitle">Update your account information</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content__personal-information personal-information">
+      <div class="personal-information__header">
+        <h3 class="personal-information__header-title">Personal Information</h3>
+      </div>
+
+      <form
+        class="personal-information__form"
+        [formGroup]="settingsForm"
+        (ngSubmit)="onPersonalInfoSubmit()"
+      >
+        <div class="personal-information__form-fields">
+          <app-input label="First Name" formControlName="firstName" />
+          <app-input label="Last Name" formControlName="lastName" />
+        </div>
+
+        <div class="personal-information__form-fields">
+          <app-date-picker label="Date of Birth" formControlName="birthday" />
+          <app-input label="Phone Number" formControlName="phoneNumber" />
+        </div>
+
+        <app-input label="Email" formControlName="email" />
+
+        <div class="personal-information__form-fields">
+          <app-input-password
+            label="Password"
+            formControlName="password"
+            [(isVisible)]="isPasswordVisible"
+          />
+          <app-input-password
+            label="Confirm Password"
+            formControlName="confirmPassword"
+            [(isVisible)]="isPasswordVisible"
+          />
+        </div>
+
+        <div class="personal-information__form-submit">
+          <app-button
+            [type]="ButtonType.Submit"
+            [size]="ButtonSize.Large"
+            [severity]="ButtonSeverity.Success"
+          >
+            Save Changes
+          </app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

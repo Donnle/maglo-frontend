@@ -1,0 +1,47 @@
+.container {
+}
+
+.header {
+  padding-bottom: 40px;
+
+  &__general {
+    &-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-1);
+      padding-bottom: 6px;
+    }
+
+    &-subtitle {
+      font-size: 14px;
+      color: var(--text-2);
+    }
+  }
+}
+
+.personal-information {
+  &__header {
+    padding-bottom: 20px;
+
+    &-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-1);
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &-fields {
+      display: flex;
+      gap: 20px;
+
+      & > * {
+        flex: 1 1 100%;
+      }
+    }
+  }
+}

@@ -44,6 +44,15 @@ export const routes: Routes = [
           )
       },
       {
+        path: 'settings',
+        title: 'Settings',
+        data: { title: 'Settings' },
+        loadChildren: () =>
+          import('./features/settings/settings.module').then(
+            (m) => m.SettingsModule
+          )
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'main'

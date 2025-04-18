@@ -19,6 +19,7 @@
         formControlName="card"
         placeholder="Select Card"
         queryControl="working_capital_card"
+        [style]="DropdownStyle.Secondary"
         [loading]="isWorkingCapitalLoading()"
         [options]="cards()"
       />
@@ -26,6 +27,7 @@
       <app-dropdown
         formControlName="range"
         queryControl="working_capital_range"
+        [style]="DropdownStyle.Secondary"
         [options]="TIME_RANGE"
       />
     </form>

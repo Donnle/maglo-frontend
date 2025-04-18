@@ -1,16 +1,24 @@
 <div class="date-picker">
+  @if (label()) {
+    <span class="date-picker__name">{{ label() }}</span>
+  }
+
   <button
+    type="button"
     cdkOverlayOrigin
     class="date-picker__button"
     #trigger="cdkOverlayOrigin"
     (click)="toggleOpen()"
   >
-    <span class="date-picker__button_icon"></span>
-    @if (selectedDate()) {
-      {{ selectedDate() | date: 'dd MMM YYYY' }}
-    } @else {
-      {{ placeholder() }}
-    }
+    <span class="date-picker__button-text">
+      @if (selectedDate()) {
+        {{ selectedDate() | date: 'dd MMM YYYY' }}
+      } @else {
+        {{ placeholder() }}
+      }
+    </span>
+
+    <i class="date-picker__button-icon icon icon-calendar"></i>
   </button>
 
   <ng-template
@@ -22,6 +30,7 @@
     <div class="date-picker__dropdown dropdown">
       <div class="dropdown__header">
         <button
+          type="button"
           class="dropdown__header_arrow dropdown__header_arrow--left"
           (click)="onPrevClick()"
         >
@@ -34,6 +43,7 @@
         </div>
 
         <button
+          type="button"
           class="dropdown__header_arrow dropdown__header_arrow--right"
           (click)="onNextClick()"
         >
@@ -55,6 +65,7 @@
               <div class="calendar__content_week">
                 @for (dayOption of week; track $index) {
                   <button
+                    type="button"
                     class="calendar__content_day"
                     [ngClass]="[dayOption.dayMonth]"
                     (click)="onDateClick(dayOption)"
