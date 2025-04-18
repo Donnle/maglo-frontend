@@ -1,4 +1,4 @@
-import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import { inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { Theme } from '../../core/enums/themes.enum';
 import { Observable, Subscriber } from 'rxjs';
 import { LocalStorageKey } from '../enums/local-storage.enum';
@@ -9,7 +9,12 @@ import { LocalStorageKey } from '../enums/local-storage.enum';
 export class ThemeService {
   private readonly DARK_MATCH_MEDIA_KEY: string = `(prefers-color-scheme: ${Theme.Dark})`;
   private readonly LOCAL_STORAGE_KEY: string = LocalStorageKey.Theme;
-  private readonly renderer: Renderer2;
+
+  private readonly rendererFactory: RendererFactory2 = inject(RendererFactory2);
+  private readonly renderer: Renderer2 = this.rendererFactory.createRenderer(
+    null,
+    null
+  );
 
   private get currentTheme(): Theme {
     return localStorage.getItem(this.LOCAL_STORAGE_KEY) as Theme;
@@ -35,10 +40,6 @@ export class ThemeService {
     ).matches;
 
     return isDark ? Theme.Dark : Theme.Light;
-  }
-
-  constructor(private rendererFactory: RendererFactory2) {
-    this.renderer = this.rendererFactory.createRenderer(null, null);
   }
 
   toggleTheme(): void {
