@@ -18,12 +18,12 @@
     opacity: 1;
   }
 
-  &--success {
+  &[data-style='success'] {
     color: var(--tooltip-success-color);
     background-color: var(--tooltip-success-bg);
   }
 
-  &--above {
+  &[data-position='above'] {
     transform: translate(-50%, -100%);
     margin-bottom: 7px;
 

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="header">
+    @if (title) {
+      <h2 class="header__title">{{ title }}</h2>
+    }
+
+    <div class="header__close-button">
+      <app-button
+        icon="icon-cross"
+        [size]="ButtonSize.Small"
+        [style]="ButtonStyle.Icon"
+        [severity]="ButtonSeverity.Secondary"
+        (buttonClick)="onClose()"
+      />
+    </div>
+  </div>
+
+  <div class="content">
+    <ng-content />
+  </div>
+
+  <div class="footer">
+    <ng-content select="[footer]" />
+  </div>
+</div>

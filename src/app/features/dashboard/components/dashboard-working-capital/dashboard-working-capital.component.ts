@@ -15,6 +15,7 @@ import { delay, finalize, of } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Option } from '../../../../shared/interfaces/option.interface';
 import { DashboardWorkingChartLegend } from '../../interfaces/dashboard-working-capital-chart.interface';
+import { DropdownStyle } from '../../../../shared/components/controllers/dropdown/dropdown.component';
 
 @Component({
   selector: 'app-dashboard-working-capital',
@@ -66,4 +67,7 @@ export class DashboardWorkingCapitalComponent implements OnInit, AfterViewInit {
       range: [TimeRange.LastYear, Validators.required]
     });
   }
+
+  protected readonly ChangeDetectionStrategy = ChangeDetectionStrategy;
+  protected readonly DropdownStyle = DropdownStyle;
 }

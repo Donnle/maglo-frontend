@@ -2,6 +2,7 @@
 
 .form__invoice-items {
   @include mixins.table;
+  @include mixins.scrollbar;
 
   thead tr th,
   tbody tr td {

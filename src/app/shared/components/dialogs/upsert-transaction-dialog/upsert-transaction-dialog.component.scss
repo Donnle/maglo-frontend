@@ -1,0 +1,10 @@
+.footer {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  padding: 12px 12px;
+
+  app-button {
+    width: 100%;
+  }
+}

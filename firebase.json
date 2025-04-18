@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "maglo-a1d85",
     "public": "dist/maglo-frontend/browser",
     "ignore": [
       "firebase.json",
@@ -14,5 +15,3 @@
     ]
   }
 }
-
-

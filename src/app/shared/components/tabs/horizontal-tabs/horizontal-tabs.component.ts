@@ -5,7 +5,7 @@ import {
   InputSignal
 } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { HorizontalTab } from '../../interfaces/horizontal-tab.interface';
+import { HorizontalTab } from '../../../interfaces/horizontal-tab.interface';
 
 @Component({
   selector: 'app-horizontal-tabs',

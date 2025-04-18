@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MyWalletsRoutingModule } from './my-wallets-routing.module';
 import { MyWalletsPageComponent } from './pages/my-wallets-page/my-wallets-page.component';
-import { HorizontalTabsComponent } from '../../shared/components/horizontal-tabs/horizontal-tabs.component';
+import { HorizontalTabsComponent } from '../../shared/components/tabs/horizontal-tabs/horizontal-tabs.component';
 import { MyWalletsBalanceComponent } from './components/my-wallets-balance/my-wallets-balance.component';
 import { SkeletonDirective } from '../../shared/directives/skeleton-loading.directive';
 import { ButtonComponent } from '../../shared/components/button/button.component';
