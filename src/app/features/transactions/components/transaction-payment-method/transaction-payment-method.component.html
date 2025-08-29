@@ -1,0 +1,44 @@
+<div class="payment">
+  <div class="payment__content">
+    <div class="payment__content-details payment-details">
+      <div class="payment-details__icon">
+        <i
+          class="icon"
+          [ngClass]="{
+            'icon-credit-card':
+              paymentMethod() === TransactionPaymentMethod.Card,
+            'icon-cash': paymentMethod() === TransactionPaymentMethod.Cash
+          }"
+        ></i>
+      </div>
+
+      @if (paymentMethod() === TransactionPaymentMethod.Card) {
+        <div class="payment-details__card">
+          <span class="payment-details__card-name">{{ cardName() }}</span>
+          <span class="payment-details__card-number">{{ cardNumber() }}</span>
+        </div>
+      } @else if (paymentMethod() === TransactionPaymentMethod.Cash) {
+        <div class="payment-details__cash">
+          <div class="payment-details__cash-label">Cash</div>
+        </div>
+      }
+    </div>
+
+    @if (paymentMethod() === TransactionPaymentMethod.Card) {
+      <div class="payment__content-card-icon">
+        <i
+          class="icon"
+          [ngClass]="{
+            'icon-visa': cardType() === CreditCardType.Visa,
+            'icon-mastercard': cardType() === CreditCardType.MasterCard
+          }"
+        >
+          <span class="path1"></span>
+          <span class="path2"></span>
+          <span class="path3"></span>
+          <span class="path4"></span>
+        </i>
+      </div>
+    }
+  </div>
+</div>

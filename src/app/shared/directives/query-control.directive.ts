@@ -21,7 +21,7 @@ export class QueryControlDirective implements OnInit {
 
   @HostListener('ngModelChange', ['$event'])
   onNgModelChange(rawValue: object | string): void {
-    if (this.queryControl == null) {
+    if (this.queryControl() == null) {
       console.error('Ng Model Change! Query is not defined!');
       return;
     }
@@ -86,11 +86,11 @@ export class QueryControlDirective implements OnInit {
 
     try {
       this.ngControl.control.patchValue(JSON.parse(value), {
-        emitEvent: this.queryEmitEvent
+        emitEvent: this.queryEmitEvent()
       });
     } catch (e) {
       this.ngControl.control.patchValue(value, {
-        emitEvent: this.queryEmitEvent
+        emitEvent: this.queryEmitEvent()
       });
     }
   }

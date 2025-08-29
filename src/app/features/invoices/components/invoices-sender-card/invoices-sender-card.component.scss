@@ -1,0 +1,64 @@
+.sender {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 20px;
+  border-radius: 10px;
+  background: var(--sender-card-bg);
+
+  &__general {
+  }
+
+  &__address {
+  }
+}
+
+.general {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  &__logo {
+    &-icon {
+      font-size: 36px;
+      color: var(--sender-card-text);
+    }
+  }
+
+  &__text {
+    &-title {
+      font-family: 'Gordita', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--sender-card-text);
+      padding-bottom: 4px;
+    }
+
+    &-email {
+      font-family: 'Kumbh Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--sender-card-text);
+    }
+  }
+}
+
+.address {
+  &__street {
+    padding-bottom: 8px;
+  }
+
+  &__street,
+  &__state {
+    text-align: right;
+
+    &-name {
+      font-family: 'Kumbh Sans', sans-serif;
+      font-size: 14px;
+      line-height: 16px;
+      font-weight: 500;
+      color: var(--sender-card-text);
+    }
+  }
+}

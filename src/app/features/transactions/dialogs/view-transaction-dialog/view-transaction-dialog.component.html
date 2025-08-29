@@ -1,0 +1,20 @@
+<app-dialog-wrapper>
+  <div class="header">
+    <div class="header__product">
+      <div class="header__product-general">
+        <app-transaction-product />
+      </div>
+
+      <span class="header__product-price">{{ 100 | currency }}</span>
+    </div>
+  </div>
+
+  <div class="content">
+    <app-transaction-payment-method
+      cardName="Universal Bank"
+      cardNumber="1234567812345678"
+      [cardType]="CreditCardType.Visa"
+      [paymentMethod]="TransactionPaymentMethod.Card"
+    />
+  </div>
+</app-dialog-wrapper>

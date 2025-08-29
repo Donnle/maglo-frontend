@@ -1,0 +1,19 @@
+<div class="card">
+  <button class="card__header" (click)="toggleOpen()">
+    <h4 class="card__header-title">{{ title() }}</h4>
+
+    <span
+      class="card__header-icon"
+      [ngClass]="[isExpanded() ? 'expanded' : 'collapsed']"
+    >
+      <i class="icon icon-cross"></i>
+    </span>
+  </button>
+
+  <div
+    [@collapse]="isExpanded() ? 'expanded' : 'collapsed'"
+    class="card__content"
+  >
+    <ng-content />
+  </div>
+</div>

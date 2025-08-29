@@ -8,5 +8,5 @@ export interface BaseTransaction extends DBEntity {
   product: BaseProduct;
   countProducts: number;
   status: TransactionStatus;
-  date: string;
+  date: Date;
 }

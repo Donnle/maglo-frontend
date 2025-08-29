@@ -1,0 +1,52 @@
+.card {
+  border-radius: 12px;
+  background-color: var(--card-bg);
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    cursor: pointer;
+    width: 100%;
+
+    border: none;
+    outline: none;
+    background: transparent;
+    border-radius: 12px;
+
+    &-title {
+      font-family: 'Kumbh Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-1);
+    }
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: transparent;
+
+      transition: all 0.2s ease-in-out;
+      color: var(--text-1);
+
+      &.expanded {
+        rotate: 0deg;
+      }
+
+      &.collapsed {
+        rotate: 45deg;
+      }
+    }
+  }
+
+  &__content {
+    padding: 20px 24px 24px;
+    overflow: hidden;
+  }
+}

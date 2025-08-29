@@ -9,12 +9,20 @@ import { ButtonComponent } from '../../shared/components/button/button.component
 import { LinkComponent } from '../../shared/components/link/link.component';
 import { InvoicesPageComponent } from './pages/invoices-page/invoices-page.component';
 import { InvoicesClientCardComponent } from './components/invoices-client-card/invoices-client-card.component';
+import { InvoicesSenderCardComponent } from './components/invoices-sender-card/invoices-sender-card.component';
+import { InvoicesGeneralCardComponent } from './components/invoices-general-card/invoices-general-card.component';
+import { InvoicesBasicInfoCardComponent } from './components/invoices-basic-info-card/invoices-basic-info-card.component';
+import { DatePickerComponent } from '../../shared/components/controllers/date-picker/date-picker.component';
+import { CreateInvoiceService } from './services/create-invoice.service';
 
 @NgModule({
   declarations: [
     InvoicesPageComponent,
     InvoicesCreatePageComponent,
-    InvoicesClientCardComponent
+    InvoicesClientCardComponent,
+    InvoicesSenderCardComponent,
+    InvoicesGeneralCardComponent,
+    InvoicesBasicInfoCardComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +30,9 @@ import { InvoicesClientCardComponent } from './components/invoices-client-card/i
     ReactiveFormsModule,
     InputComponent,
     ButtonComponent,
-    LinkComponent
-  ]
+    LinkComponent,
+    DatePickerComponent
+  ],
+  providers: [CreateInvoiceService]
 })
 export class InvoicesModule {}

@@ -53,6 +53,13 @@ export const routes: Routes = [
           )
       },
       {
+        path: 'help',
+        title: 'Help',
+        data: { title: 'Help' },
+        loadChildren: () =>
+          import('./features/help/help.module').then((m) => m.HelpModule)
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'main'
@@ -66,6 +73,7 @@ export const routes: Routes = [
         (m) => m.AuthorizationModule
       )
   },
+  // TODO: Add story-book instead
   {
     path: 'ui-toolkit',
     canActivate: [developmentGuard],

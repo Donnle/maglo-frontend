@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="header"></div>
+
+  <div class="content">
+    <div class="content__faqs faqs">
+      @for (faq of FAQs; track $index) {
+        <app-collapsible-card
+          [title]="faq.question"
+          [(isExpanded)]="faq.isExpanded"
+          (isExpandedChange)="onFaqExpandedChange(faq.id, $event)"
+        >
+          {{ faq.answer }}
+        </app-collapsible-card>
+      }
+    </div>
+  </div>
+</div>

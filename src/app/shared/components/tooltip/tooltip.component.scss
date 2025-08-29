@@ -7,15 +7,19 @@
   color: var(--tooltip-color);
 
   opacity: 0;
+  z-index: -999;
 
   padding: 3px 6px;
-  transition: opacity 300ms;
+  transition:
+    opacity 300ms,
+    z-index 300ms;
 
   border-radius: 4px;
   background-color: var(--tooltip-bg);
 
   &--visible {
     opacity: 1;
+    z-index: 999;
   }
 
   &[data-style='success'] {

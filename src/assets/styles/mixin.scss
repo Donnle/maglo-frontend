@@ -163,8 +163,22 @@
       }
     }
 
-    tbody tr:not(:last-child) {
-      border-bottom: 1px solid var(--table-body-line);
+    tbody tr {
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--table-body-line);
+      }
+
+      & > td {
+        padding: 12px 0;
+
+        &.primary {
+          color: var(--text-1);
+        }
+
+        &.secondary {
+          color: var(--text-2);
+        }
+      }
     }
 
     tfoot {
@@ -198,6 +212,7 @@
 }
 
 @mixin link-button {
+  font-family: 'Kumbh Sans', sans-serif;
   position: relative;
   display: flex;
   align-items: center;
@@ -206,6 +221,15 @@
   text-decoration: none;
   color: var(--secondary);
   cursor: pointer;
+  background: transparent;
+
+  &:hover &__text {
+    text-decoration: underline;
+  }
+
+  &:not(:has(.icon.icon-chevron)):hover {
+    text-decoration: underline;
+  }
 
   .icon.icon-chevron {
     writing-mode: vertical-rl;

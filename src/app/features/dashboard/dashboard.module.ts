@@ -18,6 +18,7 @@ import { TransactionProductComponent } from '../../shared/components/transaction
 import { LinkComponent } from '../../shared/components/link/link.component';
 import { CardNumbersPipe } from '../../shared/pipes/card-numbers.pipe';
 import { ButtonComponent } from '../../shared/components/button/button.component';
+import { CollapsibleCardComponent } from '../../shared/components/collapsible-card/collapsible-card.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ButtonComponent } from '../../shared/components/button/button.component
     TransactionProductComponent,
     LinkComponent,
     CardNumbersPipe,
-    ButtonComponent
+    ButtonComponent,
+    CollapsibleCardComponent
   ]
 })
 export class DashboardModule {}

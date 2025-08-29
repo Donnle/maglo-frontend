@@ -12,7 +12,10 @@
         </thead>
 
         <tbody>
-          @for (invoiceItem of invoiceItems.controls; track $index) {
+          @for (
+            invoiceItem of invoiceForm.controls['items'].controls;
+            track $index
+          ) {
             <ng-container [formGroup]="invoiceItem">
               <tr>
                 <td>
@@ -55,6 +58,10 @@
     {{ invoiceForm.getRawValue() | json }}
 
     <button (click)="addInvoiceItem()">asdsad</button>
+
+    <app-invoices-sender-card />
+    <app-invoices-general-card />
+    <app-invoices-basic-info-card />
 
     <app-invoices-client-card />
   </form>

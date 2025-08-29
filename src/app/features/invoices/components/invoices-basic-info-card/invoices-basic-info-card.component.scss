@@ -1,0 +1,32 @@
+@use 'mixin' as mixins;
+
+.container {
+  @include mixins.card;
+}
+
+.header {
+}
+
+.header__title {
+}
+
+.content {
+}
+
+.content__form {
+}
+
+.form {
+}
+
+.form__fields {
+}
+
+.form__submit {
+}
+
+.content__footer {
+}
+
+.content__footer-buttons {
+}

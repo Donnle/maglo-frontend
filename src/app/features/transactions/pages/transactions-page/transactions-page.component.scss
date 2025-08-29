@@ -1,5 +1,19 @@
 @use 'mixin' as mixin;
 
+.header {
+  display: flex;
+  gap: 20px;
+
+  &__search {
+    flex: 1;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+  }
+}
+
 .content__table {
   margin-top: 25px !important;
   padding-top: 10px !important;

@@ -15,10 +15,11 @@ import {
   ButtonType
 } from '../../enums/button.enum';
 import { SpinnerSize } from '../../enums/spiner.enum';
+import { TooltipDirective } from '../../directives/tooltip.directive';
 
 @Component({
   selector: 'app-button',
-  imports: [NgClass, SpinnerComponent],
+  imports: [NgClass, SpinnerComponent, TooltipDirective],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -52,6 +53,10 @@ export class ButtonComponent {
   protected readonly ButtonStyle: typeof ButtonStyle = ButtonStyle;
 
   onClick(event: Event): void {
+    if (this.disabled()) {
+      return;
+    }
+
     this.buttonClick.emit(event);
   }
 }

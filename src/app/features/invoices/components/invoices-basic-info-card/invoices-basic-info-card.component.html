@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="header">
+    <h3 class="header__title">Basic Info</h3>
+  </div>
+
+  <div class="content">
+    <form
+      class="content__form form"
+      [formGroup]="basicInvoiceForm"
+      (ngSubmit)="onFormSubmit()"
+    >
+      <div class="form__fields">
+        <app-date-picker label="Invoice Date" formControlName="invoice_date" />
+        <app-date-picker label="Due Date" formControlName="due_date" />
+      </div>
+
+      <div class="form__submit">
+        <app-button [size]="ButtonSize.Wide"> Send Invoice </app-button>
+      </div>
+    </form>
+
+    <div class="content__footer">
+      <div class="content__footer-buttons">
+        <app-button
+          icon="icon-eye"
+          tooltip="Preview Invoice"
+          [size]="ButtonSize.Wide"
+          [severity]="ButtonSeverity.Secondary"
+          (buttonClick)="onPreviewClick()"
+        >
+          Preview
+        </app-button>
+        <app-button
+          icon="icon-download"
+          [size]="ButtonSize.Wide"
+          [severity]="ButtonSeverity.Secondary"
+          (buttonClick)="onDownloadClick()"
+        >
+          Download
+        </app-button>
+      </div>
+    </div>
+  </div>
+</div>

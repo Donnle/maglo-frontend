@@ -14,7 +14,7 @@ import {
   styleUrl: './dialog-wrapper.component.scss'
 })
 export class DialogWrapperComponent {
-  protected readonly title = inject(DIALOG_DATA).title;
+  protected readonly title = inject(DIALOG_DATA)?.title;
 
   protected readonly ButtonSize = ButtonSize;
   protected readonly ButtonStyle = ButtonStyle;

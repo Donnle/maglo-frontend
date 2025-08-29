@@ -12,11 +12,16 @@ import {
 } from '@angular/core';
 import { TooltipComponent } from '../components/tooltip/tooltip.component';
 
+interface TooltipPosition {
+  left: number;
+  top: number;
+}
+
 @Directive({ selector: '[tooltip]', standalone: true })
 export class TooltipDirective implements OnDestroy {
-  tooltip: InputSignal<string> = input('');
-  tooltipShowDelay: InputSignal<number> = input(0);
-  tooltipHideDelay: InputSignal<number> = input(0);
+  tooltip: InputSignal<string | undefined> = input<string | undefined>('');
+  tooltipShowDelay: InputSignal<number> = input<number>(0);
+  tooltipHideDelay: InputSignal<number> = input<number>(0);
 
   private componentRef: ComponentRef<any> | null = null;
   private showTimeout?: ReturnType<typeof setTimeout>;
@@ -29,38 +34,68 @@ export class TooltipDirective implements OnDestroy {
     private changeDetectorRef: ChangeDetectorRef
   ) {}
 
+  ngOnDestroy(): void {
+    clearInterval(this.showTimeout);
+    clearInterval(this.hideTimeout);
+
+    if (this.componentRef !== null) {
+      this.appRef.detachView(this.componentRef.hostView);
+      this.componentRef.destroy();
+      this.componentRef = null;
+    }
+  }
+
   @HostListener('mouseenter')
   onMouseEnter(): void {
-    this.initializeTooltip();
+    if (this.tooltip()) {
+      this.initializeTooltip();
+    }
   }
 
   @HostListener('mouseleave')
   onMouseLeave(): void {
-    this.setHideTooltipTimeout();
+    if (this.tooltip()) {
+      this.setHideTooltipTimeout();
+    }
   }
 
   private initializeTooltip(): void {
     clearTimeout(this.showTimeout);
     clearTimeout(this.hideTimeout);
 
-    if (this.componentRef != null) {
-      this.setShowTooltipTimeout();
-      return;
+    if (this.componentRef == null) {
+      this.createTooltip();
     }
 
-    this.createTooltip();
+    this.setTooltipPosition();
     this.setShowTooltipTimeout();
   }
 
-  private createTooltip(): void {
+  private calculateTooltipPosition(): TooltipPosition {
     const { left, right, top } =
       this.elementRef.nativeElement.getBoundingClientRect();
 
-    this.componentRef = this.vcr.createComponent(TooltipComponent);
+    return {
+      left: Math.round((right - left) / 2 + left),
+      top: Math.round(top)
+    };
+  }
 
+  private createTooltip(): void {
+    this.componentRef = this.vcr.createComponent(TooltipComponent);
     this.componentRef.setInput('tooltip', this.tooltip());
-    this.componentRef.setInput('left', Math.round((right - left) / 2 + left));
-    this.componentRef.setInput('top', Math.round(top));
+  }
+
+  private setTooltipPosition(): void {
+    if (!this.componentRef) {
+      console.error('Tooltip component is not initialized!');
+      return;
+    }
+
+    const { left, top } = this.calculateTooltipPosition();
+
+    this.componentRef.setInput('left', left);
+    this.componentRef.setInput('top', top);
   }
 
   private showTooltip(): void {
@@ -87,20 +122,5 @@ export class TooltipDirective implements OnDestroy {
       this.hideTooltip();
       this.changeDetectorRef.markForCheck();
     }, this.tooltipHideDelay());
-  }
-
-  ngOnDestroy(): void {
-    this.destroy();
-  }
-
-  private destroy(): void {
-    clearInterval(this.showTimeout);
-    clearInterval(this.hideTimeout);
-
-    if (this.componentRef !== null) {
-      this.appRef.detachView(this.componentRef.hostView);
-      this.componentRef.destroy();
-      this.componentRef = null;
-    }
   }
 }

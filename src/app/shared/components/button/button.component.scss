@@ -17,7 +17,6 @@
   transition: background-color 0.25s ease;
 
   &:disabled {
-    pointer-events: none;
     cursor: initial;
     opacity: 0.6;
   }

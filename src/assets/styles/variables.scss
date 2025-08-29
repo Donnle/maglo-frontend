@@ -106,6 +106,9 @@
   // Skeleton
   --skeleton-bg: #e6e6e6;
   --skeleton-line-color: #ffffff;
+
+  --sender-card-bg: linear-gradient(135deg, #202736, #1e2432);
+  --sender-card-text: #ffffff;
 }
 
 :root[data-theme='dark'] {
@@ -216,4 +219,7 @@
   // Skeleton
   --skeleton-bg: #292745;
   --skeleton-line-color: #433e73;
+
+  --sender-card-bg: linear-gradient(135deg, #282541, #2b2843);
+  --sender-card-text: #ffffff;
 }

@@ -3,6 +3,21 @@
     <div class="header__search">
       <app-input placeholder="Search Transactions" icon="icon icon-search" />
     </div>
+
+    <div class="header__actions">
+      <app-button
+        icon="icon-upload"
+        tooltip="Will Be Able Soon"
+        [disabled]="true"
+        [severity]="ButtonSeverity.Secondary"
+      >
+        Upload Transactions
+      </app-button>
+
+      <app-button icon="icon-plus" [severity]="ButtonSeverity.Primary">
+        Add Transaction
+      </app-button>
+    </div>
   </div>
 
   <div class="content">
@@ -20,7 +35,7 @@
         </thead>
         <tbody>
           @for (transaction of transactions; track transaction.id) {
-            <tr>
+            <tr class="content__table-row">
               <td>
                 <app-transaction-product
                   [name]="transaction.product.name"
@@ -28,24 +43,23 @@
                   [imageSrc]="transaction.product.image"
                 />
               </td>
-              <td>
-                <span class="content__table_type table-grey"> Mobile </span>
-              </td>
+              <td class="secondary">{{ transaction.product.category }}</td>
               <td>
                 {{
                   transaction.countProducts * transaction.product.price
                     | currency
                 }}
               </td>
+              <td><app-transaction-date [date]="transaction.date" /></td>
+              <td class="secondary">{{ transaction.id }}</td>
               <td>
-                <app-transaction-date />
+                <app-button
+                  icon="icon-eye"
+                  [style]="ButtonStyle.Icon"
+                  [severity]="ButtonSeverity.Secondary"
+                  (buttonClick)="onViewTransactionClick(transaction.id)"
+                />
               </td>
-              <td>
-                <span class="content__table_invoice table-grey">
-                  ICD28934
-                </span>
-              </td>
-              <td>ACTION</td>
             </tr>
           }
         </tbody>

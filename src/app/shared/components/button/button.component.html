@@ -1,6 +1,7 @@
 <button
   data-testingId="button"
   class="button"
+  [tooltip]="tooltip()"
   [type]="type()"
   [disabled]="disabled() || loading()"
   [attr.data-size]="size()"
