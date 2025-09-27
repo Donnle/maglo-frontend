@@ -8,6 +8,9 @@ import {
 import { TransactionStatus } from '../../../../shared/enums/api/transaction/transaction.enum';
 import { Dialog } from '@angular/cdk/dialog';
 import { ViewTransactionDialogComponent } from '../../dialogs/view-transaction-dialog/view-transaction-dialog.component';
+import {
+  UpsertTransactionDialogComponent
+} from '../../../../shared/components/dialogs/upsert-transaction-dialog/upsert-transaction-dialog.component';
 
 @Component({
   selector: 'app-transactions-page',
@@ -140,10 +143,16 @@ export class TransactionsPageComponent {
   constructor(private dialog: Dialog) {}
 
   onViewTransactionClick(transactionId: number) {
-    console.log(transactionId);
     this.dialog.open(ViewTransactionDialogComponent, {
       width: '500px',
       data: { title: 'Transaction Details' }
     });
+  }
+
+  onAddTransactionClick() {
+    this.dialog.open(UpsertTransactionDialogComponent, {
+      width: '500px',
+      data: { title: 'Add Transaction' }
+    })
   }
 }

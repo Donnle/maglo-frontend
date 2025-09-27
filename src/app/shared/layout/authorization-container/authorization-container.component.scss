@@ -5,19 +5,25 @@
   height: 100%;
 }
 
-.header__logo {
+.header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
 
-  &_icon {
-    font-size: 30px;
-  }
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-  &_name {
-    font-family: 'Gordita', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
+    &_icon {
+      font-size: 30px;
+    }
+
+    &_name {
+      font-family: 'Gordita', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+    }
   }
 }
 

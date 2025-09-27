@@ -1,9 +1,18 @@
 <app-dialog-wrapper>
   <div class="content">
-    <form class="form">
+    <form [formGroup]="upsertTransactionForm" class="form">
       <div class="form__content">
-        <div class="form__content_category">
+        <div class="form__content-field">
           <app-dropdown [size]="DropdownSize.Wide" [options]="[]" />
+        </div>
+
+        <div class="form__content-field">
+          <app-input
+            type="number"
+            label="Total Price"
+            placeholder="Please, enter total price"
+            icon="icon-dollar-sign"
+          />
         </div>
       </div>
     </form>
@@ -17,6 +26,7 @@
     >
       Cancel
     </app-button>
+
     <app-button [size]="ButtonSize.Wide" (buttonClick)="submitForm()">
       Save
     </app-button>

@@ -4,6 +4,17 @@
       <i class="header__logo_icon icon icon-logo"></i>
       <span class="header__logo_name">Maglo.</span>
     </div>
+
+    <div class="header__theme-switcher">
+      <app-button
+        icon="icon icon-theme-toggle"
+        [outlined]="true"
+        [style]="ButtonStyle.Icon"
+        [size]="ButtonSize.Small"
+        [severity]="ButtonSeverity.Secondary"
+        (buttonClick)="onThemeChange()"
+      />
+    </div>
   </header>
   <main class="main">
     <router-outlet />

@@ -42,6 +42,11 @@
       &--password {
         right: 15px;
       }
+
+      [data-size='small'] {
+        font-size: 16px;
+        line-height: 1.2em;
+      }
     }
 
     &_control {

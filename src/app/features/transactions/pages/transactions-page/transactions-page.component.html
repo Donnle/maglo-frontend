@@ -14,7 +14,11 @@
         Upload Transactions
       </app-button>
 
-      <app-button icon="icon-plus" [severity]="ButtonSeverity.Primary">
+      <app-button
+        icon="icon-plus"
+        [severity]="ButtonSeverity.Primary"
+        (buttonClick)="onAddTransactionClick()"
+      >
         Add Transaction
       </app-button>
     </div>

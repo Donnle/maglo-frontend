@@ -1,3 +1,9 @@
+.form__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .footer {
   width: 100%;
   display: flex;
